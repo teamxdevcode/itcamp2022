@@ -21,17 +21,6 @@ class CreateUserForm extends Component
 		]
 	];
 
-	public function goToNextPage()
-	{
-		$this->currentPage++;
-		return dd($this->currentPage);
-	}
-
-	public function goToPreviousPage()
-	{
-		$this->currentPage--;
-	}
-
 	public function selectPage($page)
 	{
 		$this->currentPage = $page;

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\CreateUserForm;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +18,4 @@ Route::get('/', function () {
 	return view('home');
 })->name('home');
 
-Route::get('/register', CreateUserForm::class)
-	->name('register');
+Route::get('/register', [RegisterController::class, 'registerPage'])->name('register');

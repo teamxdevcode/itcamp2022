@@ -882,9 +882,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .outline-blue-500 {
   outline-color: #3b82f6;
 }
-.outline-slate-400 {
-  outline-color: #94a3b8;
-}
 .outline-gray-200 {
   outline-color: #e5e7eb;
 }
@@ -1052,10 +1049,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:underline:hover {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
-}
-
-.hover\:outline-offset-2:hover {
-  outline-offset: 2px;
 }
 
 .hover\:outline-blue-500:hover {

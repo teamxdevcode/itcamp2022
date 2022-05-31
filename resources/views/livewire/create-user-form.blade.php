@@ -97,15 +97,18 @@
 		@endif
 	</form>
 	<div class="flex items-center justify-between w-3/5">
+
 		@if ($currentPage == 1)
-		<div></div>
+		  <div></div>
 		@else
-		<div wire:click="goToPreviousPage" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 outline-blue-500">ย้อนกลับ</div>
+		  <button wire:click="$set('currentPage', {{$currentPage-1}})" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 outline-blue-500">ย้อนกลับ</button>
 		@endif
+
 		@if ($currentPage == count($pages))
-		<div type="submit" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 outline-blue-500">ยืนยัน</div>
+		  <button type="submit" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 outline-blue-500">ยืนยัน</button>
 		@else
-		<div wire:click="goToNextPage" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 hover:outline-blue-500 outline-gray-200 cursor-pointer transition-all ease-in-out duration-200">ต่อไป</div>
+		  <button wire:click="$set('currentPage', {{$currentPage+1}})" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 hover:outline-blue-500 outline-gray-200 cursor-pointer transition-all ease-in-out duration-200">ต่อไป</button>
 		@endif
+
 	</div>
 </div>

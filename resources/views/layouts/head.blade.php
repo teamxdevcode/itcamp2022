@@ -13,7 +13,6 @@
 
 <body class="bg-[#F5F7FA]">
 	@yield('content')
-
 	@livewireScripts
 </body>
 
