@@ -1,3 +1,100 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+  }
+
+  .input-form-reg {
+    @apply outline-blue-200 outline bg-blue-100 focus:outline-offset-2 focus:outline-blue-400 focus:outline-2 transition-all ease-in-out duration-100 w-full px-4 py-2 rounded-sm mr-6 !important;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Thai&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
+
+* {
+  font-family: "Noto Sans", "Noto Sans Thai", sans-serif;
+}
+
+.glitch {
+  font-size: 8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+
+  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+
+  animation: glitchText 500ms infinite;
+}
+
+.glitch span {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.glitch span:first-child {
+  animation: glitchText 650ms infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-0.025em, -0.0125em);
+  /* color: green; */
+  opacity: 0.8;
+}
+
+.glitch span:last-child {
+  animation: glitchText 375ms infinite;
+  clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+  transform: translate(0.0125em, 0.025em);
+  /* color: red; */
+  opacity: 0.8;
+}
+
+@keyframes glitchText {
+  0% {
+    text-shadow: 0.05em 0 0 #00fff9, -0.05em -0.025em 0 #8f52f5,
+      -0.025em 0.05em 0 #ff00c1;
+  }
+  14% {
+    text-shadow: 0.05em 0 0 #00fff9, -0.05em -0.025em 0 #8f52f5,
+      -0.025em 0.05em 0 #ff00c1;
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 #00fff9, 0.025em 0.025em 0 #8f52f5,
+      -0.05em -0.05em 0 #ff00c1;
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 #00fff9, 0.025em 0.025em 0 #8f52f5,
+      -0.05em -0.05em 0 #ff00c1;
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 #00fff9, 0.05em 0 0 #8f52f5,
+      0 -0.05em 0 #ff00c1;
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 #00fff9, 0.05em 0 0 #8f52f5,
+      0 -0.05em 0 #ff00c1;
+  }
+  100% {
+    text-shadow: -0.025em 0 0 #00fff9, -0.025em -0.025em 0 #8f52f5,
+      -0.025em -0.05em 0 #ff00c1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
