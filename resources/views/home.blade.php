@@ -3,7 +3,7 @@
 @section('main')
 <div class="w-1/2 flex items-center justify-center flex-col space-y-10 h-96">
 	<!-- <h1 class="text-8xl h-1/3 glitch">ITCAMP18</h1> -->
-	<h1 class="glitch">
+	<h1 class="glitch-camp">
 		<span aria-hidden="true">ITCAMP18</span>
 		ITCAMP18
 		<span aria-hidden="true">ITCAMP18</span>

@@ -908,7 +908,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-family: "Noto Sans", "Noto Sans Thai", sans-serif;
 }
 
-.glitch {
+.glitch-camp {
   font-size: 8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -923,13 +923,13 @@ Ensure the default browser behavior of the `hidden` attribute.
           animation: glitchText 500ms infinite;
 }
 
-.glitch span {
+.glitch-camp span {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.glitch span:first-child {
+.glitch-camp span:first-child {
   -webkit-animation: glitchText 650ms infinite;
           animation: glitchText 650ms infinite;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
@@ -939,7 +939,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   opacity: 0.8;
 }
 
-.glitch span:last-child {
+.glitch-camp span:last-child {
   -webkit-animation: glitchText 375ms infinite;
           animation: glitchText 375ms infinite;
   -webkit-clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);

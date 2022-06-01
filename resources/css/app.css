@@ -19,7 +19,7 @@
   font-family: "Noto Sans", "Noto Sans Thai", sans-serif;
 }
 
-.glitch {
+.glitch-camp {
   font-size: 8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -32,13 +32,13 @@
   animation: glitchText 500ms infinite;
 }
 
-.glitch span {
+.glitch-camp span {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.glitch span:first-child {
+.glitch-camp span:first-child {
   animation: glitchText 650ms infinite;
   clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
   transform: translate(-0.025em, -0.0125em);
@@ -46,7 +46,7 @@
   opacity: 0.8;
 }
 
-.glitch span:last-child {
+.glitch-camp span:last-child {
   animation: glitchText 375ms infinite;
   clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
   transform: translate(0.0125em, 0.025em);

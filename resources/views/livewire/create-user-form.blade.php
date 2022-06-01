@@ -1,7 +1,6 @@
-
 <div class="w-full flex items-center justify-center flex-col space-y-6">
 	<h1 class="text-blue-500 font-bold text-3xl underline underline-offset-8">ลงทะเบียนเข้าค่าย</h1>
-	<form action="" class=" bg-white w-3/5 ">
+	<form action="" class=" bg-white w-3/5">
 		<div class="py-5 px-8 flex justify-between items-center rounded-t-md border border-gray-300 shadow-md">
 			<ul class="flex space-x-5">
 				<li class="px-4 py-2 rounded-md outline outline-offset-2 outline-2 outline-blue-500 bg-blue-500 text-white text-xl">1</li>
@@ -99,15 +98,15 @@
 	<div class="flex items-center justify-between w-3/5">
 
 		@if ($currentPage == 1)
-		  <div></div>
+		<div></div>
 		@else
-		  <button wire:click="$set('currentPage', {{$currentPage-1}})" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 outline-blue-500">ย้อนกลับ</button>
+		<button wire:click="$set('currentPage', {{$currentPage-1}})" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 outline-blue-500">ย้อนกลับ</button>
 		@endif
 
 		@if ($currentPage == count($pages))
-		  <button type="submit" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 outline-blue-500">ยืนยัน</button>
+		<button type="submit" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 outline-blue-500">ยืนยัน</button>
 		@else
-		  <button wire:click="$set('currentPage', {{$currentPage+1}})" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 hover:outline-blue-500 outline-gray-200 cursor-pointer transition-all ease-in-out duration-200">ต่อไป</button>
+		<button wire:click="$set('currentPage', {{$currentPage+1}})" class="px-16 py-3 bg-blue-500 text-white rounded-md outline outline-offset-2 outline-2 hover:outline-blue-500 outline-gray-200 cursor-pointer transition-all ease-in-out duration-200">ต่อไป</button>
 		@endif
 
 	</div>
