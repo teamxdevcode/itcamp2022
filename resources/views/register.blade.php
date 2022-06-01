@@ -1,5 +1,5 @@
 @extends('layouts.auth')
 
 @section('main')
-  @livewire('create-user-form')
+@livewire('create-user-form')
 @endsection
