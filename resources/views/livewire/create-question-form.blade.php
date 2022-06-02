@@ -113,7 +113,7 @@
 
 </div>
 </div> --}}
-<div class="mb-10">
+<div>
   <h1 class="underline decoration-3 underline-offset-2 text-[#0053AD] font-semibold text-center my-12 text-2xl">
     ลงทะเบียนเข้าค่าย
   </h1>
@@ -407,7 +407,7 @@
 
     @endif
   </form>
-  <div class="flex items-center justify-between w-4/5 mx-auto py-10">
+  <div class="flex items-center justify-between w-4/5 mx-auto mt-10">
     @if ($currentPage == 1)
     <div></div>
     @else
@@ -424,3 +424,4 @@
     @endif
   </div>
 </div>
+

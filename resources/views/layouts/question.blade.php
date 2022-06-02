@@ -1,6 +1,6 @@
 @extends('layouts.head')
 
-@section('title', 'หน้าหลัก')
+@section('title', 'คำถามการรับสมัคร')
 
 @section('content')
 <main class="container mx-auto max-w-screen-lg 2xl:max-w-screen-xl h-screen">
@@ -13,5 +13,5 @@
   </nav>
   @yield('main')
 </main>
-
 @endsection
+

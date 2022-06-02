@@ -15,7 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+	return view('welcome');
+})->name('welcome');
+
+Route::get('/register', [RegisterController::class, 'registerPage'])->name('register');
+
+Route::get('/home', function () {
 	return view('home');
 })->name('home');
 
-Route::get('/register', [RegisterController::class, 'registerPage'])->name('register');
+
+Route::get('/question', function () {
+	return view('question');
+})->name('question');
