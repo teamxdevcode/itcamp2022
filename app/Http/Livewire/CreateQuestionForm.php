@@ -4,9 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class CreateUserForm extends Component
+class CreateQuestionForm extends Component
 {
-
 	public $currentPage = 1;
 
 	public $pages = [
@@ -34,6 +33,6 @@ class CreateUserForm extends Component
 
 	public function render()
 	{
-		return view('livewire.create-user-form');
+		return view('livewire.create-question-form');
 	}
 }
