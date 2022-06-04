@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\WithFileUploads;
+use App\Models\Registration;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
+use Throwable;
 
 class CreateUserForm extends Component
 {
@@ -30,7 +33,6 @@ class CreateUserForm extends Component
 	];
 
   public $formData = [
-    1 => [
       'name' => null,
       'surname' => null,
       'nickname' => null,
@@ -38,89 +40,91 @@ class CreateUserForm extends Component
       'gender' => null,
       'blood_type' => null,
       'religion' => null,
-    ],
-    2 => [
       'address' => null,
       'province' => null,
       'district' => null,
       'subdistrict' => null,
       'phone' => null,
       'email' => null,
-    ],
-    3 => [
       'education_level' => null,
       'school' => null,
-      'program' => null,
-      'certificate7' => null,
-    ],
-    4 => [
-      'congenital_disease' => [
-        'has' => null,
-        'detail' => null,
-      ],
-      'allergic' => [
-        'has' => null,
-        'detail' => null,
-      ],
+      'education_program' => null,
+      'education_certificate' => null,
+      'has_congenital_disease' => '0',
+      'congenital_disease_detail' => '',
+      'has_allergic' => '0',
+      'allergic_detail' => '',
       'shirt_size' => null,
-    ],
-    5 => [
-      'question' => null,
-      'emergency_contact'=> [
-        'name' => null,
-        'surname' => null,
-        'phone' => null,
-        'relationship' => null,
-      ]
-    ]
+      'activities_detail' => null,
+      'emergency_contact_name' => null,
+      'emergency_contact_surname' => null,
+      'emergency_contact_phone' => null,
+      'emergency_contact_relationship' => null,
+    ];
+
+  protected $messages = [
+    'formData.name.required' => 'กรุณาระบุชื่อ',
+    'formData.surname.required' => 'กรุณาระบุนามสกุล',
+    'formData.nickname.required' => 'กรุณาระบุชื่อเล่น',
+    'formData.birth.required' => 'กรุณาระบุวันเกิด',
+    'formData.gender.required' => 'กรุณาระบุเพศ',
+    'formData.blood_type.required' => 'กรุณาระบุกรุ๊ปเลือด',
+    'formData.religion.required' => 'กรุณาระบุศาสนา',
+    'formData.address.required' => 'กรุณาระบุที่อยู่ปัจจุบัน',
+    'formData.province.required' => 'กรุณาระบุจังหวัดที่อยู่ปัจจุบัน',
+    'formData.district.required' => 'กรุณาระบุอำเภอ/เขตที่อยู่ปัจจุบัน',
+    'formData.subdistrict.required' => 'กรุณาระบุตำบล/แขวงที่อยู่ปัจจุบัน',
+    'formData.phone.required' => 'กรุณาระบุเบอร์โทรศัพท์ของคุณ',
+    'formData.email.required' => 'กรุณาระบุอีเมลของคุณ',
+    'formData.education_level.required' => 'กรุณาระบุระดับการศึกษาปัจจุบัน',
+    'formData.school.required' => 'กรุณาระบุโรงเรียน/สถานศึกษาปัจจุบัน',
+    'formData.education_program.required' => 'กรุณาระบุแผนการเรียน/สาขา',
+    'education_certificate.required' => 'กรุณาอัพโหลดเอกสาร ปพ. 7',
+    'formData.has_congenital_disease.required' => 'กรุณาระบุโรคประจำตัว',
+    'formData.congenital_disease_detail.required' => 'กรุณาระบุรายละเอียดโรค',
+    'formData.has_allergic.required' => 'กรุณาระบุสิ่งที่แพ้/อาหารที่แพ้',
+    'formData.allergic_detail.required' => 'กรุณาระบุสิ่งที่แพ้',
+    'formData.shirt_size.required' => 'กรุณาระบุไซส์เสื้อ',
+    'formData.activities_detail.required' => 'กรุณาระบุกิจกรรมที่เข้าร่วมหรือผลงานที่เคยทำ หรือผลงานที่อยากนำเสนอ',
+    'formData.emergency_contact_name.required' => 'กรุณาระบุชื่อจริงของผู้ปกครอง',
+    'formData.emergency_contact_surname.required' => 'กรุณาระบุนามสกุลของผู้ปกครอง',
+    'formData.emergency_contact_phone.required' => 'กรุณาระบุเบอร์โทรศัพท์ของผู้ปกครอง',
+    'formData.emergency_contact_relationship.required' => 'กรุณาระบุความเกี่ยวข้องกับผู้ปกครอง',
   ];
 
-  // protected $rules = [
-  //   'formData.1.name' => 'required',
-  //   'formData.1.surname' => 'required',
-  //   'formData.1.nickname' => 'required',
-  //   'formData.1.birth' => 'required',
-  //   'formData.1.gender' => 'required',
-  //   'formData.1.blood_type' => 'required',
-  //   'formData.1.religion' => 'required',
-  //   'formData.2.address' => 'required',
-  //   'formData.2.province' => 'required',
-  //   'formData.2.district' => 'required',
-  //   'formData.2.subdistrict' => 'required',
-  //   'formData.2.phone' => 'required',
-  //   'formData.2.email' => 'required',
-  //   'formData.3.education_level' => 'required',
-  //   'formData.3.school' => 'required',
-  //   'formData.3.program' => 'required',
-  //   'formData.3.certificate7' => 'required',
-  //   'formData.4.congenital_disease.has' => 'required',
-  //   'formData.4.congenital_disease.detail' => 'required',
-  //   'formData.4.allergic.has' => 'required',
-  //   'formData.4.allergic.detail' => 'required',
-  //   'formData.4.shirt_size' => 'required',
-  //   'formData.5.question' => 'required',
-  //   'formData.5.emergency_contact.name' => 'required',
-  //   'formData.5.emergency_contact.surname' => 'required',
-  //   'formData.5.emergency_contact.phone' => 'required',
-  //   'formData.5.emergency_contact.relationship' => 'required',
-  // ];
-
-  protected $rules = [
-    'formData.*.*' => 'required',
-    'formData.*.*.*' => 'required',
-    'formData.1.birth' => 'required|date',
-    'formData.2.phone' => 'required|digits:10',
-    'formData.2.email' => 'required|email',
-    'formData.3.certificate7' => 'required|image|max:2048',
-    'formData.4.congenital_disease.detail' => '',
-    'formData.4.allergic.detail' => '',
-    'formData.5.question' => '',
-    'formData.5.emergency_contact.phone' => 'required|digits:10',
-  ];
+  public $photo_validation = false;
+  public $education_certificate;
 
   public function updated($propertyName)
   {
-    $this->validateOnly($propertyName);
+    if($propertyName === 'education_certificate') {
+      $this->photo_validation = false;
+      $this->validateOnly($propertyName, [
+        'education_certificate' => 'required|image|max:2048',
+      ]);
+      $this->photo_validation = true;
+    } else {
+      $validate = [
+        'formData.*' => 'required',
+        'formData.birth' => 'required|date',
+        'formData.phone' => 'required|digits:10',
+        'formData.email' => 'required|email',
+        'formData.education_certificate' => '',
+        'formData.congenital_disease_detail' => '',
+        'formData.allergic_detail' => '',
+        'formData.emergency_contact_phone' => 'required|digits:10',
+      ];
+
+      if ($this->formData['has_congenital_disease']) {
+        $validate['formData.congenital_disease_detail'] = 'required';
+      }
+
+      if ($this->formData['has_allergic']) {
+        $validate['formData.allergic_detail'] = 'required';
+      }
+
+      $this->validateOnly($propertyName, $validate);
+    }
   }
 
 	public function selectPage($page)
@@ -137,13 +141,38 @@ class CreateUserForm extends Component
   }
 
   public function save() {
-    // $validatedData = $this->validate();
-    // try {
-    //   $validatedData = $this->validate();
-    // } catch(\Illuminate\Validation\ValidationException $e) {
-    //   return dd( $e->validator->errors());
-    // }
-    return dd($this->formData);
+    $validate = [
+      'formData.*' => 'required',
+      'formData.birth' => 'required|date',
+      'formData.phone' => 'required|digits:10',
+      'formData.email' => 'required|email',
+      'formData.education_certificate' => '',
+      'formData.congenital_disease_detail' => '',
+      'formData.allergic_detail' => '',
+      'formData.emergency_contact_phone' => 'required|digits:10',
+    ];
+
+    if ($this->formData['has_congenital_disease']) {
+      $validate['formData.congenital_disease_detail'] = 'required';
+    }
+
+    if ($this->formData['has_allergic']) {
+      $validate['formData.allergic_detail'] = 'required';
+    }
+    $validatedData = $this->validate($validate);
+
+    $this->education_certificate->storeAs('education_certificates', $this->education_certificate->hashName());
+
+    $this->formData['education_certificate'] = $this->education_certificate->hashName();
+
+    try {
+      $Registration = Registration::create($this->formData);
+      return redirect()->route('home');
+    } catch(Throwable $e) {
+      $this->addError('Registration failed', $e->getMessage());
+      Storage::delete('education_certificates/'.$this->education_certificate->hashName());
+    }
+
   }
 
 	public function render()
