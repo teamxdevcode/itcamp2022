@@ -30,7 +30,7 @@ php artisan migrate --seed
 ```
 php artisan serve
 ```
-7. (Optional) If you lazy to run "npm run dev" every time when you change something in .css or .js files, You could run this command. It will automatic compile you .css and .js files when you change something in it.
+7. (Optional) If you are lazy to run "npm run dev" whenever you change something in .css or .js files, You could run this command. It will automatically compile your .css and .js files when you change something in them.
 ```
 npm run watch
 ```
