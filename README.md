@@ -1,3 +1,6 @@
+##Introduction
+Web Application for IT Camp 2022 registration. based on Laravel and Livewire.
+
 ## Installation
 After you cloned this repository, You must have run commands below, Step by step.
 
