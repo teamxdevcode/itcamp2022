@@ -21,9 +21,7 @@ class User extends Authenticatable
 		'facebook_id',
 		'first_name',
 		'last_name',
-    'birthday',
 		'email',
-		'gender',
     'facebook_token',
 	];
 }

@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->nullable();
-            $table->date('birthday')->nullable();
-            $table->string('gender')->nullable();
             $table->text('facebook_token');
             $table->timestamps();
         });
