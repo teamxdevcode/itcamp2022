@@ -34,5 +34,13 @@ class UserSeeder extends Seeder
         }
 
         User::factory()->count(10)->create();
+        User::factory()->state([
+          'facebook_id' => '3331371010473634',
+          'first_name' => 'Fang',
+          'last_name' => 'Suphachai',
+          'email' => 'suphachai.fang@gmail.com',
+          'facebook_token' => 'EAAIFjzcC3tEBAKQFlUEaGo8biCWewPgxGnB5fVjuVH9PjdFRitZCHE4ERlAqeQbURaR9mw8TMu3wPklmIRFG0qgyUCp77IZCZBm1T2FcZAQqFRw6JFWCiOiCzaCQTm5fmZBU6HLakxO2iLzGyXJmlQ6kGqe3WuwRZAdpMCgWmjh5MvZALIQWkZBx68ZClVJSgxFcEDrmulNH6NbpUqSzr2SkZCTDkeiN7xxywvhCjPxV48lWfqoqB2DefhYr8gSDcgbZBUZD',
+          'role' => 'admin',
+        ])->create();
     }
 }

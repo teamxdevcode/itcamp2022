@@ -22,7 +22,8 @@ class UserFactory extends Factory
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'email' => $this->faker->email(),
-            'facebook_token' => Str::random(218),
+            'facebook_token' => 'test_'.Str::random(213),
+            'role' => 'user',
         ];
     }
 }
