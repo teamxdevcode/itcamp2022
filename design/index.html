@@ -4,21 +4,108 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Grid template</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            colors: {
-              clifford: "#da373d",
-            },
+            colors: {},
           },
         },
       };
     </script>
   </head>
-  <body class="flex items-center justify-center min-h-screen">
-    <h1 class="text-3xl font-bold underline text-blue-500">Hello Tailwindcss!</h1>
+  <body
+    class="grid grid-cols-4 xl:grid-cols-12 gap-x-4 bg-gradient-to-b from-stone-900 via-[#3F371B] to-stone-900 min-h-screen"
+  >
+    <div class="col-span-full min-h-[50em] relative overflow-hidden">
+      <div
+        id="green-building"
+        class="absolute left-1/2 -translate-x-1/2 bottom-0 z-10 w-[40em] lg:w-[60em]"
+      >
+        <img
+          src="./index-assets/green.svg"
+          alt="green"
+          class="-translate-x-40 lg:-translate-x-48"
+        />
+      </div>
+      <div
+        id="red-building"
+        class="absolute left-1/2 -translate-x-1/2 bottom-0 z-20 w-[40em] lg:w-[60em]"
+      >
+        <img
+          src="./index-assets/red.svg"
+          alt="red"
+          class="translate-x-36 lg:translate-x-44"
+        />
+      </div>
+      <div
+        id="blue-building"
+        class="absolute left-1/2 -translate-x-1/2 bottom-0 z-30 w-[40em] lg:w-[60em]"
+      >
+        <img src="./index-assets/blue.svg" alt="blue" class="" />
+      </div>
+      <div
+        id="sign"
+        class="absolute left-1/2 -translate-x-1/2 bottom-0 z-40 w-[40em] lg:w-[60em]"
+      >
+        <img src="./index-assets/sign.svg" alt="sign" class="-translate-x-4" />
+      </div>
+      <img
+        id="sparkle"
+        src="./index-assets//sparkle.png"
+        alt="sparkle"
+        class="w-full absolute h-full object-cover opacity-50 bottom-0 z-0"
+      />
+    </div>
+    <button
+      class="px-12 py-4 absolute bottom-44 left-1/2 bg-[#2F2F2F] text-white font-bold text-2xl -translate-x-1/2 z-40 rounded ring-4 ring-stone-800/40"
+    >
+      เข้าสู่ระบบ Facebook
+    </button>
+    <p
+      class="absolute bottom-5 left-1/2 z-40 text-center -translate-x-1/2 text-white bg-stone-500/60 ring-2 ring-offset-2 ring-stone-700 ring-offset-stone-100 px-6 py-3 rounded backdrop-blur-sm"
+    >
+      ITCamp18 © 2022 All Rights Reserved<br />
+      Developed By Osphin
+    </p>
+    <script>
+      const redBuilding = document.getElementById("red-building");
+      const blueBuilding = document.getElementById("blue-building");
+      const greenBuilding = document.getElementById("green-building");
+      const sign = document.getElementById("sign");
+      const sparkle = document.getElementById("sparkle")
+
+      const tl = gsap.timeline({
+        delay: 0.2,
+      });
+      tl.from(redBuilding,{
+        x: 100,
+        opacity: 0,
+        duration:0.6
+      }).from(greenBuilding ,{
+          x: -100,
+          opacity: 0,
+          duration:0.6
+      },"0").from(blueBuilding ,{
+        y:100,
+        opacity: 0,
+        duration:1
+      }, "0").from(sparkle, {
+        opacity:0,
+        scale:1.1,
+        duration:2,
+        ease: "power4.easeOut",
+      },"<0.2").from(sign, {
+        scale:1.4,
+        opacity:0,
+        duration:0.5,
+        ease: "power4.easeOut",
+      },"0.8")
+    </script>
+
+  
   </body>
 </html>

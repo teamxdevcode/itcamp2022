@@ -30,5 +30,9 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-
+    'facebook' => [
+        'client_id' => '569062614818513',
+        'client_secret' => '87e5aa77d0b0b65ff3d3850c6ea688ac',
+        'redirect' => 'https://itcamp2022.localhost/auth/callback',
+    ],
 ];
