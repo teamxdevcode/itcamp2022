@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>register 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {},
+            },
+        };
+    </script>
+</head>
+
+<body class="bg-[#F5F7FA]">
+    <h1 class="underline decoration-3 underline-offset-2 text-blue-500 font-semibold text-center my-12 text-2xl">
+        ลงทะเบียนเข้าค่าย
+    </h1>
+    <div class="md:w-3/5 min-h-[20em] bg-white mx-auto rounded-md border border-[#ABBED1]">
+        <div class="px-6 py-4 flex justify-between items-center border-b border-[#ABBED1]">
+            <div
+                class="bg-blue-500 aspect-square w-10 rounded-md p-1 flex justify-center items-center text-white ring-2 ring-offset-1 border-[#4196F0]">
+                3
+            </div>
+            <h2 class="text-blue-500 text-lg">ข้อมูลเพิ่มเติม</h2>
+        </div>
+
+
+        <div class="px-6 py-4">
+            <div class="py-2 flex justify-between items-center">
+                <h3 class="text-[#4D4D4D]">โรคประจำตัว</h3>
+                <div>
+                    <button class="text-[#0671E0] font-bold text-lg px-4 py-2 border-2 border-[#0671E0] rounded">
+                        ไม่มี
+                    </button>
+                    <button class="text-white font-bold text-lg px-4 py-2 bg-[#0671E0] rounded">
+                        มี
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="py-2 flex justify-between items-center">
+                <h3 class="text-[#4D4D4D]">รายละเอียดโรค</h3>
+                <input
+                    class="px-2 py-1.5 bg-[#EEF5FC] flex-1 max-w-[30em] border border-[#4196F0] rounded-md outline-none"></input>
+            </div>
+
+
+            <div class="w-full h-[1px] bg-[#ABBED1] my-2"></div>
+
+
+
+            <div class="py-2 flex justify-between items-center">
+                <h3 class="text-[#4D4D4D]">สิ่งที่แพ้ / อาหารที่แพ้</h3>
+                <div>
+                    <button class="text-white font-bold text-lg px-4 py-2   bg-[#0671E0] rounded">
+                        ไม่มี
+                    </button>
+                    <button class="text-[#0671E0] font-bold text-lg px-4 py-2  border-2 border-[#0671E0] rounded">
+                        มี
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="w-full h-[1px] bg-[#ABBED1] my-2"></div>
+
+            <div class="py-2 flex justify-between items-center">
+                <h3 class="text-[#4D4D4D]">ไซส์เสื้อ</h3>
+                <input
+                    class="px-2 py-1.5 bg-[#EEF5FC] flex-1 max-w-[30em] border border-[#4196F0] rounded-md outline-none"></input>
+            </div>
+
+
+            <div class="w-full h-[1px] bg-[#ABBED1] my-2"></div>
+
+
+            <h3 class="py-3 text-[#4D4D4D] text-xl">กิจกรรมที่เข้าร่วมหรือผลงานที่เคยทำ หรือผลงานที่อยากนำเสนอ </h3>
+            <div class="relative bg-[#F5F7FA] w-full rounded-md mb-8">
+                <input class="w-full min-h-[12em] block opacity-0 cursor-pointer" />
+            </div>
+
+
+            <div class="w-full h-[1px] bg-[#ABBED1] my-2"></div>
+
+
+            <div class="py-3">
+                <h2 class="text-[#0671E0] text-xl">ข้อมูลติดต่อฉุกเฉินผู้ปกครอง (1 คน)</h2>
+            </div>
+
+            <div class="py-2 flex justify-between items-center">
+                <h3 class="text-[#4D4D4D]">ชื่อจริง</h3>
+                <input
+                    class="px-2 py-1.5 bg-[#EEF5FC] flex-1 max-w-[30em] border border-[#4196F0] rounded-md outline-none"></input>
+            </div>
+
+
+            <div class="py-2 flex justify-between items-center">
+                <h3 class="text-[#4D4D4D]">นามสกุล</h3>
+                <input
+                    class="px-2 py-1.5 bg-[#EEF5FC] flex-1 max-w-[30em] border border-[#4196F0] rounded-md outline-none"></input>
+            </div>
+
+
+            <div class="py-2 flex justify-between items-center">
+                <h3 class="text-[#4D4D4D]">เบอร์โทรศัพท์</h3>
+                <input
+                    class="px-2 py-1.5 bg-[#EEF5FC] flex-1 max-w-[30em] border border-[#4196F0] rounded-md outline-none"></input>
+            </div>
+
+
+            <div class="py-2 flex justify-between items-center">
+                <h3 class="text-[#4D4D4D]">ความเกี่ยวข้อง</h3>
+                <input
+                    class="px-2 py-1.5 bg-[#EEF5FC] flex-1 max-w-[30em] border border-[#4196F0] rounded-md outline-none"></input>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="md:w-3/5 mx-auto my-4 flex justify-between">
+        <!-- Nav buttons -->
+
+        <button class="text-[#0671E0] font-bold text-lg px-4 py-2 border-2 border-[#0671E0] rounded">
+            หน้าที่แล้ว
+        </button>
+        <button class="text-white font-bold text-lg px-4 py-2 bg-green-600 rounded">
+            ยืนยัน
+        </button>
+    </div>
+</body>
+
+</html>
