@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('registrations', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('user_id')->primary();
             $table->string('name');
             $table->string('surname');
             $table->string('nickname');
@@ -43,6 +43,10 @@ return new class extends Migration
             $table->char('emergency_contact_phone', 10);
             $table->string('emergency_contact_relationship');
             $table->timestamps();
+        });
+
+        Schema::table('registrations', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

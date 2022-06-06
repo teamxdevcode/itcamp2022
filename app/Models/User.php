@@ -24,4 +24,8 @@ class User extends Authenticatable
 		'email',
     'facebook_token',
 	];
+
+  public function registration() {
+    return $this->hasOne(Registration::class);
+  }
 }

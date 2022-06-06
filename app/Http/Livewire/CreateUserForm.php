@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Registration;
 use Brainstud\FileVault\Facades\FileVault;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
@@ -34,6 +35,7 @@ class CreateUserForm extends Component
 	];
 
   public $formData = [
+    'user_id' => null,
 		'name' => null,
 		'surname' => null,
 		'nickname' => null,
@@ -144,6 +146,8 @@ class CreateUserForm extends Component
   }
 
   public function save() {
+    $this->formData['user_id'] = Auth::id();
+
     $this->rules['formData.congenital_disease_detail'] = '';
     $this->rules['formData.allergic_detail'] = '';
 
@@ -158,13 +162,13 @@ class CreateUserForm extends Component
     $validatedData = $this->validate();
 
     try {
-      // Insert registration to a database.
-      $Registration = Registration::create($this->formData);
-
       // Store and encrypt an education certificate file.
       $this->education_certificate->storeAs('education_certificates', $this->education_certificate->hashName());
       FileVault::encrypt('education_certificates/'.$this->education_certificate->hashName());
       $this->formData['education_certificate'] = $this->education_certificate->hashName().'.enc';
+
+      // Insert registration to a database.
+      $Registration = Registration::create($this->formData);
 
       return redirect()->route('home');
     } catch(Throwable $e) {

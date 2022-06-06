@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\FacebookAuthController;
 use App\Http\Controllers\RegistrationController;
+use Brainstud\FileVault\Facades\FileVault;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +33,14 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/camp-selection', 'campSelectionPage')->name('campSelection');
     Route::get('/camp-question', 'campQuestionPage')->name('campQuestion');
   });
+
+  // Route::get('/education-certificate', function() {
+  //   $filename = Auth::user()->registration->education_certificate;
+
+  //   return response()->stream(function () use ($filename) {
+  //     FileVault::streamDecrypt("education_certificates/{$filename}");
+  //   }, 200, ["Content-Type" => "image/png"]);
+  // });
 });
 
 Route::controller(FacebookAuthController::class)->prefix('auth')->name('auth.')->group(function() {
@@ -38,3 +49,4 @@ Route::controller(FacebookAuthController::class)->prefix('auth')->name('auth.')-
   Route::get('/logout', 'logout')->name('logout');
   Route::get('/user', 'user')->name('user');
 });
+
