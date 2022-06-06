@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Registration;
+use Brainstud\FileVault\Facades\FileVault;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
@@ -163,14 +164,16 @@ class CreateUserForm extends Component
 
     $this->education_certificate->storeAs('education_certificates', $this->education_certificate->hashName());
 
-    $this->formData['education_certificate'] = $this->education_certificate->hashName();
+    FileVault::encrypt('education_certificates/'.$this->education_certificate->hashName());
+
+    $this->formData['education_certificate'] = $this->education_certificate->hashName().'.enc';
 
     try {
       $Registration = Registration::create($this->formData);
       return redirect()->route('home');
     } catch(Throwable $e) {
       $this->addError('Registration failed', $e->getMessage());
-      Storage::delete('education_certificates/'.$this->education_certificate->hashName());
+      Storage::delete('education_certificates/'.$this->education_certificate->hashName().'.enc');
     }
 
   }
