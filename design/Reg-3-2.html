@@ -25,7 +25,7 @@
     <div class="font-mono">
 
 
-        <div class="flex justify-between text-white mt-2">
+        <div class="flex justify-between text-white mt-2 mb-16">
             <div>
                 <a class="xl:text-2xl">ITCamp18</a>
             </div>
@@ -52,7 +52,7 @@
                     <textarea class="form-control block  w-full  px-3  py-1.5  text-base font-normal text-white bg-transparent border border-solid border-[#FFFFFF] min-h-[12em]
                      rounded transition ease-in-out m-0 focus:border-blue-600 focus:outline-none"
                         id="exampleFormControlTextarea1" rows="3"></textarea>
-                    <div class="mb-8">
+                    <div class="mb-2">
                         <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
                     </div>
 
@@ -67,14 +67,14 @@
                         <input
                             class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"></input>
                     </div>
-                    <div class="mb-8">
+                    <div class="mb-2">
                         <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
                     </div>
 
 
                     <!-- ระดับชั้น แผนการเรียน / สาขา -->
 
-                    <div class="grid grid-cols-2 gap-[25px]">
+                    <div class="grid grid-cols-2 gap-[25px] mr-2 ">
                         <div>
                             <div class="py-2 flex items-center ">
                                 <h3 class="text-[#FFFFFF] xl:text-xl mr-2 ">ระดับชั้น</h3>
@@ -83,13 +83,9 @@
                             <div class=" flex relative">
                                 <input
                                     class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em] "
-                                    placeholder='6/6/2021'><img class="absolute right-2 top-[50%] -translate-y-2/4"
-                                    src="CalendarBlank.svg"></input>
+                                    placeholder='กำลังศึกษาอยู่ในระดับชั้น'><img
+                                    class="absolute right-2 top-[50%] -translate-y-2/4" src="CaretDown.svg"></input>
 
-                            </div>
-
-                            <div class="mb-2">
-                                <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
                             </div>
 
                         </div>
@@ -98,11 +94,9 @@
                                 <h3 class="text-[#FFFFFF] xl:text-xl mr-2">แผนการเรียน / สาขา</h3>
                                 <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
                             </div>
-                            <div class=" flex relative">
+                            <div class=" flex relative ">
                                 <input
-                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em] "
-                                    placeholder='เลือกกรุ๊ปเลือด'><img
-                                    class="absolute right-2 top-[50%] -translate-y-2/4" src="CaretDown.svg"></input>
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"></input>
                             </div>
 
                         </div>
@@ -110,12 +104,46 @@
 
 
 
+                    <div class="py-2 flex items-center">
+                        <h3 class="text-[#FFFFFF] xl:text-xl mr-2">ใบ ปพ.7</h3>
+                        <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                    </div>
+                    <div class="relative bg-transparent border-dashed border-2 border-white w-full rounded-md mb-10">
+                        <input type="file" name="file" class="w-full min-h-[15em] block opacity-0 cursor-pointer" />
+                        <!-- Blind เอาไว้ -->
+                        <div
+                            class="absolute flex flex-col items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+                            <img src="https://www.svgrepo.com/show/5500/upload-file.svg" alt="file" class="w-6" />
+                            <div class="flex">
+                                <p class="mt-1 text-sm text-[#FFFFFF]">Drag & drop files or&nbsp;</p>
+                                <p class="mt-1 text-sm text-[#1ED760]">Browse</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="grid grid-cols-2 gap-[100px] mr-2 mb-6">
+
+                        <button
+                            class="bg-[#FF5A44] text-white font-bold py-4 px-6 border-4 border-[#5F361E] rounded-xl">
+                            ย้อนกลับ
+                        </button>
+
+
+
+                        <button
+                            class="bg-[#15713A] text-white font-bold py-4 px-6 border-4 border-[#1F5F20]  rounded-xl">
+                            บันทึกและไปต่อ
+                        </button>
+
+
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
-
 
 </body>
 
