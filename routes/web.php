@@ -34,13 +34,18 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/camp-question', 'campQuestionPage')->name('campQuestion');
   });
 
-  // Route::get('/education-certificate', function() {
-  //   $filename = Auth::user()->registration->education_certificate;
+  // Example of how to decrypt and return encryption files from disk.
+  Route::get('/education-certificate', function() {
+    /* Check whether a user has an education certificate file or not. */
+    if (!$filename = Auth::user()->registration?->education_certificate) {
+      return abort(404);
+    }
 
-  //   return response()->stream(function () use ($filename) {
-  //     FileVault::streamDecrypt("education_certificates/{$filename}");
-  //   }, 200, ["Content-Type" => "image/png"]);
-  // });
+    /* If a user has the file, so decrypt and return it. */
+    return response()->stream(function () use ($filename) {
+      FileVault::streamDecrypt("education_certificates/{$filename}");
+    }, 200, ["Content-Type" => "image/png"]);
+  });
 });
 
 Route::controller(FacebookAuthController::class)->prefix('auth')->name('auth.')->group(function() {
