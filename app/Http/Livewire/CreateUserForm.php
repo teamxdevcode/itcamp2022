@@ -61,17 +61,18 @@ class CreateUserForm extends Component
 		'emergency_contact_surname' => null,
 		'emergency_contact_phone' => null,
 		'emergency_contact_relationship' => null,
-    ];
+  ];
 
 	protected $rules = [
 	  'formData.*' => 'required',
 	  'formData.birth' => 'required|date',
 	  'formData.phone' => 'required|digits:10',
 	  'formData.email' => 'required|email',
-	  'formData.education_certificate' => 'required|image|max:2048',
+	  'formData.education_certificate' => '',
 	  'formData.congenital_disease_detail' => '',
 	  'formData.allergic_detail' => '',
 	  'formData.emergency_contact_phone' => 'required|digits:10',
+    'education_certificate' => 'required|image|max:2048',
 	];
 
 	protected $validationAttributes = [
@@ -110,9 +111,9 @@ class CreateUserForm extends Component
   public function updated($propertyName)
   {
     if($propertyName === 'education_certificate') {
-		$this->photo_validation = false;
-		$this->validateOnly($propertyName, ['education_certificate' => 'required|image|max:2048']);
-		$this->photo_validation = true;
+      $this->photo_validation = false;
+      $this->validateOnly($propertyName);
+      $this->photo_validation = true;
     } else {
       $this->rules['formData.congenital_disease_detail'] = '';
       $this->rules['formData.allergic_detail'] = '';
@@ -125,7 +126,7 @@ class CreateUserForm extends Component
         $this->rules['formData.allergic_detail'] = 'required';
       }
 
-      	$this->validateOnly($propertyName);
+      $this->validateOnly($propertyName);
     }
   }
 
@@ -156,17 +157,20 @@ class CreateUserForm extends Component
 
     $validatedData = $this->validate();
 
-    $this->education_certificate->storeAs('education_certificates', $this->education_certificate->hashName());
-
-    FileVault::encrypt('education_certificates/'.$this->education_certificate->hashName());
-
-    $this->formData['education_certificate'] = $this->education_certificate->hashName().'.enc';
-
     try {
+      // Insert registration to a database.
       $Registration = Registration::create($this->formData);
+
+      // Store and encrypt an education certificate file.
+      $this->education_certificate->storeAs('education_certificates', $this->education_certificate->hashName());
+      FileVault::encrypt('education_certificates/'.$this->education_certificate->hashName());
+      $this->formData['education_certificate'] = $this->education_certificate->hashName().'.enc';
+
       return redirect()->route('home');
     } catch(Throwable $e) {
       $this->addError('Registration failed', $e->getMessage());
+
+      // Delete an education certificates file from server if have any errors.
       Storage::delete('education_certificates/'.$this->education_certificate->hashName().'.enc');
     }
 
