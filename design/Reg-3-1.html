@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reg-3-1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {},
+                },
+            },
+        };
+    </script>
+</head>
+
+<body
+    class="bg-gradient-to-b from-[#020202] via-[#161514] via-[#20201E] to-[#20201F] w-full min-h-screen container mx-auto px-24 ">
+
+
+    <div class="font-mono">
+
+
+        <div class="flex justify-between text-white mt-2">
+            <div>
+                <a class="xl:text-2xl text-xl">ITCamp18</a>
+            </div>
+            <div class="flex text-white">
+                <a class="xl:text-2xl text-xl">สวัสดี, Thanawat</a><img src="CaretDown.svg">
+            </div>
+        </div>
+
+
+
+
+
+        <div class="text-white text-center mt-16 mb-6">
+            <div class="text-3xl">ข้อมูลส่วนตัว</div>
+        </div>
+
+        <div>
+            <div class="md:w-3/5 min-h-[20em]  mx-auto ">
+
+                <div class="px-6 py-4">
+                    <!-- ชื่อ -->
+                    <div class="py-2 flex items-center">
+                        <h3 class="text-[#FFFFFF] xl:text-xl mr-2">ชื่อจริง</h3>
+                        <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                    </div>
+                    <div class="flex">
+                        <input
+                            class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"></input>
+                    </div>
+                    <div class="mb-2">
+                        <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                    </div>
+
+
+
+
+
+                    <!-- นามสกุล -->
+                    <div class="py-2 flex items-center">
+                        <h3 class="text-[#FFFFFF] xl:text-xl mr-2">นามสกุล</h3>
+                        <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                    </div>
+                    <div class="flex">
+                        <input
+                            class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"></input>
+                    </div>
+                    <div class="mb-2">
+                        <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                    </div>
+
+
+
+
+
+                    <!-- ชื่อ / เพศ -->
+
+                    <div class="grid grid-cols-2 gap-[25px]">
+                        <div>
+                            <div class="py-2 flex items-center ">
+                                <h3 class="text-[#FFFFFF] xl:text-xl text-l mr-2 ">ชื่อเล่น</h3>
+                                <h3 class="text-[#FF0000] xl:text-xl text-l">*</h3>
+                            </div>
+                            <div class=" flex">
+                                <input
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"></input>
+                            </div>
+
+
+
+                            <div class="mb-2">
+                                <h3 class="text-[#D80303] xl:text-l ">Invalid name format</h3>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="py-2 flex items-center">
+                                <h3 class="text-[#FFFFFF] xl:text-xl mr-2">เพศ</h3>
+                                <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                            </div>
+                            <div class=" flex relative">
+                                <input
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em] "
+                                    placeholder='เลือกเพศ'><img class="absolute right-2 top-[50%] -translate-y-2/4"
+                                    src="CaretDown.svg"></input>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- วันเกิด / กรุ๊ปเลือด -->
+                    <div class="grid grid-cols-2 gap-[25px]">
+                        <div>
+                            <div class="py-2 flex items-center ">
+                                <h3 class="text-[#FFFFFF] xl:text-xl mr-2 ">วันเกิด</h3>
+                                <h3 class="text-[#FF0000] xl:text-xl">*</h3>
+                            </div>
+                            <div class=" flex relative">
+                                <input
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em] "
+                                    placeholder='6/6/2021'><img class="absolute right-2 top-[50%] -translate-y-2/4"
+                                    src="CalendarBlank.svg"></input>
+
+                            </div>
+
+                            <div class="mb-2">
+                                <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="py-2 flex items-center">
+                                <h3 class="text-[#FFFFFF] xl:text-xl mr-2">กรุ๊ปเลือด</h3>
+                                <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                            </div>
+                            <div class=" flex relative">
+                                <input
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em] "
+                                    placeholder='เลือกกรุ๊ปเลือด'><img
+                                    class="absolute right-2 top-[50%] -translate-y-2/4" src="CaretDown.svg"></input>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- เบอร์โทรศัพท์  ศาสนา -->
+
+                    <div class="grid grid-cols-2 gap-[25px]">
+                        <div>
+                            <div class="py-2 flex items-center ">
+                                <h3 class="text-[#FFFFFF] xl:text-xl mr-2">เบอร์โทรศัพท์</h3>
+                                <h3 class="text-[#FF0000] xl:text-xl">*</h3>
+                            </div>
+                            <div class=" flex">
+                                <input
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"
+                                    placeholder="0XX-XXX-XXXX"></input>
+                            </div>
+                            <div class="mb-2">
+                                <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="py-2 flex items-center">
+                                <h3 class="text-[#FFFFFF] xl:text-xl mr-2">ศาสนา</h3>
+                                <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                            </div>
+                            <div class=" flex relative">
+                                <input
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em] "
+                                    placeholder='เลือกศาสนา'><img class="absolute right-2 top-[50%] -translate-y-2/4"
+                                    src="CaretDown.svg"></input>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- mail -->
+
+                    <div class="py-2 flex items-center">
+                        <h3 class="text-[#FFFFFF] xl:text-xl mr-2">อีเมล</h3>
+                        <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                    </div>
+                    <div class="flex">
+                        <input
+                            class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"></input>
+                    </div>
+                    <div class="mb-2">
+                        <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                    </div>
+                    <!-- button -->
+                    <button
+                        class="bg-[#104123] hover:bg-[#0B341C] text-white font-bold h-16 w-full border-b-4 border-[#062613] hover:border-[#11572D] rounded-lg mb-20">
+                        Button
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

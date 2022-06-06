@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reg-3-1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {},
+                },
+            },
+        };
+    </script>
+</head>
+
+<body
+    class="bg-gradient-to-b from-[#020202] via-[#161514] via-[#20201E] to-[#20201F] w-full min-h-screen container mx-auto px-24 ">
+
+
+    <div class="font-mono">
+
+
+        <div class="flex justify-between text-white mt-2">
+            <div>
+                <a class="xl:text-2xl">ITCamp18</a>
+            </div>
+            <div class="flex text-white">
+                <a class="xl:text-2xl">สวัสดี, Thanawat</a><img src="CaretDown.svg">
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div>
+            <div class="md:w-3/5 min-h-[20em]  mx-auto ">
+
+                <div class="px-6 py-4">
+                    <!-- ที่อยู่ปัจจุบัน -->
+                    <div class="py-2 flex items-center">
+                        <h3 class="py-3 text-[#FFFFFF] text-xl mr-2">ที่อยู่ปัจจุบัน </h3>
+                        <h3 class="text-[#FF0000] text-xl ">*</h3>
+                    </div>
+                    <textarea class="form-control block  w-full  px-3  py-1.5  text-base font-normal text-white bg-transparent border border-solid border-[#FFFFFF] min-h-[12em]
+                     rounded transition ease-in-out m-0 focus:border-blue-600 focus:outline-none"
+                        id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <div class="mb-8">
+                        <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                    </div>
+
+
+                    <!-- โรงเรียน / สถานศึกษา * -->
+
+                    <div class="py-2 flex items-center">
+                        <h3 class="text-[#FFFFFF] text-xl mr-2">โรงเรียน / สถานศึกษา</h3>
+                        <h3 class="text-[#FF0000] text-xl ">*</h3>
+                    </div>
+                    <div class="flex">
+                        <input
+                            class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"></input>
+                    </div>
+                    <div class="mb-8">
+                        <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                    </div>
+
+
+                    <!-- ระดับชั้น แผนการเรียน / สาขา -->
+
+                    <div class="grid grid-cols-2 gap-[25px]">
+                        <div>
+                            <div class="py-2 flex items-center ">
+                                <h3 class="text-[#FFFFFF] xl:text-xl mr-2 ">ระดับชั้น</h3>
+                                <h3 class="text-[#FF0000] xl:text-xl">*</h3>
+                            </div>
+                            <div class=" flex relative">
+                                <input
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em] "
+                                    placeholder='6/6/2021'><img class="absolute right-2 top-[50%] -translate-y-2/4"
+                                    src="CalendarBlank.svg"></input>
+
+                            </div>
+
+                            <div class="mb-2">
+                                <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="py-2 flex items-center">
+                                <h3 class="text-[#FFFFFF] xl:text-xl mr-2">แผนการเรียน / สาขา</h3>
+                                <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                            </div>
+                            <div class=" flex relative">
+                                <input
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em] "
+                                    placeholder='เลือกกรุ๊ปเลือด'><img
+                                    class="absolute right-2 top-[50%] -translate-y-2/4" src="CaretDown.svg"></input>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
