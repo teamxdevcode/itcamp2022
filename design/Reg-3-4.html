@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reg-3-1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {},
+                },
+            },
+        };
+    </script>
+</head>
+
+<body
+    class="bg-gradient-to-b from-[#020202] via-[#161514] via-[#20201E] to-[#20201F] w-full min-h-screen container mx-auto px-24 ">
+
+
+    <div class="font-mono">
+
+
+        <div class="flex justify-between text-white mt-2 mb-16">
+            <div>
+                <a class="xl:text-2xl text-xl">ITCamp18</a>
+            </div>
+            <div class="flex text-white">
+                <a class="xl:text-2xl text-xl">สวัสดี, Thanawat</a><img src="CaretDown.svg">
+            </div>
+        </div>
+
+
+        <div>
+            <div class="md:w-3/5 min-h-[20em]  mx-auto ">
+
+                <div class="px-6 py-4">
+                    <!-- ข้อมูลผู้ติดต่อฉุกเฉิน -->
+                    <div class="py-2 flex items-center">
+                        <h3 class="text-[#FFFFFF] xl:text-xl mr-2">ข้อมูลผู้ติดต่อฉุกเฉิน</h3>
+                        <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                    </div>
+                    <div class="flex">
+                        <input
+                            class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"></input>
+                    </div>
+                    <div class="mb-2">
+                        <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                    </div>
+
+
+
+
+
+                    <!-- ชื่อ -->
+                    <div class="py-2 flex items-center">
+                        <h3 class="text-[#FFFFFF] xl:text-xl mr-2">ชื่อ</h3>
+                        <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                    </div>
+                    <div class="flex">
+                        <input
+                            class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"></input>
+                    </div>
+                    <div class="mb-2">
+                        <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                    </div>
+
+
+
+                    <!-- นามสกุล -->
+                    <div class="py-2 flex items-center">
+                        <h3 class="text-[#FFFFFF] xl:text-xl mr-2">นามสกุล</h3>
+                        <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                    </div>
+                    <div class="flex">
+                        <input
+                            class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em]"></input>
+                    </div>
+                    <div class="mb-2">
+                        <h3 class="text-[#D80303] text-l ">Invalid name format</h3>
+                    </div>
+
+
+
+
+
+                    <!-- เกี่ยวข้องเป็น / เบอร์โทรศัพท์มือถือ -->
+
+                    <div class="grid grid-cols-2 gap-[25px]  mb-6">
+                        <div>
+                            <div class="py-2 flex items-center ">
+                                <h3 class="text-[#FFFFFF] xl:text-xl text-l mr-2 ">เกี่ยวข้องเป็น</h3>
+                                <h3 class="text-[#FF0000] xl:text-xl text-l">*</h3>
+                            </div>
+                            <div class=" flex relative">
+                                <input
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em] "
+                                    placeholder="ความเกี่ยวข้อง"><img
+                                    class="absolute right-2 top-[50%] -translate-y-2/4" src="CaretDown.svg"></input>
+
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="py-2 flex items-center">
+                                <h3 class="text-[#FFFFFF] xl:text-xl mr-2">เบอร์โทรศัพท์มือถือ</h3>
+                                <h3 class="text-[#FF0000] xl:text-xl ">*</h3>
+                            </div>
+                            <div class=" flex relative">
+                                <input
+                                    class="px-2 w-full border border-[#FFFFFF] rounded-md bg-transparent text-white min-h-[3.25em] "></input>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div>
+                        <div class="form-check mb-6">
+                            <input
+                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-red-700  focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="checkbox">
+                            <label class="form-check-label inline-block text-white" for="flexCheckDefault">
+                                ฉันยอมรับว่าข้อมูลถูกต้องทุกประการ
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-[100px] mr-2 mb-6">
+
+                        <button
+                            class="bg-[#FF5A44] text-white font-bold py-4 px-6 border-4 border-[#5F361E] rounded-xl">
+                            ย้อนกลับ
+                        </button>
+
+
+
+                        <button
+                            class="bg-[#15713A] text-white font-bold py-4 px-6 border-4 border-[#1F5F20]  rounded-xl">
+                            บันทึกและไปต่อ
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+</body>
+
+</html>
