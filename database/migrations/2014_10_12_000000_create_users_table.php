@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->nullable();
             $table->text('facebook_token');
+            $table->enum('role', ['user', 'admin'])->default('user');
             $table->timestamps();
         });
     }

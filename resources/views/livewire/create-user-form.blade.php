@@ -5,7 +5,7 @@
   @if($errors->any())
       <p>{{$errors->first()}}</p>
   @endif
-  <form class="w-4/5 min-h-[20em] bg-white mx-auto rounded-md border border-[#ABBED1]">
+  <div class="w-4/5 min-h-[20em] bg-white mx-auto rounded-md border border-[#ABBED1]">
     <div class="px-6 py-4 flex justify-between items-center border-b border-[#ABBED1] flex-col-reverse md:flex-row">
       <div class="flex space-x-3">
         <button type="button" wire:click="selectPage(1)" class="step-btn {{$currentPage===1 ? 'step-sel' : 'step-non'}}">
@@ -213,9 +213,9 @@
 
       <div class="py-4">
         <div class="flex justify-between items-center py-2">
-          <label for="disease_details" class="w-1/2">ไซส์เสื้อ</label>
+          <label for="shirt_size" class="w-1/2">ไซส์เสื้อ</label>
           <div class="flex w-1/2 space-x-5">
-            <input type="text" name="disease_details" class="w-full px-2 py-1.5 bg-[#EEF5FC] border border-[#4196F0] rounded-md outline-none" wire:model.lazy="formData.shirt_size" />
+            <input type="text" name="shirt_size" class="w-full px-2 py-1.5 bg-[#EEF5FC] border border-[#4196F0] rounded-md outline-none" wire:model.lazy="formData.shirt_size" />
           </div>
         </div>
       </div>
@@ -262,7 +262,7 @@
     </div>
 
     @endif
-  </form>
+  </div>
   <div class="flex items-center justify-between w-4/5 mx-auto py-10">
     @if ($currentPage == 1)
       <div></div>

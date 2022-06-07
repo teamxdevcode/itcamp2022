@@ -23,5 +23,10 @@ class User extends Authenticatable
 		'last_name',
 		'email',
     'facebook_token',
+    'role',
 	];
+
+  public function registration() {
+    return $this->hasOne(Registration::class);
+  }
 }
