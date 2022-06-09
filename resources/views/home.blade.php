@@ -1,5 +1,4 @@
 @extends('layouts.register')
-
 @section('main')
 <div class="flex h-3/4 items-center justify-center flex-col">
   {{-- Success is as dangerous as failure. --}}

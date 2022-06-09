@@ -2,5 +2,5 @@
 @section('title', 'จัดการกรอกข้อมูล')
 
 @section('main')
-    @livewire('create-user-form')
+    <livewire:form.step1 />
 @endsection

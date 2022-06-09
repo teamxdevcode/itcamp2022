@@ -10,8 +10,9 @@
   @livewireStyles
 </head>
 
-<body class="bg-[#F5F7FA]">
-  @yield('content')
+<body>
+  @section('main')
+  @show
   @livewireScripts
 </body>
 
