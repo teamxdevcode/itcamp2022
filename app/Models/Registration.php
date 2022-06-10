@@ -9,8 +9,11 @@ class Registration extends Model
 {
     use HasFactory;
 
+    public $primaryKey = 'user_id';
+
     protected $fillable = [
       'user_id',
+      'current_step',
       'name',
       'surname',
       'nickname',
@@ -19,9 +22,9 @@ class Registration extends Model
       'blood_type',
       'religion',
       'address',
-      'province',
-      'district',
-      'subdistrict',
+      // 'province',
+      // 'district',
+      // 'subdistrict',
       'phone',
       'email',
       'education_level',
@@ -30,13 +33,17 @@ class Registration extends Model
       'education_certificate',
       'has_congenital_disease',
       'congenital_disease_detail',
-      'has_allergic',
-      'allergic_detail',
+      'has_food_allergic',
+      'food_allergic_detail',
+      'has_drug_allergic',
+      'drug_allergic_detail',
       'shirt_size',
+      'known_from',
       'activities_detail',
       'emergency_contact_name',
       'emergency_contact_surname',
       'emergency_contact_phone',
       'emergency_contact_relationship',
+      'subcamp',
     ];
 }
