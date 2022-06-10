@@ -23,7 +23,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::middleware(['auth'])->group(function() {
+Route::group([], function() {
   Route::get('/home', function () {
     return view('home');
   })->name('home');

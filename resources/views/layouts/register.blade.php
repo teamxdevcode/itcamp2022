@@ -1,19 +1,28 @@
-@extends('layouts.head')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'จัดการกรอกข้อมูล')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <title>@yield('title') - {{ config('app.name') }}</title>
+    @livewireStyles
+</head>
 
-@section('content')
-<main class="container mx-auto max-w-screen-lg 2xl:max-w-screen-xl h-screen relative">
-  <nav class="flex justify-between py-4 items-center">
-    <h1 class="hover:text-cyan-500 hover:underline hover:underline-offset-2 transition-all ease-in-out duration-300"><a href="{{route('home')}}">ITCAMP18</a></h1>
-    <ul class="flex justify-center items-center space-x-10">
-      <li class="hover:text-cyan-500 hover:underline hover:underline-offset-2 transition-all ease-in-out duration-300"><a href="{{route('home')}}">ลงทะเบียนเข้าค่าย</a></li>
-      <li class="cursor-pointer hover:underline hover:underline-offset-2 transition-all ease-in-out duration-300 px-6 py-3 rounded-md text-teal-300 hover:bg-white ring-2 ring-gray-300 hover:text-teal-300 border-dashed"><a href="{{route('auth.logout')}}">ออกจากระบบ</a></li>
-    </ul>
-  </nav>
-  @yield('main')
-  <footer class="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-96">
-    &copy; ITCAMP18 KMITL, All rights reserved.
-  </footer>
-</main>
-@endsection
+<body class="h-screen bg-gradient-to-b from-black via-[#3d3d3d] to-black flex items-center flex-col">
+    <nav class="container mx-auto px-5 md:px-32 text-white flex py-8 justify-between items-center">
+        <h1 class="font-bold text-xl"><a href="index.html">ITCAMP18</a></h1>
+        <ul class="flex space-x-3 items-center">
+            <li class="text-xl">สวัสดี, Thanawat</li>
+            <li class="text-lg p-5 underline">
+                <a href="index.html">ออกจากระบบ</a>
+            </li>
+        </ul>
+    </nav>
+    @section('main')
+    @show
+    @livewireScripts
+</body>
+
+</html>
