@@ -23,7 +23,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::middleware(['auth'])->group(function() {
+Route::group([], function() {
   Route::get('/home', function () {
     return view('home');
   })->name('home');
@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/step2', 'registerPage2')->name('step2');
     Route::get('/step3', 'registerPage3')->name('step3');
     Route::get('/step4', 'registerPage4')->name('step4');
+    Route::get('/step5', 'registerPage5')->name('step5');
     Route::get('/camp-selection', 'campSelectionPage')->name('campSelection');
     Route::get('/camp-question', 'campQuestionPage')->name('campQuestion');
   });

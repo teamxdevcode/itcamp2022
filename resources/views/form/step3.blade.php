@@ -1,4 +1,4 @@
-@extends('layouts.head')
+@extends('layouts.register')
 @section('title', 'จัดการกรอกข้อมูล')
 
 @section('main')

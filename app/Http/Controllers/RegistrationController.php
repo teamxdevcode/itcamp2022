@@ -22,6 +22,10 @@ class RegistrationController extends Controller
     public function registerPage4() {
       return view('form.step4');
     }
+    public function registerPage5() {
+      return view('form.step5');
+    }
+
 
     public function campSelectionPage() {}
 
