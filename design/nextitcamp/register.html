@@ -175,11 +175,11 @@
                 </svg>
 
                 <h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">
-                  Registration Success
+                  ลงทะเบียนสำเร็จ
                 </h2>
 
-                <div class="text-gray-600 mb-8">
-                  Thank you. We have sent you an email to demo@demo.test. Please
+                <div class="text-gray-600 mb-8 min-w-full">
+                  Thank you. We have sent you an email to support@itcamp18.in.th Please
                   click the link in the message to activate your account.
                 </div>
 
@@ -218,32 +218,7 @@
 
                   <div x-show="step === 3">
                     <div class="text-lg font-bold text-gray-700 leading-tight">
-                      ข้อมูลการศึกษา
-                    </div>
-                  </div>
-                  <div x-show="step === 4">
-                    <div class="text-lg font-bold text-gray-700 leading-tight">
-                      ข้อมูลการแพ้ยา / อาหาร
-                    </div>
-                  </div>
-                  <div x-show="step === 5">
-                    <div class="text-lg font-bold text-gray-700 leading-tight">
-                      ข้อมูลเพิ่มเติมจากทางค่าย
-                    </div>
-                  </div>
-                  <div x-show="step === 6">
-                    <div class="text-lg font-bold text-gray-700 leading-tight">
-                      ข้อมูลผู้ติดต่อฉุกเฉิน
-                    </div>
-                  </div>
-                  <div x-show="step === 7">
-                    <div class="text-lg font-bold text-gray-700 leading-tight">
-                      เลือกค่ายย่อยที่สนใจ
-                    </div>
-                  </div>
-                  <div x-show="step === 8">
-                    <div class="text-lg font-bold text-gray-700 leading-tight">
-                      ยืนยันการกรอกข้อมูลพื้นฐาน
+                      ยืนยันข้อมูลส่วนตัว
                     </div>
                   </div>
                 </div>
@@ -252,12 +227,12 @@
                   <div class="w-full bg-white rounded-full mr-2">
                     <div
                       class="rounded-full bg-green-500 text-xs leading-none h-2 text-center text-white"
-                      :style="'width: '+ parseInt(step / 8 * 100) +'%'"
+                      :style="'width: '+ parseInt(step / 3 * 100) +'%'"
                     ></div>
                   </div>
                   <div
                     class="text-xs w-10 text-gray-600"
-                    x-text="parseInt(step / 8 * 100) +'%'"
+                    x-text="parseInt(step / 3 * 100) +'%'"
                   ></div>
                 </div>
               </div>
@@ -448,8 +423,6 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div x-show.transition.in="step === 2">
                 <!-- <div class="mb-5">
                   <label
                     for="password"
@@ -717,8 +690,6 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div x-show.transition.in="step === 3">
                 <div class="mb-5">
                   <label for="school" class="font-bold mb-1 text-gray-700 block"
                     >โรงเรียน / สถานศึกษา</label
@@ -832,8 +803,9 @@
                     </div>
                   </div>
                 </div>
+                <!--  -->
               </div>
-              <div x-show.transition.in="step === 4">
+              <div x-show.transition.in="step === 2">
                 <!-- <div class="mb-5">
                   <label for="email" class="font-bold mb-1 text-gray-700 block"
                     >แพ้อาหาร</label
@@ -966,8 +938,6 @@
                     placeholder="เช่น กุ้ง อาหารทะเล ถั่วปากอ้า ..."
                   />
                 </div>
-              </div>
-              <div x-show.transition.in="step === 5">
                 <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
                   <div class="w-full md:w-1/2 mb-5 md:mb-0">
                     <label
@@ -1178,9 +1148,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div x-show.transition.in="step === 6">
                 <div class="mb-5">
                   <label
                     for="firstname"
@@ -1231,8 +1198,6 @@
                     />
                   </div>
                 </div>
-              </div>
-              <div x-show.transition.in="step === 7">
                 <div class="mb-5 flex items-center justify-center flex-col">
                   <img
                     src="https://media.discordapp.net/attachments/964882961797349438/984724891708317716/unknown.png"
@@ -1304,7 +1269,7 @@
                   </div>
                 </div>
               </div>
-              <div x-show.transition.in="step === 8">
+              <div x-show.transition.in="step === 3">
                 <div class="mb-5">
                   <label for="policy" class="font-bold mb-1 text-gray-700 block"
                     >ข้อมูลส่วนบุคคล คืออะไร?</label
@@ -1594,6 +1559,15 @@
                     </p>
                   </div>
                 </div>
+                <div class="flex items-center justify-center m-4">
+                  <input
+                    class="mr-2"
+                    type="checkbox"
+                    name="confirmPolicy"
+                    id="confirmPolicy"
+                  />
+                  <label for="confirmPolicy">ยอมรับข้อตกลงมั้ยจ้ะ</label>
+                </div>
               </div>
             </div>
             <!-- / Step Content -->
@@ -1610,7 +1584,7 @@
               <div class="w-1/2">
                 <button
                   x-show="step > 1"
-                  @click="step--"
+                  @click="step--; document.body.scrollTop = 0;"
                   class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border"
                 >
                   ย้อนกลับ
@@ -1619,8 +1593,8 @@
 
               <div class="w-1/2 text-right">
                 <button
-                  x-show="step < 8"
-                  @click="step++"
+                  x-show="step < 3"
+                  @click="step++; document.body.scrollTop = 0;"
                   class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium"
                 >
                   ถัดไป
@@ -1628,8 +1602,8 @@
 
                 <button
                   @click="step = 'complete'"
-                  x-show="step === 8"
-                  class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium"
+                  x-show="step === 3"
+                  class="w-full md:w-64 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium"
                 >
                   ยืนยันข้อมูลส่วนตัว
                 </button>
@@ -1644,7 +1618,7 @@
     <script>
       function app() {
         return {
-          step: 8,
+          step: 1,
           passwordStrengthText: "",
           togglePassword: false,
           foodAllergy: "No",
