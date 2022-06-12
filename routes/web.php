@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\FacebookAuthController;
 use App\Http\Controllers\RegistrationController;
 use Brainstud\FileVault\Facades\FileVault;
@@ -18,45 +19,28 @@ use App\Models\User;
 |
 */
 
-// Route::get('/', function () {
-// 	return view('welcome');
-// })->name('welcome');
+Route::controller(FacebookAuthController::class)->prefix('auth')->name('auth.')->group(function() {
+  Route::get('/redirect', 'redirect')->middleware('guest')->name('login');
+  Route::get('/callback', 'callback')->middleware('guest')->name('callback');
+  Route::get('/logout', 'logout')->middleware('auth')->name('logout');
+});
 
+Route::controller(AppController::class)->group(function() {
+  Route::get('/', 'index')->middleware('guest')->name('index');
+  Route::middleware('auth')->group(function() {
+    Route::get('/home', 'home')->name('home');
+    Route::get('/register', 'register')->name('register');
+    Route::get('/question', 'question')->name('question');
+    Route::get('/register/education-certificate', function() {
+      /* Check whether a user has an education certificate file or not. */
+      if (!$filename = Auth::user()->registration?->education_certificate) {
+        return abort(404);
+      }
 
-// Route::group(['middleware' => 'auth'], function() {
-//   Route::get('/home', function () {
-//     return view('home');
-//   })->name('home');
-
-//   Route::controller(RegistrationController::class)->prefix('registration')->name('registration.')->group(function() {
-//     Route::group(['prefix' => 'step'], function() {
-//       Route::get('/1', 'registerPage1')->name('step1');
-//       Route::get('/2', 'registerPage2')->name('step2');
-//       Route::get('/3', 'registerPage3')->name('step3');
-//       Route::get('/4', 'registerPage4')->name('step4');
-//     });
-//     Route::get('/camp-selection', 'campSelectionPage')->name('campSelection');
-//     Route::get('/camp-question', 'campQuestionPage')->name('campQuestion');
-//   });
-
-//   // Example of how to decrypt and return encryption files from disk.
-//   Route::get('/education-certificate', function() {
-//     /* Check whether a user has an education certificate file or not. */
-//     if (!$filename = Auth::user()->registration?->education_certificate) {
-//       return abort(404);
-//     }
-
-//     /* If a user has the file, so decrypt and return it. */
-//     return response()->stream(function () use ($filename) {
-//       FileVault::streamDecrypt("education_certificates/{$filename}");
-//     }, 200, ["Content-Type" => "image/png"]);
-//   });
-// });
-
-// Route::controller(FacebookAuthController::class)->prefix('auth')->name('auth.')->group(function() {
-//   Route::get('/redirect', 'redirect')->name('redirect');
-//   Route::get('/callback', 'callback')->name('callback');
-//   Route::get('/logout', 'logout')->name('logout');
-//   Route::get('/user', 'user')->name('user');
-// });
-
+      /* If a user has the file, so decrypt and return it. */
+      return response()->stream(function () use ($filename) {
+        FileVault::streamDecrypt("education_certificates/{$filename}");
+      }, 200, ["Content-Type" => "image/png"]);
+    });
+  });
+});

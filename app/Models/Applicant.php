@@ -17,9 +17,9 @@ class Applicant extends Authenticatable
         'last_name',
     ];
 
-    public function generalData() {}
-
-    public function extraData() {}
+    public function registration() {
+        return $this->hasOne(Registration::class);
+    }
 
     public function answer() {}
 }

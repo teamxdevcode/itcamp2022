@@ -1,177 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ITCAMP18 | Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
-      defer
-    ></script>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {},
-        },
-      };
-    </script>
-    <style>
-      @import url("https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@6/fonts/Anuphan/Anuphan.css");
-      * {
-        /* font-family: "Noto Sans Thai", sans-serif; */
-        font-family: "Anuphan", sans-serif;
-      }
-      [x-cloak] {
-        display: none;
-      }
-
-      .svg-icon {
-        width: 1em;
-        height: 1em;
-      }
-
-      .svg-icon path,
-      .svg-icon polygon,
-      .svg-icon rect {
-        fill: #333;
-      }
-
-      .svg-icon circle {
-        stroke: #4691f6;
-        stroke-width: 1;
-      }
-
-      [type="checkbox"] {
-        box-sizing: border-box;
-        padding: 0;
-      }
-
-      .form-checkbox,
-      .form-radio {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        -webkit-print-color-adjust: exact;
-        color-adjust: exact;
-        display: inline-block;
-        vertical-align: middle;
-        background-origin: border-box;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        flex-shrink: 0;
-        color: currentColor;
-        background-color: #fff;
-        border-color: #e2e8f0;
-        border-width: 1px;
-        height: 1.4em;
-        width: 1.4em;
-      }
-
-      .form-checkbox {
-        border-radius: 0.25rem;
-      }
-
-      .form-radio {
-        border-radius: 50%;
-      }
-
-      .form-checkbox:checked {
-        background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
-        border-color: transparent;
-        background-color: currentColor;
-        background-size: 100% 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      .form-radio:checked {
-        background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
-        border-color: transparent;
-        background-color: currentColor;
-        background-size: 100% 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-    </style>
-  </head>
-  <body class="h-screen flex flex-col relative bg-[#f5f5f5]">
-    <nav class="hidden md:block bg-white w-full shadow-md py-6">
-      <div class="flex justify-between container mx-auto items-center px-20">
-        <a href="index.html">ITCAMP18</a>
-        <ul class="flex space-x-8">
-          <li>สถานะการสมัคร</li>
-          <li>ช่วยเหลือ</li>
-          <li>ยินดีต้อนรับกลับมา, Thanawat</li>
-        </ul>
-      </div>
-    </nav>
-    <!-- mobile navbar -->
-    <div class="md:hidden block p-5" onclick="toggleNav()">
-      <div class="flex justify-between items-center">
-        <a href="index.html" class="text-xl font-bold text-gray-800"
-          >ITCAMP18</a
-        >
-        <div class="p-2 border border-gray-200 rounded-md text-gray-100">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            class="fill-gray-500"
-          >
-            <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z" />
-          </svg>
-        </div>
-      </div>
-      <div class="mt-4 hidden" id="navbar">
-        <ul class="flex flex-col space-y-2 items-end">
-          <li
-            class="p-2 hover:text-gray-800 hover:bg-gray-100 w-full flex justify-end rounded-md"
-          >
-            สถานะการสมัคร
-          </li>
-          <li
-            class="p-2 hover:text-gray-800 hover:bg-gray-100 w-full flex justify-end rounded-md"
-          >
-            ช่วยเหลือ
-          </li>
-          <li
-            class="p-2 hover:text-gray-800 hover:bg-gray-100 w-full flex justify-end rounded-md"
-          >
-            ยินดีต้อนรับกลับมา, Thanawat
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="h-full">
       <div x-data="app()" x-cloak>
         <div class="max-w-3xl mx-auto px-4 pb-10 md:pt-10 md:pb-16">
-          <div x-show.transition="step === 'complete'">
+
+          @if ($errors->any)
+            {{$errors->first()}}
+          @endif
+
+          <div x-show.transition="$wire.step === 4">
             <div
               class="bg-white rounded-lg p-10 flex items-center shadow justify-between"
             >
               <div>
-                <svg
-                  class="mb-4 h-20 w-20 text-green-500 mx-auto"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd"
-                  />
+                <svg class="mb-4 h-20 w-20 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
 
                 <h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">
@@ -182,42 +23,38 @@
                   Thank you. We have sent you an email to support@itcamp18.in.th
                   Please click the link in the message to activate your account.
                 </div>
-                x
 
-                <button
-                  @click="window.location.href='menu.html'"
-                  class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border"
-                >
+                <a href="{{route('home')}}" class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border">
                   กลับหน้าหลัก
-                </button>
+                </a>
               </div>
             </div>
           </div>
 
-          <div x-show.transition="step != 'complete'">
+          <div x-show.transition="$wire.step != 4">
             <!-- Top Navigation -->
             <div class="border-b-2 py-4">
               <div
                 class="uppercase tracking-wide text-xs font-bold text-gray-500 mb-1 leading-tight"
-                x-text="`หน้าที่: ${step} จาก 4`"
+                x-text="`หน้าที่: {{$this->step}} จาก 3`"
               ></div>
               <div
                 class="flex flex-col md:flex-row md:items-center md:justify-between"
               >
                 <div class="flex-1">
-                  <div x-show="step === 1">
+                  <div x-show="$wire.step === 1">
                     <div class="text-lg font-bold text-gray-700 leading-tight">
                       ข้อมูลส่วนตัว
                     </div>
                   </div>
 
-                  <div x-show="step === 2">
+                  <div x-show="$wire.step === 2">
                     <div class="text-lg font-bold text-gray-700 leading-tight">
                       ข้อมูลส่วนตัวเพิ่มเติม
                     </div>
                   </div>
 
-                  <div x-show="step === 3">
+                  <div x-show="$wire.step === 3">
                     <div class="text-lg font-bold text-gray-700 leading-tight">
                       ยืนยันข้อมูลส่วนตัว
                     </div>
@@ -228,12 +65,12 @@
                   <div class="w-full bg-white rounded-full mr-2">
                     <div
                       class="rounded-full bg-green-500 text-xs leading-none h-2 text-center text-white"
-                      :style="'width: '+ parseInt(step / 3 * 100) +'%'"
+                      :style="'width: '+ parseInt({{$step}} / 3 * 100) +'%'"
                     ></div>
                   </div>
                   <div
                     class="text-xs w-10 text-gray-600"
-                    x-text="parseInt(step / 3 * 100) +'%'"
+                    x-text="parseInt($wire.step / 3 * 100) +'%'"
                   ></div>
                 </div>
               </div>
@@ -242,67 +79,7 @@
 
             <!-- Step Content -->
             <div class="py-10">
-              <div x-show.transition.in="step === 1">
-                <!-- <div class="mb-5 text-center">
-                  <div
-                    class="mx-auto w-32 h-32 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset"
-                  >
-                    <img
-                      id="image"
-                      class="object-cover w-full h-32 rounded-full"
-                      :src="image"
-                    />
-                  </div>
-
-                  <label
-                    for="fileInput"
-                    type="button"
-                    class="cursor-pointer inine-flex justify-between items-center focus:outline-none border py-2 px-4 rounded-lg shadow-sm text-left text-gray-600 bg-white hover:bg-gray-100 font-medium"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke="currentColor"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <rect
-                        x="0"
-                        y="0"
-                        width="24"
-                        height="24"
-                        stroke="none"
-                      ></rect>
-                      <path
-                        d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2"
-                      />
-                      <circle cx="12" cy="13" r="3" />
-                    </svg>
-                    Browse Photo
-                  </label>
-
-                  <div
-                    class="mx-auto w-48 text-gray-500 text-xs text-center mt-1"
-                  >
-                    Click to add profile picture
-                  </div>
-
-                  <input
-                    name="photo"
-                    id="fileInput"
-                    accept="image/*"
-                    class="hidden"
-                    type="file"
-                    @change="let file = document.getElementById('fileInput').files[0];
-								var reader = new FileReader();
-								reader.onload = (e) => image = e.target.result;
-								reader.readAsDataURL(file);"
-                  />
-                </div> -->
-
+              <div x-show.transition.in="$wire.step === 1">
                 <div class="mb-5">
                   <label
                     for="firstname"
@@ -313,43 +90,35 @@
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     placeholder="Enter your firstname..."
-                  />
+                    wire:model.lazy="data.name"/>
                 </div>
 
                 <div class="mb-5">
-                  <label
-                    for="lastname"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >นามสกุล</label
-                  >
+                  <label for="lastname"class="font-bold mb-1 text-gray-700 block">นามสกุล</label>
                   <input
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     placeholder="Enter your lastname..."
-                  />
+                    wire:model.lazy="data.surname"/>
                 </div>
 
                 <div class="mb-5">
-                  <label for="email" class="font-bold mb-1 text-gray-700 block"
-                    >อีเมล</label
-                  >
+                  <label for="email" class="font-bold mb-1 text-gray-700 block">อีเมล</label>
                   <input
                     type="email"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     placeholder="Enter your email address..."
+                    wire:model.lazy="data.email"
                   />
                 </div>
                 <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
                   <div class="w-full md:w-1/2">
-                    <label
-                      for="dateofbirth"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >วัน เดือน ปี เกิด</label
-                    >
+                    <label for="dateofbirth"class="font-bold mb-1 text-gray-700 block">วัน เดือน ปี เกิด</label>
                     <input
                       type="date"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                       placeholder="Enter your date..."
+                      wire:model.lazy="data.birthday"
                     />
                   </div>
                   <div class="w-full md:w-1/2">
@@ -358,22 +127,18 @@
                       class="font-bold mb-1 text-gray-700 block"
                       >เพศ</label
                     >
-                    <!-- <input
-                      type="gender"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your gender ..."
-                    /> -->
                     <select
                       name="gender"
                       id="gender"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      wire:model.lazy="data.gender"
                     >
-                      <option value="" selected disabled class="hidden">
+                      <option value="" selected hidden class="hidden">
                         เลือกเพศ *
                       </option>
-                      <option value="male">ชาย</option>
-                      <option value="female">หญิง</option>
-                      <option value="lgbt">เพศทางเลือก</option>
+                      <option value="Male">ชาย</option>
+                      <option value="Female">หญิง</option>
+                      <option value="LGBTQ+">LGBTQ+</option>
                     </select>
                   </div>
                 </div>
@@ -388,8 +153,9 @@
                       name="bloodgroup"
                       id="bloodgroup"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      wire:model.lazy="data.blood_type"
                     >
-                      <option value="" selected disabled class="hidden">
+                      <option value="" selected hidden class="hidden">
                         เลือกกรุ๊ปเลือด *
                       </option>
                       <option value="A">A</option>
@@ -404,126 +170,28 @@
                       class="font-bold mb-1 text-gray-700 block"
                       >ศาสนา</label
                     >
-                    <!-- <input
-                      type="gender"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your gender ..."
-                    /> -->
                     <select
                       name="religion"
                       id="religion"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      wire:model.lazy="data.religion"
                     >
-                      <option value="" selected disabled class="hidden">
+                      <option value="" selected hidden class="hidden">
                         เลือกศาสนา *
                       </option>
                       <option value="Buddhism">พุทธ</option>
-                      <option value="Christian">คริสต์</option>
-                      <option value="Muslim">อิสลาม</option>
-                      <option value="Etc.">อื่นๆ</option>
+                      <option value="Christianity">คริสต์</option>
+                      <option value="Islam">อิสลาม</option>
+                      <option value="Other">อื่นๆ</option>
                     </select>
                   </div>
                 </div>
-                <!-- <div class="mb-5">
-                  <label
-                    for="password"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >Set up password</label
-                  >
-                  <div class="text-gray-600 mt-2 mb-4">
-                    Please create a secure password including the following
-                    criteria below.
-
-                    <ul class="list-disc text-sm ml-4 mt-2">
-                      <li>lowercase letters</li>
-                      <li>numbers</li>
-                      <li>capital letters</li>
-                      <li>special characters</li>
-                    </ul>
-                  </div>
-
-                  <div class="relative">
-                    <input
-                      :type="togglePassword ? 'text' : 'password'"
-                      @keydown="checkPasswordStrength()"
-                      x-model="password"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Your strong password..."
-                    />
-
-                    <div
-                      class="absolute right-0 bottom-0 top-0 px-3 py-3 cursor-pointer"
-                      @click="togglePassword = !togglePassword"
-                    >
-                      <svg
-                        :class="{'hidden': !togglePassword, 'block': togglePassword }"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 fill-current text-gray-500"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M12 19c.946 0 1.81-.103 2.598-.281l-1.757-1.757C12.568 16.983 12.291 17 12 17c-5.351 0-7.424-3.846-7.926-5 .204-.47.674-1.381 1.508-2.297L4.184 8.305c-1.538 1.667-2.121 3.346-2.132 3.379-.069.205-.069.428 0 .633C2.073 12.383 4.367 19 12 19zM12 5c-1.837 0-3.346.396-4.604.981L3.707 2.293 2.293 3.707l18 18 1.414-1.414-3.319-3.319c2.614-1.951 3.547-4.615 3.561-4.657.069-.205.069-.428 0-.633C21.927 11.617 19.633 5 12 5zM16.972 15.558l-2.28-2.28C14.882 12.888 15 12.459 15 12c0-1.641-1.359-3-3-3-.459 0-.888.118-1.277.309L8.915 7.501C9.796 7.193 10.814 7 12 7c5.351 0 7.424 3.846 7.926 5C19.624 12.692 18.76 14.342 16.972 15.558z"
-                        />
-                      </svg>
-
-                      <svg
-                        :class="{'hidden': togglePassword, 'block': !togglePassword }"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 fill-current text-gray-500"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M12,9c-1.642,0-3,1.359-3,3c0,1.642,1.358,3,3,3c1.641,0,3-1.358,3-3C15,10.359,13.641,9,12,9z"
-                        />
-                        <path
-                          d="M12,5c-7.633,0-9.927,6.617-9.948,6.684L1.946,12l0.105,0.316C2.073,12.383,4.367,19,12,19s9.927-6.617,9.948-6.684 L22.054,12l-0.105-0.316C21.927,11.617,19.633,5,12,5z M12,17c-5.351,0-7.424-3.846-7.926-5C4.578,10.842,6.652,7,12,7 c5.351,0,7.424,3.846,7.926,5C19.422,13.158,17.348,17,12,17z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-
-                  <div class="flex items-center mt-4 h-3">
-                    <div class="w-2/3 flex justify-between h-2">
-                      <div
-                        :class="{ 'bg-red-400': passwordStrengthText == 'Too weak' ||  passwordStrengthText == 'Could be stronger' || passwordStrengthText == 'Strong password' }"
-                        class="h-2 rounded-full mr-1 w-1/3 bg-gray-300"
-                      ></div>
-                      <div
-                        :class="{ 'bg-orange-400': passwordStrengthText == 'Could be stronger' || passwordStrengthText == 'Strong password' }"
-                        class="h-2 rounded-full mr-1 w-1/3 bg-gray-300"
-                      ></div>
-                      <div
-                        :class="{ 'bg-green-400': passwordStrengthText == 'Strong password' }"
-                        class="h-2 rounded-full w-1/3 bg-gray-300"
-                      ></div>
-                    </div>
-                    <div
-                      x-text="passwordStrengthText"
-                      class="text-gray-500 font-medium text-sm ml-3 leading-none"
-                    ></div>
-                  </div>
-
-                  <p class="mt-5 text-gray-600">
-                    Inspired from dribbble shot: Exploration for a password
-                    strength meter by
-                    <a
-                      href="https://dribbble.com/OvertonGraphics"
-                      class="text-blue-500"
-                      >Josh Overton</a
-                    >.
-                  </p>
-                </div> -->
                 <div class="mb-5">
                   <label
                     for="address"
                     class="font-bold mb-1 text-gray-700 block"
                     >ที่อยู่ปัจจุบัน</label
                   >
-                  <!-- <input
-                    type="text"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="Enter your firstname..."
-                  /> -->
                   <textarea
                     name="address"
                     id="address"
@@ -531,6 +199,7 @@
                     rows="4"
                     placeholder="123/45 ถนนพัฒนา ซอยปรับปรุง"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                    wire:model.lazy="data.address"
                   ></textarea>
                 </div>
                 <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
@@ -540,112 +209,23 @@
                       class="font-bold mb-1 text-gray-700 block"
                       >จังหวัด</label
                     >
-                    <select
-                      name="province"
-                      required
+                    <input
+                      type="tel"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    >
-                      <option selected class="hidden">
-                        กรุณาเลือกจังหวัด *
-                      </option>
-                      <option value="Bangkok">Bangkok</option>
-                      <option value="Krabi">Krabi</option>
-                      <option value="Kanchanaburi">Kanchanaburi</option>
-                      <option value="Kalasin">Kalasin</option>
-                      <option value="Kamphaeng Phet">Kamphaeng Phet</option>
-                      <option value="Khon Kaen">Khon Kaen</option>
-                      <option value="Chanthaburi">Chanthaburi</option>
-                      <option value="Chachoengsao">Chachoengsao</option>
-                      <option value="Chainat">Chainat</option>
-                      <option value="Chaiyaphum">Chaiyaphum</option>
-                      <option value="Chumphon">Chumphon</option>
-                      <option value="Chumphon">Chumphon</option>
-                      <option value="Chiang Mai">Chiang Mai</option>
-                      <option value="Chiang Rai">Chiang Rai</option>
-                      <option value="Trang">Trang</option>
-                      <option value="Trat">Trat</option>
-                      <option value="Tak">Tak</option>
-                      <option value="Nakhon Nayok">Nakhon Nayok</option>
-                      <option value="Nakhon Pathom">Nakhon Pathom</option>
-                      <option value="Nakhon Phanom">Nakhon Phanom</option>
-                      <option value="Nakhon Ratchasima">
-                        Nakhon Ratchasima
-                      </option>
-                      <option value="Nakhon Si Thammarat">
-                        Nakhon Si Thammarat
-                      </option>
-                      <option value="Nakhon Sawan">Nakhon Sawan</option>
-                      <option value="Narathiwat">Narathiwat</option>
-                      <option value="Nan">Nan</option>
-                      <option value="Nonthaburi">Nonthaburi</option>
-                      <option value="Bueng Kan">Bueng Kan</option>
-                      <option value="Buriram">Buriram</option>
-                      <option value="Prachuap Khiri Khan">
-                        Prachuap Khiri Khan
-                      </option>
-                      <option value="Pathum Thani">Pathum Thani</option>
-                      <option value="Prachinburi">Prachinburi</option>
-                      <option value="Pattani">Pattani</option>
-                      <option value="Phayao">Phayao</option>
-                      <option value="Phra Nakhon Si Ayutthaya">
-                        Phra Nakhon Si Ayutthaya
-                      </option>
-                      <option value="Phang Nga">Phang Nga</option>
-                      <option value="Phichit">Phichit</option>
-                      <option value="Phitsanulok">Phitsanulok</option>
-                      <option value="Phetchaburi">Phetchaburi</option>
-                      <option value="Phetchabun">Phetchabun</option>
-                      <option value="Phrae">Phrae</option>
-                      <option value="Phatthalung">Phatthalung</option>
-                      <option value="Phuket">Phuket</option>
-                      <option value="Maha Sarakham">Maha Sarakham</option>
-                      <option value="Mukdahan">Mukdahan</option>
-                      <option value="Mae Hong Son">Mae Hong Son</option>
-                      <option value="Yasothon">Yasothon</option>
-                      <option value="Yala">Yala</option>
-                      <option value="Roi Et">Roi Et</option>
-                      <option value="Ranong">Ranong</option>
-                      <option value="Rayong">Rayong</option>
-                      <option value="Ratchaburi">Ratchaburi</option>
-                      <option value="Lopburi">Lopburi</option>
-                      <option value="Lampang">Lampang</option>
-                      <option value="Lamphun">Lamphun</option>
-                      <option value="Loei">Loei</option>
-                      <option value="Sisaket">Sisaket</option>
-                      <option value="Sakon Nakhon">Sakon Nakhon</option>
-                      <option value="Songkhla">Songkhla</option>
-                      <option value="Samut Sakhon">Samut Sakhon</option>
-                      <option value="Samut Prakan">Samut Prakan</option>
-                      <option value="Samut Songkhram">Samut Songkhram</option>
-                      <option value="Sa Kaeo">Sa Kaeo</option>
-                      <option value="Saraburi">Saraburi</option>
-                      <option value="Sing Buri">Sing Buri</option>
-                      <option value="Sukhothai">Sukhothai</option>
-                      <option value="Suphan Buri">Suphan Buri</option>
-                      <option value="Surat Thani">Surat Thani</option>
-                      <option value="Surin">Surin</option>
-                      <option value="Satun">Satun</option>
-                      <option value="Nong Khai">Nong Khai</option>
-                      <option value="Nong Bua Lamphu">Nong Bua Lamphu</option>
-                      <option value="Amnat Charoen">Amnat Charoen</option>
-                      <option value="Udon Thani">Udon Thani</option>
-                      <option value="Uttaradit">Uttaradit</option>
-                      <option value="Uthai Thani">Uthai Thani</option>
-                      <option value="Ubon Ratchathani">Ubon Ratchathani</option>
-                      <option value="Ang Thong">Ang Thong</option>
-                      <option value="Other">Other</option>
-                    </select>
+                      placeholder="Enter your province..."
+                      wire:model.lazy="data.province"
+                    />
                   </div>
                   <div class="w-full md:w-1/2 mt-5 md:mt-0">
                     <label
                       for="phone"
                       class="font-bold mb-1 text-gray-700 block"
-                      >เบอร์โทรศัพท์มือถือ</label
-                    >
+                      >เบอร์โทรศัพท์มือถือ</label>
                     <input
                       type="tel"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                       placeholder="Enter your phone number..."
+                      wire:model.lazy="data.phone"
                     />
                   </div>
                 </div>
@@ -657,16 +237,12 @@
                       class="font-bold mb-1 text-gray-700 block"
                       >อำเภอ / เขต</label
                     >
-                    <select
-                      name="district"
-                      id="district"
+                    <input
+                      type="tel"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    >
-                      <option value="" selected disabled class="hidden">
-                        เลือกอำเภอ / เขต
-                      </option>
-                      <option value="Wangthonglang">วังทองหลาง</option>
-                    </select>
+                      placeholder="Enter your district..."
+                      wire:model.lazy="data.district"
+                    />
                   </div>
                   <div class="w-full md:w-1/2 mt-5 md:mt-0">
                     <label
@@ -674,21 +250,12 @@
                       class="font-bold mb-1 text-gray-700 block"
                       >ตำบล / แขวง</label
                     >
-                    <!-- <input
-                      type="gender"
+                    <input
+                      type="tel"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your gender ..."
-                    /> -->
-                    <select
-                      name="sub-district"
-                      id="sub-district"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    >
-                      <option value="" selected disabled class="hidden">
-                        ตำบล / แขวง
-                      </option>
-                      <option value="Wangthonglang">วังทองหลาง</option>
-                    </select>
+                      placeholder="Enter your subdistrict..."
+                      wire:model.lazy="data.subdistrict"
+                    />
                   </div>
                 </div>
                 <div class="mb-5">
@@ -699,6 +266,7 @@
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     placeholder="Enter your school ..."
+                    wire:model.lazy="data.school"
                   />
                 </div>
                 <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
@@ -712,15 +280,16 @@
                       name="grade"
                       id="grade"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      wire:model.lazy="data.education_level"
                     >
                       <option value="" selected disabled class="hidden">
                         เลือกระดับชั้น
                       </option>
-                      <option value="ม.4">ชั้นมัธยมศึกษาปีที่ 4</option>
-                      <option value="ม.5">ชั้นมัธยมศึกษาปีที่ 5</option>
-                      <option value="ม.6">ชั้นมัธยมศึกษาปีที่ 6</option>
-                      <option value="ปวช.">ปวช.</option>
-                      <option value="ปวส.">ปวส.</option>
+                      <option value="M.4">ชั้นมัธยมศึกษาปีที่ 4</option>
+                      <option value="M.5">ชั้นมัธยมศึกษาปีที่ 5</option>
+                      <option value="M.6">ชั้นมัธยมศึกษาปีที่ 6</option>
+                      <option value="HVC.">ปวช.</option>
+                      <option value="TC.">ปวส.</option>
                     </select>
                   </div>
                   <div class="mb-5 w-full md:w-1/2">
@@ -733,6 +302,7 @@
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                       placeholder="Enter your curriculum ..."
+                      wire:model.lazy="data.educational_program"
                     />
                   </div>
                 </div>
@@ -743,11 +313,6 @@
                   >
                     ใบรับรองผลการเรียน (เช่น ปพ.1 ปพ.7)
                   </label>
-                  <!-- <input
-                      type="text"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your curriculum ..."
-                    /> -->
                   <div
                     class="relative bg-transparent w-full rounded-md border-dashed border border-gray-200"
                   >
@@ -755,6 +320,7 @@
                       type="file"
                       name="file"
                       class="w-full min-h-[15em] block opacity-0 cursor-pointer"
+                      wire:model.lazy="educational_certificate_file"
                     />
                     <!-- Blind เอาไว้ -->
                     <div
@@ -767,34 +333,11 @@
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <path
-                          d="M36.028 14.7458L36.1203 14.7733L36.1243 14.7688C36.5619 14.8481 36.9961 14.586 37.1247 14.1519C38.2963 10.2152 41.9874 7.46504 46.0998 7.46504C46.5867 7.46504 46.9816 7.07016 46.9816 6.5833C46.9816 6.09643 46.5867 5.70156 46.0998 5.70156C41.0457 5.70156 36.7985 9.06665 35.4348 13.6493C35.2956 14.1162 35.5615 14.6067 36.028 14.7458Z"
-                          fill="grey"
-                          stroke="#F9FFF9"
-                          stroke-width="0.3"
-                        />
-                        <path
-                          d="M56.3438 42.4384H51.9534C51.5494 42.4384 51.2217 42.1107 51.2217 41.7067C51.2217 41.3027 51.5494 40.9749 51.9534 40.9749H56.3438C62.3956 40.9749 67.3197 36.0509 67.3197 29.999C67.3197 23.9471 62.3956 19.023 56.3438 19.023H56.2382C56.026 19.023 55.8242 18.9311 55.6852 18.7706C55.5462 18.6101 55.4834 18.3974 55.5138 18.1873C55.5791 17.7315 55.612 17.2737 55.612 16.8279C55.612 11.5829 51.3444 7.31531 46.0995 7.31531C44.059 7.31531 42.1131 7.95296 40.4719 9.15978C40.1112 9.42478 39.599 9.30718 39.3905 8.91047C34.7425 0.0596993 22.6023 -1.12887 16.3082 6.57053C13.6568 9.81417 12.615 14.0336 13.4498 18.146C13.5418 18.6002 13.1942 19.0236 12.7327 19.0236H12.4395C6.3876 19.0236 1.46353 23.9477 1.46353 29.9996C1.46353 36.0514 6.3876 40.9755 12.4395 40.9755H16.8298C17.2338 40.9755 17.5615 41.3032 17.5615 41.7072C17.5615 42.1113 17.2338 42.439 16.8298 42.439H12.4395C5.5805 42.439 0 36.8585 0 29.9995C0 23.3329 5.27155 17.8742 11.8651 17.5731C11.2457 13.3066 12.4301 9.00295 15.1751 5.64437C21.9138 -2.5996 34.828 -1.67556 40.2871 7.51707C42.0287 6.42522 44.0215 5.85244 46.0992 5.85244C52.4538 5.85244 57.4892 11.261 57.0486 17.58C63.5813 17.9463 68.7829 23.3763 68.7829 29.999C68.7829 36.8585 63.2024 42.4384 56.3434 42.4384L56.3438 42.4384Z"
-                          fill="grey"
-                        />
-                        <path
-                          d="M15.85 41.2935C15.85 51.4634 24.1237 59.737 34.2935 59.737C44.4634 59.737 52.737 51.4633 52.737 41.2935C52.737 31.1235 44.4634 22.85 34.2935 22.85C24.1235 22.85 15.85 31.1237 15.85 41.2935ZM17.6138 41.2935C17.6138 32.0966 25.0964 24.6138 34.2935 24.6138C43.4904 24.6138 50.9732 32.0964 50.9732 41.2935C50.9732 50.4904 43.4904 57.9732 34.2935 57.9732C25.0966 57.9732 17.6138 50.4905 17.6138 41.2935Z"
-                          fill="grey"
-                          stroke="#F9FFF9"
-                          stroke-width="0.3"
-                        />
-                        <path
-                          d="M33.9428 48.6577C33.9428 49.0363 34.2499 49.3434 34.6285 49.3434C35.0071 49.3434 35.3142 49.0367 35.3142 48.6577V34.7291C35.3142 34.3504 35.0071 34.0434 34.6285 34.0434C34.2498 34.0434 33.9428 34.3504 33.9428 34.7291V48.6577Z"
-                          fill="#1ED760"
-                          stroke="white"
-                          stroke-width="0.3"
-                        />
-                        <path
-                          d="M34.6281 35.7001L30.8274 39.5008L34.6281 35.7001ZM34.6281 35.7001L38.4289 39.5009C38.5626 39.6346 38.7386 39.7017 38.9137 39.7017L34.6281 35.7001ZM29.8576 39.5009C30.1254 39.7687 30.5597 39.7689 30.8273 39.5009L38.9138 39.7017C39.0886 39.7017 39.2647 39.6352 39.3987 39.5009C39.6665 39.233 39.6665 38.799 39.3986 38.5311L35.113 34.2455C34.8452 33.9777 34.4108 33.9775 34.1432 34.2455C34.1432 34.2455 34.1431 34.2456 34.1431 34.2456L29.8576 38.5311C29.5897 38.799 29.5897 39.233 29.8576 39.5009Z"
-                          fill="#1ED760"
-                          stroke="white"
-                          stroke-width="0.3"
-                        />
+                        <path d="M36.028 14.7458L36.1203 14.7733L36.1243 14.7688C36.5619 14.8481 36.9961 14.586 37.1247 14.1519C38.2963 10.2152 41.9874 7.46504 46.0998 7.46504C46.5867 7.46504 46.9816 7.07016 46.9816 6.5833C46.9816 6.09643 46.5867 5.70156 46.0998 5.70156C41.0457 5.70156 36.7985 9.06665 35.4348 13.6493C35.2956 14.1162 35.5615 14.6067 36.028 14.7458Z" fill="grey" stroke="#F9FFF9" stroke-width="0.3"/>
+                        <path d="M56.3438 42.4384H51.9534C51.5494 42.4384 51.2217 42.1107 51.2217 41.7067C51.2217 41.3027 51.5494 40.9749 51.9534 40.9749H56.3438C62.3956 40.9749 67.3197 36.0509 67.3197 29.999C67.3197 23.9471 62.3956 19.023 56.3438 19.023H56.2382C56.026 19.023 55.8242 18.9311 55.6852 18.7706C55.5462 18.6101 55.4834 18.3974 55.5138 18.1873C55.5791 17.7315 55.612 17.2737 55.612 16.8279C55.612 11.5829 51.3444 7.31531 46.0995 7.31531C44.059 7.31531 42.1131 7.95296 40.4719 9.15978C40.1112 9.42478 39.599 9.30718 39.3905 8.91047C34.7425 0.0596993 22.6023 -1.12887 16.3082 6.57053C13.6568 9.81417 12.615 14.0336 13.4498 18.146C13.5418 18.6002 13.1942 19.0236 12.7327 19.0236H12.4395C6.3876 19.0236 1.46353 23.9477 1.46353 29.9996C1.46353 36.0514 6.3876 40.9755 12.4395 40.9755H16.8298C17.2338 40.9755 17.5615 41.3032 17.5615 41.7072C17.5615 42.1113 17.2338 42.439 16.8298 42.439H12.4395C5.5805 42.439 0 36.8585 0 29.9995C0 23.3329 5.27155 17.8742 11.8651 17.5731C11.2457 13.3066 12.4301 9.00295 15.1751 5.64437C21.9138 -2.5996 34.828 -1.67556 40.2871 7.51707C42.0287 6.42522 44.0215 5.85244 46.0992 5.85244C52.4538 5.85244 57.4892 11.261 57.0486 17.58C63.5813 17.9463 68.7829 23.3763 68.7829 29.999C68.7829 36.8585 63.2024 42.4384 56.3434 42.4384L56.3438 42.4384Z" fill="grey"/>
+                        <path d="M15.85 41.2935C15.85 51.4634 24.1237 59.737 34.2935 59.737C44.4634 59.737 52.737 51.4633 52.737 41.2935C52.737 31.1235 44.4634 22.85 34.2935 22.85C24.1235 22.85 15.85 31.1237 15.85 41.2935ZM17.6138 41.2935C17.6138 32.0966 25.0964 24.6138 34.2935 24.6138C43.4904 24.6138 50.9732 32.0964 50.9732 41.2935C50.9732 50.4904 43.4904 57.9732 34.2935 57.9732C25.0966 57.9732 17.6138 50.4905 17.6138 41.2935Z" fill="grey" stroke="#F9FFF9" stroke-width="0.3"/>
+                        <path d="M33.9428 48.6577C33.9428 49.0363 34.2499 49.3434 34.6285 49.3434C35.0071 49.3434 35.3142 49.0367 35.3142 48.6577V34.7291C35.3142 34.3504 35.0071 34.0434 34.6285 34.0434C34.2498 34.0434 33.9428 34.3504 33.9428 34.7291V48.6577Z" fill="#1ED760" stroke="white" stroke-width="0.3"/>
+                        <path d="M34.6281 35.7001L30.8274 39.5008L34.6281 35.7001ZM34.6281 35.7001L38.4289 39.5009C38.5626 39.6346 38.7386 39.7017 38.9137 39.7017L34.6281 35.7001ZM29.8576 39.5009C30.1254 39.7687 30.5597 39.7689 30.8273 39.5009L38.9138 39.7017C39.0886 39.7017 39.2647 39.6352 39.3987 39.5009C39.6665 39.233 39.6665 38.799 39.3986 38.5311L35.113 34.2455C34.8452 33.9777 34.4108 33.9775 34.1432 34.2455C34.1432 34.2455 34.1431 34.2456 34.1431 34.2456L29.8576 38.5311C29.5897 38.799 29.5897 39.233 29.8576 39.5009Z" fill="#1ED760" stroke="white" stroke-width="0.3"/>
                       </svg>
                       <!-- รูปไฟล์ลองแก้  -->
                       <p class="mt-1 text-sm text-white">อัปโหลดไฟล์</p>
@@ -806,103 +349,7 @@
                 </div>
                 <!--  -->
               </div>
-              <div x-show.transition.in="step === 2">
-                <!-- <div class="mb-5">
-                  <label for="email" class="font-bold mb-1 text-gray-700 block"
-                    >แพ้อาหาร</label
-                  >
-
-                  <div class="flex">
-                    <label
-                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm mr-4"
-                    >
-                      <div class="text-teal-600 mr-3">
-                        <input
-                          type="radio"
-                          x-model="foodAllergy"
-                          value="Yes"
-                          class="form-radio focus:outline-none focus:shadow-outline"
-                        />
-                      </div>
-                      <div class="select-none text-gray-700">แพ้อาหาร</div>
-                    </label>
-
-                    <label
-                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm"
-                    >
-                      <div class="text-teal-600 mr-3">
-                        <input
-                          type="radio"
-                          x-model="foodAllergy"
-                          value="No"
-                          class="form-radio focus:outline-none focus:shadow-outline"
-                        />
-                      </div>
-                      <div class="select-none text-gray-700">ไม่แพ้อาหาร</div>
-                    </label>
-                  </div>
-                </div>
-
-                <div class="mb-5" x-show="foodAllergy === 'Yes'">
-                  <label
-                    for="foodAllergyDetail"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >รายละเอียดอาหารที่แพ้</label
-                  >
-                  <input
-                    type="foodAllergyDetail"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="เช่น กุ้ง ถั่วปากอ้า อาหารทะเล"
-                  />
-                </div>
-								<div class="mb-5">
-                  <label for="email" class="font-bold mb-1 text-gray-700 block"
-                    >แพ้ยา</label
-                  >
-
-                  <div class="flex">
-                    <label
-                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm mr-4"
-                    >
-                      <div class="text-teal-600 mr-3">
-                        <input
-                          type="radio"
-                          x-model="medAllergy"
-                          value="Yes"
-                          class="form-radio focus:outline-none focus:shadow-outline"
-                        />
-                      </div>
-                      <div class="select-none text-gray-700">แพ้ยา</div>
-                    </label>
-
-                    <label
-                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm"
-                    >
-                      <div class="text-teal-600 mr-3">
-                        <input
-                          type="radio"
-                          x-model="medAllergy"
-                          value="No"
-                          class="form-radio focus:outline-none focus:shadow-outline"
-                        />
-                      </div>
-                      <div class="select-none text-gray-700">ไม่แพ้ยา</div>
-                    </label>
-                  </div>
-                </div>
-
-                <div class="mb-5" x-show="medAllergy === 'Yes'">
-                  <label
-                    for="foodAllergyDetail"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >รายละเอียดยาที่แพ้</label
-                  >
-                  <input
-                    type="foodAllergyDetail"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="เช่น ยาแก้ไอ ยาฆ่าเชื้อ ยาแก้อักเสบ"
-                  />
-                </div> -->
+              <div x-show.transition.in="$wire.step === 2">
                 <div class="mb-5">
                   <label
                     for="disease"
@@ -913,6 +360,7 @@
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     placeholder="Enter your disease ..."
+                    wire:model.lazy="data.congenital_disease"
                   />
                 </div>
                 <div class="mb-5">
@@ -925,6 +373,7 @@
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     placeholder="เช่น ยาแก้ไอ ยาแก้อักเสบ ยาฆ่าเชื้อ..."
+                    wire:model.lazy="data.allergic_drug"
                   />
                 </div>
                 <div class="mb-5">
@@ -937,6 +386,7 @@
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     placeholder="เช่น กุ้ง อาหารทะเล ถั่วปากอ้า ..."
+                    wire:model.lazy="data.allergen"
                   />
                 </div>
                 <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
@@ -951,8 +401,9 @@
                       id="shirtSize"
                       placeholder="เลือกไซส์เสื้อ"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      wire:model.lazy="data.shirt_size"
                     >
-                      <option value="" select disabled class="hidden">
+                      <option value="" select hidden class="hidden">
                         เลือกไซส์เสื้อ
                       </option>
                       <option value="S">
@@ -1027,17 +478,8 @@
                                       <div
                                         x-on:click.stop="remove(index,option)"
                                       >
-                                        <svg
-                                          class="fill-current h-4 w-4"
-                                          role="button"
-                                          viewBox="0 0 20 20"
-                                        >
-                                          <path
-                                            d="M14.348,14.849c-0.469,0.469-1.229,0.469-1.697,0L10,11.819l-2.651,3.029c-0.469,0.469-1.229,0.469-1.697,0
-                                           c-0.469-0.469-0.469-1.229,0-1.697l2.758-3.15L5.651,6.849c-0.469-0.469-0.469-1.228,0-1.697s1.228-0.469,1.697,0L10,8.183
-                                           l2.651-3.031c0.469-0.469,1.228-0.469,1.697,0s0.469,1.229,0,1.697l-2.758,3.152l2.758,3.15
-                                           C14.817,13.62,14.817,14.38,14.348,14.849z"
-                                          />
+                                        <svg class="fill-current h-4 w-4" role="button" viewBox="0 0 20 20">
+                                          <path d="M14.348,14.849c-0.469,0.469-1.229,0.469-1.697,0L10,11.819l-2.651,3.029c-0.469,0.469-1.229,0.469-1.697,0c-0.469-0.469-0.469-1.229,0-1.697l2.758-3.15L5.651,6.849c-0.469-0.469-0.469-1.228,0-1.697s1.228-0.469,1.697,0L10,8.183l2.651-3.031c0.469-0.469,1.228-0.469,1.697,0s0.469,1.229,0,1.697l-2.758,3.152l2.758,3.15C14.817,13.62,14.817,14.38,14.348,14.849z"/>
                                         </svg>
                                       </div>
                                     </div>
@@ -1051,6 +493,7 @@
                                     placeholder="เลือกช่องทาง"
                                     class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800"
                                     x-bind:value="selectedValues()"
+                                    wire:model.lazy="data.known_us_from"
                                   />
                                 </div>
                               </div>
@@ -1063,15 +506,8 @@
                                   x-on:click="open"
                                   class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none"
                                 >
-                                  <svg
-                                    class="fill-current h-3 w-3"
-                                    viewBox="0 0 20 20"
-                                  >
-                                    <path
-                                      d="M2.582,13.891c-0.272,0.268-0.709,0.268-0.979,0s-0.271-0.701,0-0.969l7.908-7.83
-	c0.27-0.268,0.707-0.268,0.979,0l7.908,7.83c0.27,0.268,0.27,0.701,0,0.969c-0.271,0.268-0.709,0.268-0.978,0L10,6.75L2.582,13.891z
-	"
-                                    />
+                                  <svg class="fill-current h-3 w-3" viewBox="0 0 20 20">
+                                    <path d="M2.582,13.891c-0.272,0.268-0.709,0.268-0.979,0s-0.271-0.701,0-0.969l7.908-7.83c0.27-0.268,0.707-0.268,0.979,0l7.908,7.83c0.27,0.268,0.27,0.701,0,0.969c-0.271,0.268-0.709,0.268-0.978,0L10,6.75L2.582,13.891z"/>
                                   </svg>
                                 </button>
                                 <button
@@ -1080,16 +516,8 @@
                                   @click="close"
                                   class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none"
                                 >
-                                  <svg
-                                    version="1.1"
-                                    class="fill-current h-3 w-3"
-                                    viewBox="0 0 20 20"
-                                  >
-                                    <path
-                                      d="M17.418,6.109c0.272-0.268,0.709-0.268,0.979,0s0.271,0.701,0,0.969l-7.908,7.83
-	c-0.27,0.268-0.707,0.268-0.979,0l-7.908-7.83c-0.27-0.268-0.27-0.701,0-0.969c0.271-0.268,0.709-0.268,0.979,0L10,13.25
-	L17.418,6.109z"
-                                    />
+                                  <svg version="1.1" class="fill-current h-3 w-3" viewBox="0 0 20 20">
+                                    <path d="M17.418,6.109c0.272-0.268,0.709-0.268,0.979,0s0.271,0.701,0,0.969l-7.908,7.83c-0.27,0.268-0.707,0.268-0.979,0l-7.908-7.83c-0.27-0.268-0.27-0.701,0-0.969c0.271-0.268,0.709-0.268,0.979,0L10,13.25L17.418,6.109z"/>
                                   </svg>
                                 </button>
                               </div>
@@ -1125,16 +553,8 @@
                                           x-text="option.text"
                                         ></div>
                                         <div x-show="option.selected">
-                                          <svg
-                                            class="svg-icon"
-                                            viewBox="0 0 20 20"
-                                          >
-                                            <path
-                                              fill="none"
-                                              d="M7.197,16.963H7.195c-0.204,0-0.399-0.083-0.544-0.227l-6.039-6.082c-0.3-0.302-0.297-0.788,0.003-1.087
-							C0.919,9.266,1.404,9.269,1.702,9.57l5.495,5.536L18.221,4.083c0.301-0.301,0.787-0.301,1.087,0c0.301,0.3,0.301,0.787,0,1.087
-							L7.741,16.738C7.596,16.882,7.401,16.963,7.197,16.963z"
-                                            ></path>
+                                          <svg class="svg-icon" viewBox="0 0 20 20">
+                                            <path fill="none" d="M7.197,16.963H7.195c-0.204,0-0.399-0.083-0.544-0.227l-6.039-6.082c-0.3-0.302-0.297-0.788,0.003-1.087C0.919,9.266,1.404,9.269,1.702,9.57l5.495,5.536L18.221,4.083c0.301-0.301,0.787-0.301,1.087,0c0.301,0.3,0.301,0.787,0,1.087L7.741,16.738C7.596,16.882,7.401,16.963,7.197,16.963z"></path>
                                           </svg>
                                         </div>
                                       </div>
@@ -1159,6 +579,7 @@
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     placeholder="Enter your firstname..."
+                    wire:model.lazy="data.emergency_name"
                   />
                 </div>
                 <div class="mb-5">
@@ -1171,6 +592,7 @@
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     placeholder="Enter your lastname..."
+                    wire:model.lazy="data.emergency_surname"
                   />
                 </div>
                 <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
@@ -1184,6 +606,7 @@
                       type="tel"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                       placeholder="Enter your phone number..."
+                      wire:model.lazy="data.emergency_phone"
                     />
                   </div>
                   <div class="w-full md:w-1/2">
@@ -1196,9 +619,11 @@
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                       placeholder="Enter your relevant..."
+                      wire:model.lazy="data.emergency_relationship"
                     />
                   </div>
                 </div>
+                @if (!in_array($data->subcamp, ['Webtopia','DataVergent','Game Runner','Nettapunk']))
                 <div class="mb-5 flex items-center justify-center flex-col">
                   <img
                     src="https://media.discordapp.net/attachments/964882961797349438/984724891708317716/unknown.png"
@@ -1218,9 +643,9 @@
                       <div class="text-teal-600 mr-3">
                         <input
                           type="radio"
-                          x-model="subcamp"
                           value="Webtopia"
                           class="form-radio focus:outline-none focus:shadow-outline"
+                          wire:model.lazy="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">Webtopia</div>
@@ -1232,9 +657,9 @@
                       <div class="text-teal-600 mr-3">
                         <input
                           type="radio"
-                          x-model="subcamp"
                           value="DataVergent"
                           class="form-radio focus:outline-none focus:shadow-outline"
+                          wire:model.lazy="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">DataVergent</div>
@@ -1246,9 +671,9 @@
                       <div class="text-teal-600 mr-3">
                         <input
                           type="radio"
-                          x-model="subcamp"
-                          value="GameRunner"
+                          value="Game Runner"
                           class="form-radio focus:outline-none focus:shadow-outline"
+                          wire:model.lazy="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">Game Runner</div>
@@ -1260,17 +685,18 @@
                       <div class="text-teal-600 mr-3">
                         <input
                           type="radio"
-                          x-model="subcamp"
                           value="Nettapunk"
                           class="form-radio focus:outline-none focus:shadow-outline"
+                          wire:model.lazy="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">Nettapunk</div>
                     </label>
                   </div>
                 </div>
+                @endif
               </div>
-              <div x-show.transition.in="step === 3">
+              <div x-show.transition.in="$wire.step === 3">
                 <div class="mb-5">
                   <label for="policy" class="font-bold mb-1 text-gray-700 block"
                     >ข้อมูลส่วนบุคคล คืออะไร?</label
@@ -1566,6 +992,7 @@
                     type="checkbox"
                     name="confirmPolicy"
                     id="confirmPolicy"
+                    wire:model="policy_confirmation"
                   />
                   <label for="confirmPolicy">ยอมรับข้อตกลงมั้ยจ้ะ</label>
                 </div>
@@ -1576,36 +1003,21 @@
         </div>
 
         <!-- Bottom Navigation -->
-        <div
-          class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md"
-          x-show="step != 'complete'"
-        >
+        <div class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md" x-show="$wire.step != 4">
           <div class="max-w-3xl mx-auto px-4">
             <div class="flex justify-between">
               <div class="w-1/2">
-                <button
-                  x-show="step > 1"
-                  @click="step--; document.body.scrollTop = 0;"
-                  class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border"
-                >
+                <button x-show="$wire.step > 1" @click="$wire.decrement()" document.body.scrollTop = 0;" class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border">
                   ย้อนกลับ
                 </button>
               </div>
 
               <div class="w-1/2 text-right">
-                <button
-                  x-show="step < 3"
-                  @click="step++; document.body.scrollTop = 0;"
-                  class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium"
-                >
+                <button x-show="$wire.step < 3" @click="$wire.increment()" document.body.scrollTop = 0;" class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">
                   ถัดไป
                 </button>
 
-                <button
-                  @click="step = 'complete'"
-                  x-show="step === 3"
-                  class="w-full md:w-64 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium"
-                >
+                <button @click="$wire.submit()" x-show="$wire.step === 3" class="w-full md:w-64 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">
                   ยืนยันข้อมูลส่วนตัว
                 </button>
               </div>
@@ -1614,100 +1026,3 @@
         </div>
         <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
       </div>
-    </div>
-
-    <script>
-      function app() {
-        return {
-          step: 1,
-          passwordStrengthText: "",
-          togglePassword: false,
-          foodAllergy: "No",
-          medAllergy: "No",
-
-          image:
-            "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD/4QBCRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAkAAAAMAAAABAAAAAEABAAEAAAABAAAAAAAAAAAAAP/bAEMACwkJBwkJBwkJCQkLCQkJCQkJCwkLCwwLCwsMDRAMEQ4NDgwSGRIlGh0lHRkfHCkpFiU3NTYaKjI+LSkwGTshE//bAEMBBwgICwkLFQsLFSwdGR0sLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLP/AABEIAdoB2gMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APTmZsnmk3N60N1NJTELub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lFAC7m9aNzetJRQAu5vWjc3rSUUALub1o3N60lJQA7c3rSbm9aSigBdzetG4+tJRQAZPrRuPrSUUALub1/lRub1pKSgBdzUbm9aSigBdzetG5vX+VJSUALub1/lUu5qhqXj1oAG6mkpW6mkoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooASiiigAooooAKSiigAooo+lACUZoooAKKKSgAo/rRSUALUlRVJz60AObqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkoooAKKKKACiikoAKSlooASiiigA+lHpRQaACkoooATmilpPegBP/ANdS5HrUdSfL7UAObqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKSiigAooooAKKKKAEooooASij60UAFFFHpQAUmaKPxoAKSlpPWgA/wAmk/pS/Sk47dqADpUvPvUXrUn4H8qAHt1NJSt1NJQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFISFBJIAHUk4FAC0VTlv4EyEBc+3C/nVSS9uX6MEHonX8zQBrEqvLEAe5A/nUTXVqvWVfwyf5VjFmY5Ykn3JP86SmBrG/tB3c/RTTf7QtvST8hWXRQBqi/te+8f8AAc09by0b/loB/vAiseigDeV43+66t9CDTq5/p04+lTJdXMfSQkej/MP1oA2qKoR6gpwJUK/7Scj8utXEkjkG5GDD2P8AMUgH0UUUAFFFJQAUUUUAFFFJQAtJRRQAUlFFABR2oo+lAB1pKKP60AFFFFACUHjNH/66KAEpaSj/APVQAc0/I9KZUufpQA5uppKVuppKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACimsyopZiAo5JNZlxePLlI8rH0J/ib60AWp72KLKph3/wDHR9TWdLNNMcuxPoOij6Co6KYBRRRQAUUUUAFFFFABRRRQAUUUUAFKruhDIxUjuDikooA0IL/os4/4Gv8AUVfBVgCpBB6Ecg1gVLBcSwH5eUP3lPQ/SgDaoqOKaOZdyH/eB6qfepKQBRRRQAlFFFABSUUUAFFFFABRRSf5NABxR6e1FJQAcUUUnP6UALSf5/GjvRz+FAB06d6KT6UGgA96kyf8mo//ANdP59P1oAlbqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACmu6RqzucKvJNKSACScADJJ7Csi6uDO2BkRqflHr7mgBLi5edu4QH5V/qagoopgFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACUUUUAPjkkiYOhwR+RHoa14J0nTI4YffX0NYtPileJ1dDyOoPQj0NAG7SUyKVJkDr36juD6U+kAUhoooAKKKKACij/JpKACj/PNFFABScUelFACUdqP8mj+dABn9KMjij60d+tACf5FH5Uf59qOOlACfhUn40zmn4oAlbqaSlbqaSgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKhuJhDEz/xfdQerGgCpfXGT5CHgf6w+/8AdqhQSSSScknJPqTRTAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkoooAKKKKACiiigCe2nMEnP+rbhx6e9bHoQevT3zXP1p2M+9DE33k5X/AHf/AK1AF2koNFIAoopKAFpKKPSgApPX0pf8mkoAKKTPP1paAE+lFFIT/ntQAelHAoz0oz/hQAd6T155oooAKk2+wqLPt/8AWqTj1P5GgCZuppKVuppKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArJvpd8uwH5Y+P+BHrWnK4jjkc/wAKkj69qwiSSSepJJ+ppgFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSUUUAFFFFABRRSUAFFFFABT4pDFIkg/hPPuO4plFAG8CGAYchgCD7HmlqpYy74dp6xnH4HkVapALSUUUAH+NFFJQAc0f5+tHFJQAUUUepoAP/r0nP/1sUH1ozQAUnOaPwo9OlAAcd6T60tJQAHn+lSZPotR/55qTJ/yKAJm6mkpW6mkoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAKWoPiNE/vtk/RazKt6g2Zgv9xB+Z5qpTAKKKKACiiigAooooAKKKKA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",
-          password: "",
-          gender: "Male",
-          subcamp: "",
-
-          checkPasswordStrength() {
-            var strongRegex = new RegExp(
-              "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})"
-            );
-            var mediumRegex = new RegExp(
-              "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})"
-            );
-
-            let value = this.password;
-
-            if (strongRegex.test(value)) {
-              this.passwordStrengthText = "Strong password";
-            } else if (mediumRegex.test(value)) {
-              this.passwordStrengthText = "Could be stronger";
-            } else {
-              this.passwordStrengthText = "Too weak";
-            }
-          },
-        };
-      }
-      function toggle() {
-        var e = document.getElementById("condition_confirm");
-        e.classList.toggle("hidden");
-      }
-      function toggleNav() {
-        var e = document.getElementById("navbar");
-        e.classList.toggle("hidden");
-      }
-      function dropdown() {
-        return {
-          options: [],
-          selected: [],
-          show: false,
-          etc: false,
-          open() {
-            this.show = true;
-          },
-          close() {
-            this.show = false;
-          },
-          isOpen() {
-            return this.show === true;
-          },
-          select(index, event) {
-            if (!this.options[index].selected) {
-              this.options[index].selected = true;
-              this.options[index].element = event.target;
-              this.selected.push(index);
-            } else {
-              this.selected.splice(this.selected.lastIndexOf(index), 1);
-              this.options[index].selected = false;
-            }
-          },
-          remove(index, option) {
-            this.options[option].selected = false;
-            this.selected.splice(index, 1);
-          },
-          loadOptions() {
-            const options = document.getElementById("select").options;
-            for (let i = 0; i < options.length; i++) {
-              this.options.push({
-                value: options[i].value,
-                text: options[i].innerText,
-                selected:
-                  options[i].getAttribute("selected") != null
-                    ? options[i].getAttribute("selected")
-                    : false,
-              });
-            }
-          },
-          selectedValues() {
-            return this.selected.map((option) => {
-              return this.options[option].value;
-            });
-          },
-        };
-      }
-    </script>
-  </body>
-</html>

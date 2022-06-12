@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Applicant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -24,7 +24,7 @@ class FacebookAuthController extends Controller
           Create user if it's a new user.
           Update user information if user has already exists.
         */
-        $user = User::updateOrCreate([
+        $user = Applicant::updateOrCreate([
           'facebook_id' => $facebookUser->id,
         ], [
           'first_name' => $facebookUser->user['first_name'],
@@ -38,7 +38,7 @@ class FacebookAuthController extends Controller
 
         return redirect()->route('home');
       } catch(Throwable $e) {
-        return redirect()->route('welcome')->withErrors(['login_failed' => 'Login failed']);
+        return response($e->getMessage(),400);
       }
     }
 
@@ -46,6 +46,6 @@ class FacebookAuthController extends Controller
       Auth::logout();
       $request->session()->invalidate();
       $request->session()->regenerateToken();
-      return redirect()->route('welcome');
+      return redirect()->route('index');
     }
 }
