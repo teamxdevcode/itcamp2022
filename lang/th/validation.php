@@ -164,6 +164,33 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'ชื่อ',
+        'surname' => 'นามสกุล',
+        'email' => 'อีเมล',
+        'birthday' => 'วันเกิด',
+        'gender' => 'เพศ',
+        'blood_type' => 'หมู่โลหิต',
+        'religion' => 'ศาสนา',
+        'address' => 'ที่อยู่',
+        'province' => 'จังหวัด',
+        'district' => 'อำเภอ/เขต',
+        'subdistrict' => 'ตำบล/แขวง',
+        'phone' => 'เบอร์โทรศัพท์มือถือ',
+        'school' => 'โรงเรียน',
+        'education_level' => 'ระดับการศึกษา',
+        'educational_program' => 'แผนการเรียน/สาขาการเรียน',
+        'educational_certificate_file' => 'ไฟล์เอกสารรับรองผลการเรียน (ปพ.๑ ปพ.๗)',
+        'congenital_disease' => 'โรคประจำตัว',
+        'allergic_drug' => 'ยาที่แพ้',
+        'allergen' => 'อาหารที่แพ้',
+        'shirt_size' => 'ไซส์เสื้อ',
+        'known_us_from' => 'รู้จัก ITCAMP ครั้งที่ 18 จากที่ไหน',
+        'emergency_name' => 'ชื่อจริง (ผู้ติดต่อฉุกเฉิน)',
+        'emergency_surname' => 'นามสกุล (ผู้ติดต่อฉุกเฉิน)',
+        'emergency_phone' => 'เบอร์โทรศัพท์มือถือ (ผู้ติดต่อฉุกเฉิน)',
+        'emergency_relationship' => 'ความเกี่ยวข้อง (ผู้ติดต่อฉุกเฉิน)',
+        'subcamp' => 'ค่ายย่อย',
+    ],
 
 ];
