@@ -88,6 +88,7 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="ชื่อจริง"
                       wire:model.lazy="data.name"/>
                   </div>
 
@@ -96,6 +97,7 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="นามสกุล"
                       wire:model.lazy="data.surname"/>
                   </div>
                 </div>
@@ -106,6 +108,7 @@
                     <input
                       type="email"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="อีเมล"
                       wire:model.lazy="data.email"
                     />
                   </div>
@@ -117,6 +120,7 @@
                     <input
                       type="tel"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="เบอร์โทรศัพท์มือถือ"
                       wire:model.lazy="data.phone"
                     />
                   </div>
@@ -128,6 +132,7 @@
                     <input
                       type="date"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="วัน เดือน ปี เกิด"
                       wire:model.lazy="data.birthday"
                     />
                   </div>
@@ -189,6 +194,7 @@
                     cols="30"
                     rows="4"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                    placeholder="ที่อยู่ปัจจุบัน"
                     wire:model.lazy="data.address"
                   ></textarea>
                 </div>
@@ -197,11 +203,12 @@
                     <label
                       for="sub-district"
                       class="font-bold mb-1 text-gray-700 block"
-                      >ตำบล / แขวง</label
+                      >ตำบล/แขวง</label
                     >
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="ตำบล/แขวง"
                       wire:model.lazy="data.subdistrict"
                     />
                   </div>
@@ -209,11 +216,12 @@
                     <label
                       for="district"
                       class="font-bold mb-1 text-gray-700 block"
-                      >อำเภอ / เขต</label
+                      >อำเภอ/เขต</label
                     >
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="อำเภอ/เขต"
                       wire:model.lazy="data.district"
                     />
                   </div>
@@ -228,6 +236,7 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="จังหวัด"
                       wire:model.lazy="data.province"
                     />
                   </div>
@@ -236,11 +245,12 @@
                 <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลการศึกษา</h1>
                 <div class="mb-5">
                   <label for="school" class="font-bold mb-1 text-gray-700 block"
-                    >โรงเรียน / สถานศึกษา</label
+                    >โรงเรียน/สถานศึกษา</label
                   >
                   <input
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                    placeholder="โรงเรียน/สถานศึกษา"
                     wire:model.lazy="data.school"
                   />
                 </div>
@@ -271,11 +281,12 @@
                     <label
                       for="curriculum"
                       class="font-bold mb-1 text-gray-700 block"
-                      >แผนการเรียน / สาขาที่เรียน</label
+                      >แผนการเรียน/สาขาที่เรียน</label
                     >
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="แผนการเรียน/สาขาที่เรียน"
                       wire:model.lazy="data.educational_program"
                     />
                   </div>
@@ -315,22 +326,22 @@
                       เลือกไซส์เสื้อ
                     </option>
                     <option value="S">
-                      S (รอบอก 33 นิ้ว ความยาว 25 นิ้ว)
+                      S
                     </option>
                     <option value="M">
-                      M (รอบอก 36 นิ้ว ความยาว 27 นิ้ว)
+                      M
                     </option>
                     <option value="L">
-                      L (รอบอก 40 นิ้ว ความยาว 29 นิ้ว)
+                      L
                     </option>
                     <option value="XL">
-                      XL (รอบอก 44 นิ้ว ความยาว 29.5 นิ้ว)
+                      XL
                     </option>
                     <option value="XXL">
-                      XXL (รอบอก 48 นิ้ว ความยาว 30 นิ้ว)
+                      XXL
                     </option>
                     <option value="XXXL">
-                      XXXL (รอบอก 52 นิ้ว ความยาว 32 นิ้ว)
+                      XXXL
                     </option>
                   </select>
                 </div>
@@ -341,7 +352,7 @@
                     >รู้จัก ITCAMP ครั้งที่ 18 จากที่ไหน</label
                   >
                   <div class="my-4 grid grid-cols-1">
-                    <label class="inline-flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
                       <input
                         name="Facebook"
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
@@ -351,7 +362,7 @@
                       />
                       Facebook
                     </label>
-                    <label class="inline-flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
                       <input
                         name="Instagram"
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
@@ -361,7 +372,7 @@
                       />
                       Instagram
                     </label>
-                    <label class="inline-flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
                       <input
                         name="TikTok"
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
@@ -371,7 +382,7 @@
                       />
                       TikTok
                     </label>
-                    <label class="inline-flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
                       <input
                         name="ToBeIT'66"
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
@@ -381,7 +392,7 @@
                       />
                       ToBeIT'66
                     </label>
-                    <label class="inline-flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
                       <input
                         name="Twitter"
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
@@ -391,7 +402,7 @@
                       />
                       Twitter
                     </label>
-                    <label class="inline-flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
                       <input
                         name="เพื่อน"
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
@@ -401,7 +412,7 @@
                       />
                       เพื่อน
                     </label>
-                    <label class="inline-flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
                       <input
                         name="โรงเรียน"
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
@@ -411,7 +422,7 @@
                       />
                       โรงเรียน
                     </label>
-                    <label class="inline-flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
                       <input
                         name="ช่องทางอื่นๆ"
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
@@ -434,6 +445,7 @@
                   <input
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                    placeholder="โรคประจำตัว"
                     wire:model.lazy="data.congenital_disease"
                   />
                 </div>
@@ -446,6 +458,7 @@
                   <input
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                    placeholder="ยาที่แพ้ เช่น สารประกอบหรือกลุ่มยา"
                     wire:model.lazy="data.allergic_drug"
                   />
                 </div>
@@ -458,6 +471,7 @@
                   <input
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                    placeholder="อาหารที่แพ้"
                     wire:model.lazy="data.allergen"
                   />
                 </div>
@@ -494,6 +508,7 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="ชื่อจริง (ผู้ติดต่อฉุกเฉิน)"
                       wire:model.lazy="data.emergency_name"
                     />
                   </div>
@@ -506,6 +521,7 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="นามสกุล (ผู้ติดต่อฉุกเฉิน)"
                       wire:model.lazy="data.emergency_surname"
                     />
                   </div>
@@ -520,6 +536,7 @@
                     <input
                       type="tel"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="เบอร์โทรศัพท์มือถือ (ผู้ติดต่อฉุกเฉิน)"
                       wire:model.lazy="data.emergency_phone"
                     />
                   </div>
@@ -532,6 +549,7 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="ความเกี่ยวข้อง (ผู้ติดต่อฉุกเฉิน)"
                       wire:model.lazy="data.emergency_relationship"
                     />
                   </div>
@@ -554,56 +572,56 @@
                     class="flex space-y-5 md:space-y-0 md:space-x-5 flex-col md:flex-row"
                   >
                     <label
-                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm"
+                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm cursor-pointer"
                     >
                       <div class="text-teal-600 mr-3">
                         <input
                           type="radio"
                           value="Webtopia"
-                          class="form-radio focus:outline-none focus:shadow-outline"
-                          wire:model.lazy="data.subcamp"
+                          class="form-radio focus:outline-none focus:shadow-outline cursor-pointer"
+                          wire:model="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">Webtopia</div>
                     </label>
 
                     <label
-                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm"
+                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm cursor-pointer"
                     >
                       <div class="text-teal-600 mr-3">
                         <input
                           type="radio"
                           value="DataVergent"
-                          class="form-radio focus:outline-none focus:shadow-outline"
-                          wire:model.lazy="data.subcamp"
+                          class="form-radio focus:outline-none focus:shadow-outline cursor-pointer"
+                          wire:model="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">DataVergent</div>
                     </label>
 
                     <label
-                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm"
+                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm cursor-pointer"
                     >
                       <div class="text-teal-600 mr-3">
                         <input
                           type="radio"
                           value="Game Runner"
-                          class="form-radio focus:outline-none focus:shadow-outline"
-                          wire:model.lazy="data.subcamp"
+                          class="form-radio focus:outline-none focus:shadow-outline cursor-pointer"
+                          wire:model="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">Game Runner</div>
                     </label>
 
                     <label
-                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm"
+                      class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm cursor-pointer"
                     >
                       <div class="text-teal-600 mr-3">
                         <input
                           type="radio"
                           value="Nettapunk"
-                          class="form-radio focus:outline-none focus:shadow-outline"
-                          wire:model.lazy="data.subcamp"
+                          class="form-radio focus:outline-none focus:shadow-outline cursor-pointer"
+                          wire:model="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">Nettapunk</div>
