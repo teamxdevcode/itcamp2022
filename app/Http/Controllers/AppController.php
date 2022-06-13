@@ -7,12 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
-    public function index() {
-      return view('index');
-    }
-
     public function home() {
-      return view('home');
+      if (Auth::check()) {
+          return view('home');
+      }
+      return view('index');
     }
 
     public function register() {

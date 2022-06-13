@@ -2,8 +2,10 @@
       <div x-data="app()" x-cloak>
         <div class="max-w-3xl mx-auto px-4 pb-10 md:pt-10 md:pb-16">
 
-          @if ($errors->any)
-            {{$errors->first()}}
+          @if ($errors->all())
+            <div class="px-4 py-3 leading-normal text-red-100 bg-red-700 rounded-lg" role="alert">
+              <p>{{$errors->first()}}</p>
+            </div>
           @endif
 
           <div x-show.transition="$wire.step === 4">
@@ -963,17 +965,17 @@
           <div class="max-w-3xl mx-auto px-4">
             <div class="flex justify-between">
               <div class="w-1/2">
-                <button x-show="$wire.step > 1" @click="$wire.decrement()" document.body.scrollTop = 0;" class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border">
+                <button x-show="$wire.step > 1" @click="$wire.decrement()" wire:loading.attr="disabled" document.body.scrollTop = 0;" class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border">
                   ย้อนกลับ
                 </button>
               </div>
 
               <div class="w-1/2 text-right">
-                <button x-show="$wire.step < 3" @click="$wire.increment()" document.body.scrollTop = 0;" class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">
+                <button x-show="$wire.step < 3" @click="$wire.increment()" wire:loading.attr="disabled" document.body.scrollTop = 0;" class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">
                   ถัดไป
                 </button>
 
-                <button @click="$wire.submit()" x-show="$wire.step === 3" class="w-full md:w-64 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">
+                <button @click="$wire.submit()" x-show="$wire.step === 3" wire:loading.attr="disabled" class="w-full md:w-64 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">
                   ยืนยันข้อมูลส่วนตัว
                 </button>
               </div>

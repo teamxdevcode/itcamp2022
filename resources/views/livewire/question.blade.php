@@ -1,7 +1,9 @@
 <div x-data="app()" x-cloak>
   <div class="max-w-3xl mx-auto px-4 pb-10 md:pt-10 md:pb-16">
-    @if ($errors->any)
-      {{$errors->first()}}
+    @if ($errors->all())
+      <div class="px-4 py-3 leading-normal text-red-100 bg-red-700 rounded-lg" role="alert">
+        <p>{{$errors->first()}}</p>
+      </div>
     @endif
 
     <div x-show.transition="$wire.step === 3">
@@ -142,6 +144,7 @@
           <button
             x-show="$wire.step > 1"
             @click="$wire.decrement(); document.body.scrollTop = 0;"
+            wire:loading.attr="disabled"
             class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border"
           >
             ย้อนกลับ
@@ -152,6 +155,7 @@
           <button
             x-show="$wire.step < 2"
             @click="$wire.increment(); document.body.scrollTop = 0;"
+            wire:loading.attr="disabled"
             class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium"
           >
             ถัดไป

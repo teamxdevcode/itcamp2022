@@ -110,11 +110,15 @@
   <body class="h-screen flex flex-col relative bg-[#f5f5f5]">
     <nav class="hidden md:block bg-white w-full shadow-md py-6">
       <div class="flex justify-between container mx-auto items-center px-20">
-        <a href="index.html">ITCAMP18</a>
+        <a href="{{route('home')}}">ITCAMP18</a>
         <ul class="flex space-x-8">
-          <li>สถานะการสมัคร</li>
-          <li>ช่วยเหลือ</li>
-          <li>ยินดีต้อนรับกลับมา, Thanawat</li>
+          {{-- <li><a href="#">สถานะการสมัคร</a></li>
+          <li><a href="#">ช่วยเหลือ</a></li> --}}
+          @if (Auth::check())
+              <li><a href="{{route('auth.logout')}}">ออกจากระบบ</a></li>
+          @else
+              <li><a href="{{route('auth.login')}}">เข้าสู่ระบบ</a></li>
+          @endif
         </ul>
       </div>
     </nav>
@@ -138,21 +142,13 @@
       </div>
       <div class="mt-4 hidden" id="navbar">
         <ul class="flex flex-col space-y-2 items-end">
-          <li
-            class="p-2 hover:text-gray-800 hover:bg-gray-100 w-full flex justify-end rounded-md"
-          >
-            สถานะการสมัคร
-          </li>
-          <li
-            class="p-2 hover:text-gray-800 hover:bg-gray-100 w-full flex justify-end rounded-md"
-          >
-            ช่วยเหลือ
-          </li>
-          <li
-            class="p-2 hover:text-gray-800 hover:bg-gray-100 w-full flex justify-end rounded-md"
-          >
-            ยินดีต้อนรับกลับมา, Thanawat
-          </li>
+          {{-- <li class="p-2 hover:text-gray-800 hover:bg-gray-100 w-full flex justify-end rounded-md">สถานะการสมัคร</li>
+          <li class="p-2 hover:text-gray-800 hover:bg-gray-100 w-full flex justify-end rounded-md">ช่วยเหลือ</li> --}}
+          @if (Auth::check())
+            <li class="p-2 hover:text-gray-800 hover:bg-gray-100 w-full flex justify-end rounded-md"><a href="{{route('auth.logout')}}">ออกจากระบบ</a></li>
+          @else
+            <li class="p-2 hover:text-gray-800 hover:bg-gray-100 w-full flex justify-end rounded-md"><a href="{{route('auth.login')}}">เข้าสู่ระบบ</a></li>
+          @endif
         </ul>
       </div>
     </div>
