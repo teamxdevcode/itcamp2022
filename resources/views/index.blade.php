@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('main')
-    <div class="h-full flex items-center justify-center">
+    <div class="h-full flex flex-col items-center justify-center">
+      <img src="https://itcamp18.in.th/intro-logo.png" alt="" class="h-56 mb-6">
       <button
         class="font-semibold py-5 px-6 bg-blue-600 hover:bg-blue-700 transition-all ease-in-out duration-200 rounded-md text-white"
         type="button"

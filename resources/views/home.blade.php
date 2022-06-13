@@ -10,10 +10,10 @@
           <span class="text-green-600">บันทึกข้อมูลครบถ้วน</span>
         @endif
       </h1>
-      <a href="{{route('register')}}" class="w-3/4 md:w-1/4 rounded-md shadow-md px-8 py-5 text-white bg-blue-400 hover:bg-blue-500 flex items-center justify-center">
+      <a href="{{route('register')}}" class="w-3/4 md:w-1/4 rounded-md shadow-md px-8 py-5 text-white bg-blue-500 hover:bg-blue-600 flex items-center justify-center">
         <h1>กรอกข้อมูลส่วนตัว</h1>
       </a>
-      <a @isset(Auth::user()->registration)href="{{route('question')}}"@endisset class="@if(!isset(Auth::user()->registration)) bg-gray-400 cursor-not-allowed @else bg-blue-400 hover:bg-blue-500 @endif w-3/4 md:w-1/4 rounded-md shadow-md px-8 py-5 text-white flex items-center justify-center">
+      <a @isset(Auth::user()->registration)href="{{route('question')}}"@endisset class="@if(!isset(Auth::user()->registration)) bg-gray-400 cursor-not-allowed @else bg-blue-500 hover:bg-blue-600 @endif w-3/4 md:w-1/4 rounded-md shadow-md px-8 py-5 text-white flex items-center justify-center">
         <h1>ตอบคำถามค่าย</h1>
       </a>
     </div>
