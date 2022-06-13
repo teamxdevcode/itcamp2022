@@ -206,7 +206,7 @@
                       >ตำบล / แขวง</label
                     >
                     <input
-                      type="tel"
+                      type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                       placeholder="Enter your subdistrict..."
                       wire:model.lazy="data.subdistrict"
@@ -219,7 +219,7 @@
                       >อำเภอ / เขต</label
                     >
                     <input
-                      type="tel"
+                      type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                       placeholder="Enter your district..."
                       wire:model.lazy="data.district"
@@ -234,7 +234,7 @@
                       >จังหวัด</label
                     >
                     <input
-                      type="tel"
+                      type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                       placeholder="Enter your province..."
                       wire:model.lazy="data.province"
@@ -267,7 +267,7 @@
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                       wire:model.lazy="data.education_level"
                     >
-                      <option value="" selected disabled class="hidden">
+                      <option value="" selected hidden class="hidden">
                         เลือกระดับชั้น
                       </option>
                       <option value="M.4">ชั้นมัธยมศึกษาปีที่ 4</option>
@@ -301,8 +301,8 @@
                     @endif
                     <div class="w-full {{isset(Auth::user()->registration->educational_certificate) ? 'md:w-1/2' : ''}} flex items-start justify-center flex-col space-y-3">
 											<h1>{{ isset(Auth::user()->registration->educational_certificate) ? 'อัพโหลดรูปภาพใหม่' : 'อัพโหลดรูปภาพ' }}</h1>
-                      <input class="bg-white py-4 px-5 rounded-lg transition cursor-pointer shadow-sm w-full" type="file">
-                      <span class="text-gray-500 text-sm text-center">Supported formates: JPEG, PNG</span>
+                      <input class="bg-white py-4 px-5 rounded-lg transition cursor-pointer shadow-sm w-full" type="file" wire:model.lazy="educational_certificate_file">
+                      <span class="text-gray-500 text-sm text-center">รองรับไฟล์รูปภาพ: JPEG, PNG และขนาดไม่เกิน 1MB</span>
                     </div>
                   </div>
                 </div>
@@ -556,6 +556,9 @@
                   </div>
                 </div>
                 @if (!in_array(Auth::user()->registration?->subcamp, ['Webtopia','DataVergent','Game Runner','Nettapunk']))
+                <hr>
+                <h1 class="text-lg font-bold text-gray-700 leading-tight mt-4"># เลือกค่ายย่อย</h1>
+                <p class="mb-4 text-red-700 text-sm">สำคัญ! ค่ายย่อยสามารถเลือกได้เพียงครั้งเดียวและไม่สามารถเปลี่ยนแปลงได้ภายหลัง</p>
                 <div class="mb-5 flex items-center justify-center flex-col">
                   <img
                     src="https://media.discordapp.net/attachments/964882961797349438/984724891708317716/unknown.png"
