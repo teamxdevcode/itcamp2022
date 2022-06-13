@@ -21,5 +21,7 @@ class Applicant extends Authenticatable
         return $this->hasOne(Registration::class);
     }
 
-    public function answer() {}
+    public function answer() {
+        return $this->hasOne(Answer::class);
+    }
 }

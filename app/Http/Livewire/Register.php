@@ -18,6 +18,7 @@ class Register extends Component
     public $step = 1;
     public $educational_certificate_file = null;
     public $policy_confirmation = false;
+    public $known_us_from = [];
 
     public $rules = [
         'data.name' => 'required',
@@ -40,7 +41,7 @@ class Register extends Component
         'data.allergic_drug' => 'required',
         'data.allergen' => 'required',
         'data.shirt_size' => 'required',
-        'data.known_us_from' => 'required',
+        'known_us_from' => 'required',
         'data.emergency_name' => 'required',
         'data.emergency_surname' => 'required',
         'data.emergency_phone' => 'required|digits:10',
@@ -55,6 +56,8 @@ class Register extends Component
         if ($this->data->applicant_id) {
           $this->policy_confirmation = true;
         }
+
+        $this->known_us_from = (array)json_decode($this->data->known_us_from);
     }
 
     public function updated($propertyName) {
@@ -116,7 +119,7 @@ class Register extends Component
                   'allergic_drug' => $this->data->allergic_drug,
                   'allergen' => $this->data->allergen,
                   'shirt_size' => $this->data->shirt_size,
-                  'known_us_from' => $this->data->known_us_from,
+                  'known_us_from' => json_encode($this->known_us_from),
                   'emergency_name' => $this->data->emergency_name,
                   'emergency_surname' => $this->data->emergency_surname,
                   'emergency_phone' => $this->data->emergency_phone,

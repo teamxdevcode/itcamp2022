@@ -40,7 +40,7 @@ return new class extends Migration
             $table->string('emergency_surname');
             $table->char('emergency_phone', 10);
             $table->string('emergency_relationship');
-            $table->enum('subcamp',['Webtopia','DataVergent','Game Runner','Nettapunk']);
+            $table->enum('subcamp',['Webtopia','DataVergent','Game Runner','Nettapunk'])->index();
             $table->timestamps();
 
             $table->foreign('applicant_id')->references('id')->on('applicants');

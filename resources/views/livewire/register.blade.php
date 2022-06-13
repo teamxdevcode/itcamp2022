@@ -8,7 +8,7 @@
 
           <div x-show.transition="$wire.step === 4">
             <div
-              class="bg-white rounded-lg p-10 flex items-center shadow justify-between"
+              class="bg-white rounded-lg p-10 flex items-center shadow justify-center"
             >
               <div>
                 <svg class="mb-4 h-20 w-20 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
@@ -18,11 +18,6 @@
                 <h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">
                   ลงทะเบียนสำเร็จ
                 </h2>
-
-                <div class="text-gray-600 mb-8 min-w-full">
-                  Thank you. We have sent you an email to support@itcamp18.in.th
-                  Please click the link in the message to activate your account.
-                </div>
 
                 <a href="{{route('home')}}" class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border">
                   กลับหน้าหลัก
@@ -78,41 +73,59 @@
             <!-- /Top Navigation -->
 
             <!-- Step Content -->
-            <div class="py-10">
+            <div class="py-3 pb-10">
               <div x-show.transition.in="$wire.step === 1">
-                <div class="mb-5">
-                  <label
-                    for="firstname"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >ชื่อจริง</label
-                  >
-                  <input
-                    type="text"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="Enter your firstname..."
-                    wire:model.lazy="data.name"/>
+                <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลผู้สมัคร</h1>
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <div class="w-full md:w-1/2 mb-5">
+                    <label
+                      for="firstname"
+                      class="font-bold mb-1 text-gray-700 block"
+                      >ชื่อจริง</label
+                    >
+                    <input
+                      type="text"
+                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="Enter your firstname..."
+                      wire:model.lazy="data.name"/>
+                  </div>
+
+                  <div class="w-full md:w-1/2 mb-5">
+                    <label for="lastname"class="font-bold mb-1 text-gray-700 block">นามสกุล</label>
+                    <input
+                      type="text"
+                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="Enter your lastname..."
+                      wire:model.lazy="data.surname"/>
+                  </div>
                 </div>
 
-                <div class="mb-5">
-                  <label for="lastname"class="font-bold mb-1 text-gray-700 block">นามสกุล</label>
-                  <input
-                    type="text"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="Enter your lastname..."
-                    wire:model.lazy="data.surname"/>
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <div class="w-full md:w-1/2 mb-5">
+                    <label for="email" class="font-bold mb-1 text-gray-700 block">อีเมล</label>
+                    <input
+                      type="email"
+                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="Enter your email address..."
+                      wire:model.lazy="data.email"
+                    />
+                  </div>
+                  <div class="w-full md:w-1/2 mb-5">
+                    <label
+                      for="phone"
+                      class="font-bold mb-1 text-gray-700 block"
+                      >เบอร์โทรศัพท์มือถือ</label>
+                    <input
+                      type="tel"
+                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="Enter your phone number..."
+                      wire:model.lazy="data.phone"
+                    />
+                  </div>
                 </div>
 
-                <div class="mb-5">
-                  <label for="email" class="font-bold mb-1 text-gray-700 block">อีเมล</label>
-                  <input
-                    type="email"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="Enter your email address..."
-                    wire:model.lazy="data.email"
-                  />
-                </div>
-                <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
-                  <div class="w-full md:w-1/2">
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <div class="mb-5 w-full md:w-1/2">
                     <label for="dateofbirth"class="font-bold mb-1 text-gray-700 block">วัน เดือน ปี เกิด</label>
                     <input
                       type="date"
@@ -121,7 +134,7 @@
                       wire:model.lazy="data.birthday"
                     />
                   </div>
-                  <div class="w-full md:w-1/2">
+                  <div class="mb-5 w-full md:w-1/2">
                     <label
                       for="gender"
                       class="font-bold mb-1 text-gray-700 block"
@@ -145,27 +158,6 @@
                 <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
                   <div class="w-full md:w-1/2">
                     <label
-                      for="bloodgroup"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >กรุ๊ปเลือด</label
-                    >
-                    <select
-                      name="bloodgroup"
-                      id="bloodgroup"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      wire:model.lazy="data.blood_type"
-                    >
-                      <option value="" selected hidden class="hidden">
-                        เลือกกรุ๊ปเลือด *
-                      </option>
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="AB">AB</option>
-                      <option value="O">O</option>
-                    </select>
-                  </div>
-                  <div class="w-full md:w-1/2">
-                    <label
                       for="religion"
                       class="font-bold mb-1 text-gray-700 block"
                       >ศาสนา</label
@@ -186,6 +178,8 @@
                     </select>
                   </div>
                 </div>
+                <hr>
+                <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลที่อยู่ปัจจุบัน</h1>
                 <div class="mb-5">
                   <label
                     for="address"
@@ -203,47 +197,6 @@
                   ></textarea>
                 </div>
                 <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
-                  <div class="w-full md:w-1/2">
-                    <label
-                      for="province"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >จังหวัด</label
-                    >
-                    <input
-                      type="tel"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your province..."
-                      wire:model.lazy="data.province"
-                    />
-                  </div>
-                  <div class="w-full md:w-1/2 mt-5 md:mt-0">
-                    <label
-                      for="phone"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >เบอร์โทรศัพท์มือถือ</label>
-                    <input
-                      type="tel"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your phone number..."
-                      wire:model.lazy="data.phone"
-                    />
-                  </div>
-                </div>
-
-                <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
-                  <div class="w-full md:w-1/2">
-                    <label
-                      for="district"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >อำเภอ / เขต</label
-                    >
-                    <input
-                      type="tel"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your district..."
-                      wire:model.lazy="data.district"
-                    />
-                  </div>
                   <div class="w-full md:w-1/2 mt-5 md:mt-0">
                     <label
                       for="sub-district"
@@ -257,7 +210,37 @@
                       wire:model.lazy="data.subdistrict"
                     />
                   </div>
+                  <div class="w-full md:w-1/2">
+                    <label
+                      for="district"
+                      class="font-bold mb-1 text-gray-700 block"
+                      >อำเภอ / เขต</label
+                    >
+                    <input
+                      type="tel"
+                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="Enter your district..."
+                      wire:model.lazy="data.district"
+                    />
+                  </div>
                 </div>
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <div class="mb-5 w-full md:w-1/2">
+                    <label
+                      for="province"
+                      class="font-bold mb-1 text-gray-700 block"
+                      >จังหวัด</label
+                    >
+                    <input
+                      type="tel"
+                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="Enter your province..."
+                      wire:model.lazy="data.province"
+                    />
+                  </div>
+                </div>
+                <hr>
+                <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลการศึกษา</h1>
                 <div class="mb-5">
                   <label for="school" class="font-bold mb-1 text-gray-700 block"
                     >โรงเรียน / สถานศึกษา</label
@@ -350,6 +333,134 @@
                 <!--  -->
               </div>
               <div x-show.transition.in="$wire.step === 2">
+                <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลทั่วไป</h1>
+                <div class="mb-5">
+                  <label
+                    for="shirtSize"
+                    class="font-bold mb-1 text-gray-700 block"
+                    >ไซส์เสื้อที่ใส่</label
+                  >
+                  <select
+                    name="shirtSize"
+                    id="shirtSize"
+                    placeholder="เลือกไซส์เสื้อ"
+                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                    wire:model.lazy="data.shirt_size"
+                  >
+                    <option value="" select hidden class="hidden">
+                      เลือกไซส์เสื้อ
+                    </option>
+                    <option value="S">
+                      S (รอบอก 33 นิ้ว ความยาว 25 นิ้ว)
+                    </option>
+                    <option value="M">
+                      M (รอบอก 36 นิ้ว ความยาว 27 นิ้ว)
+                    </option>
+                    <option value="L">
+                      L (รอบอก 40 นิ้ว ความยาว 29 นิ้ว)
+                    </option>
+                    <option value="XL">
+                      XL (รอบอก 44 นิ้ว ความยาว 29.5 นิ้ว)
+                    </option>
+                    <option value="XXL">
+                      XXL (รอบอก 48 นิ้ว ความยาว 30 นิ้ว)
+                    </option>
+                    <option value="XXXL">
+                      XXXL (รอบอก 52 นิ้ว ความยาว 32 นิ้ว)
+                    </option>
+                  </select>
+                </div>
+                <div class="mb-5">
+                  <label
+                    for="firstname"
+                    class="font-bold mb-1 text-gray-700 block"
+                    >รู้จัก ITCAMP ครั้งที่ 18 จากที่ไหน</label
+                  >
+                  <div class="my-4 grid grid-cols-1">
+                    <label class="inline-flex items-center">
+                      <input
+                        name="Facebook"
+                        class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                        type="checkbox"
+                        value="Facebook"
+                        wire:model="known_us_from"
+                      />
+                      Facebook
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        name="Instagram"
+                        class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                        type="checkbox"
+                        value="Instagram"
+                        wire:model="known_us_from"
+                      />
+                      Instagram
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        name="TikTok"
+                        class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                        type="checkbox"
+                        value="TikTok"
+                        wire:model="known_us_from"
+                      />
+                      TikTok
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        name="ToBeIT'66"
+                        class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                        type="checkbox"
+                        value="ToBeIT'66"
+                        wire:model="known_us_from"
+                      />
+                      ToBeIT'66
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        name="Twitter"
+                        class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                        type="checkbox"
+                        value="Twitter"
+                        wire:model="known_us_from"
+                      />
+                      Twitter
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        name="เพื่อน"
+                        class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                        type="checkbox"
+                        value="Friends"
+                        wire:model="known_us_from"
+                      />
+                      เพื่อน
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        name="โรงเรียน"
+                        class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                        type="checkbox"
+                        value="School"
+                        wire:model="known_us_from"
+                      />
+                      โรงเรียน
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input
+                        name="ช่องทางอื่นๆ"
+                        class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                        type="checkbox"
+                        value="Other"
+                        wire:model="known_us_from"
+                      />
+                      ช่องทางอื่นๆ
+                    </label>
+                  </div>
+                </div>
+                <hr>
+                <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลสุขภาพ</h1>
                 <div class="mb-5">
                   <label
                     for="disease"
@@ -389,211 +500,56 @@
                     wire:model.lazy="data.allergen"
                   />
                 </div>
-                <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
-                  <div class="w-full md:w-1/2 mb-5 md:mb-0">
+                <div class="w-full md:w-1/2 mb-5">
+                  <label
+                    for="bloodgroup"
+                    class="font-bold mb-1 text-gray-700 block"
+                    >กรุ๊ปเลือด</label
+                  >
+                  <select
+                    name="bloodgroup"
+                    id="bloodgroup"
+                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                    wire:model.lazy="data.blood_type"
+                  >
+                    <option value="" selected hidden class="hidden">
+                      เลือกกรุ๊ปเลือด *
+                    </option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="AB">AB</option>
+                    <option value="O">O</option>
+                  </select>
+                </div>
+                <hr>
+                <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ช่องทางการติดต่อฉุกเฉิน</h1>
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <div class="mb-5 w-full md:w-1/2">
                     <label
-                      for="shirtSize"
+                      for="firstname"
                       class="font-bold mb-1 text-gray-700 block"
-                      >ไซส์เสื้อที่ใส่</label
+                      >ชื่อจริง</label
                     >
-                    <select
-                      name="shirtSize"
-                      id="shirtSize"
-                      placeholder="เลือกไซส์เสื้อ"
+                    <input
+                      type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      wire:model.lazy="data.shirt_size"
-                    >
-                      <option value="" select hidden class="hidden">
-                        เลือกไซส์เสื้อ
-                      </option>
-                      <option value="S">
-                        S (รอบอก 33 นิ้ว ความยาว 25 นิ้ว)
-                      </option>
-                      <option value="M">
-                        M (รอบอก 36 นิ้ว ความยาว 27 นิ้ว)
-                      </option>
-                      <option value="L">
-                        L (รอบอก 40 นิ้ว ความยาว 29 นิ้ว)
-                      </option>
-                      <option value="XL">
-                        XL (รอบอก 44 นิ้ว ความยาว 29.5 นิ้ว)
-                      </option>
-                      <option value="XXL">
-                        XXL (รอบอก 48 นิ้ว ความยาว 30 นิ้ว)
-                      </option>
-                      <option value="XXXL">
-                        XXXL (รอบอก 52 นิ้ว ความยาว 32 นิ้ว)
-                      </option>
-                    </select>
+                      placeholder="Enter your firstname..."
+                      wire:model.lazy="data.emergency_name"
+                    />
                   </div>
-                  <div class="w-full md:w-1/2 md:mb-0">
+                  <div class="mb-5 w-full md:w-1/2">
                     <label
-                      for="whereKnowWe"
-                      class="font-bold text-gray-700 block"
-                      >รู้จัก ITCAMP ครั้งที่ 18 จากที่ไหนไหน</label
+                      for="lastname"
+                      class="font-bold mb-1 text-gray-700 block"
+                      >นามสกุล</label
                     >
-                    <select x-cloak id="select" class="hidden">
-                      <option value="Facebook">Facebook</option>
-                      <option value="Instagram">Instagram</option>
-                      <option value="Twitter">Twitter</option>
-                      <option value="Tiktok">Tiktok</option>
-                      <option value="ToBeIT'66">ToBeIT'66</option>
-                      <option value="เพื่อน">เพื่อน</option>
-                      <option value="สถานศึกษา">สถานศึกษา</option>
-                      <option value="ช่องทางอื่น">ช่องทางอื่น ๆ</option>
-                    </select>
-
-                    <div
-                      x-data="dropdown()"
-                      x-init="loadOptions()"
-                      class="w-full flex flex-col items-center h-full mx-auto"
-                    >
-                      <input
-                        name="values"
-                        type="hidden"
-                        x-bind:value="selectedValues()"
-                      />
-                      <div class="inline-block relative w-full">
-                        <div class="flex flex-col relative">
-                          <div x-on:click="open" class="w-full">
-                            <div
-                              class="mt-1 p-2 flex shadow-sm rounded-lg bg-white"
-                            >
-                              <div class="flex flex-auto flex-wrap">
-                                <template
-                                  x-for="(option,index) in selected"
-                                  :key="options[option].value"
-                                >
-                                  <div
-                                    class="flex justify-center items-center m-1 font-medium py-1 px-1 bg-white rounded border"
-                                  >
-                                    <div
-                                      class="text-xs font-normal leading-none max-w-full flex-initial x-model="
-                                      options[option]
-                                      x-text="options[option].text"
-                                    ></div>
-                                    <div
-                                      class="flex flex-auto flex-row-reverse"
-                                    >
-                                      <div
-                                        x-on:click.stop="remove(index,option)"
-                                      >
-                                        <svg class="fill-current h-4 w-4" role="button" viewBox="0 0 20 20">
-                                          <path d="M14.348,14.849c-0.469,0.469-1.229,0.469-1.697,0L10,11.819l-2.651,3.029c-0.469,0.469-1.229,0.469-1.697,0c-0.469-0.469-0.469-1.229,0-1.697l2.758-3.15L5.651,6.849c-0.469-0.469-0.469-1.228,0-1.697s1.228-0.469,1.697,0L10,8.183l2.651-3.031c0.469-0.469,1.228-0.469,1.697,0s0.469,1.229,0,1.697l-2.758,3.152l2.758,3.15C14.817,13.62,14.817,14.38,14.348,14.849z"/>
-                                        </svg>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </template>
-                                <div
-                                  x-show="selected.length == 0"
-                                  class="flex-1"
-                                >
-                                  <input
-                                    placeholder="เลือกช่องทาง"
-                                    class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800"
-                                    x-bind:value="selectedValues()"
-                                    wire:model.lazy="data.known_us_from"
-                                  />
-                                </div>
-                              </div>
-                              <div
-                                class="text-gray-300 w-8 py-1 pl-6 flex items-center"
-                              >
-                                <button
-                                  type="button"
-                                  x-show="isOpen() === true"
-                                  x-on:click="open"
-                                  class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none"
-                                >
-                                  <svg class="fill-current h-3 w-3" viewBox="0 0 20 20">
-                                    <path d="M2.582,13.891c-0.272,0.268-0.709,0.268-0.979,0s-0.271-0.701,0-0.969l7.908-7.83c0.27-0.268,0.707-0.268,0.979,0l7.908,7.83c0.27,0.268,0.27,0.701,0,0.969c-0.271,0.268-0.709,0.268-0.978,0L10,6.75L2.582,13.891z"/>
-                                  </svg>
-                                </button>
-                                <button
-                                  type="button"
-                                  x-show="isOpen() === false"
-                                  @click="close"
-                                  class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none"
-                                >
-                                  <svg version="1.1" class="fill-current h-3 w-3" viewBox="0 0 20 20">
-                                    <path d="M17.418,6.109c0.272-0.268,0.709-0.268,0.979,0s0.271,0.701,0,0.969l-7.908,7.83c-0.27,0.268-0.707,0.268-0.979,0l-7.908-7.83c-0.27-0.268-0.27-0.701,0-0.969c0.271-0.268,0.709-0.268,0.979,0L10,13.25L17.418,6.109z"/>
-                                  </svg>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="w-full px-4">
-                            <div
-                              x-show.transition.origin.top="isOpen()"
-                              class="absolute shadow top-100 bg-white z-40 w-full left-0 rounded max-h-select"
-                              x-on:click.away="close"
-                            >
-                              <div
-                                class="flex flex-col w-full overflow-y-auto h-64"
-                              >
-                                <template
-                                  x-for="(option,index) in options"
-                                  :key="option"
-                                  class="overflow-auto"
-                                >
-                                  <div
-                                    class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-gray-100"
-                                    @click="select(index,$event)"
-                                  >
-                                    <div
-                                      class="flex w-full items-center p-2 pl-2 border-transparent border-l-2 relative"
-                                    >
-                                      <div
-                                        class="w-full items-center flex justify-between"
-                                      >
-                                        <div
-                                          class="mx-2 leading-6"
-                                          x-model="option"
-                                          x-text="option.text"
-                                        ></div>
-                                        <div x-show="option.selected">
-                                          <svg class="svg-icon" viewBox="0 0 20 20">
-                                            <path fill="none" d="M7.197,16.963H7.195c-0.204,0-0.399-0.083-0.544-0.227l-6.039-6.082c-0.3-0.302-0.297-0.788,0.003-1.087C0.919,9.266,1.404,9.269,1.702,9.57l5.495,5.536L18.221,4.083c0.301-0.301,0.787-0.301,1.087,0c0.301,0.3,0.301,0.787,0,1.087L7.741,16.738C7.596,16.882,7.401,16.963,7.197,16.963z"></path>
-                                          </svg>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </template>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <input
+                      type="text"
+                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="Enter your lastname..."
+                      wire:model.lazy="data.emergency_surname"
+                    />
                   </div>
-                </div>
-                <div class="mb-5">
-                  <label
-                    for="firstname"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >ชื่อจริง</label
-                  >
-                  <input
-                    type="text"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="Enter your firstname..."
-                    wire:model.lazy="data.emergency_name"
-                  />
-                </div>
-                <div class="mb-5">
-                  <label
-                    for="lastname"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >นามสกุล</label
-                  >
-                  <input
-                    type="text"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="Enter your lastname..."
-                    wire:model.lazy="data.emergency_surname"
-                  />
                 </div>
                 <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
                   <div class="w-full md:w-1/2">
@@ -623,7 +579,7 @@
                     />
                   </div>
                 </div>
-                @if (!in_array($data->subcamp, ['Webtopia','DataVergent','Game Runner','Nettapunk']))
+                @if (!in_array(Auth::user()->registration?->subcamp, ['Webtopia','DataVergent','Game Runner','Nettapunk']))
                 <div class="mb-5 flex items-center justify-center flex-col">
                   <img
                     src="https://media.discordapp.net/attachments/964882961797349438/984724891708317716/unknown.png"
