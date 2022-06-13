@@ -88,7 +88,6 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your firstname..."
                       wire:model.lazy="data.name"/>
                   </div>
 
@@ -97,7 +96,6 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your lastname..."
                       wire:model.lazy="data.surname"/>
                   </div>
                 </div>
@@ -108,7 +106,6 @@
                     <input
                       type="email"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your email address..."
                       wire:model.lazy="data.email"
                     />
                   </div>
@@ -120,7 +117,6 @@
                     <input
                       type="tel"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your phone number..."
                       wire:model.lazy="data.phone"
                     />
                   </div>
@@ -132,7 +128,6 @@
                     <input
                       type="date"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your date..."
                       wire:model.lazy="data.birthday"
                     />
                   </div>
@@ -193,7 +188,6 @@
                     id="address"
                     cols="30"
                     rows="4"
-                    placeholder="123/45 ถนนพัฒนา ซอยปรับปรุง"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     wire:model.lazy="data.address"
                   ></textarea>
@@ -208,7 +202,6 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your subdistrict..."
                       wire:model.lazy="data.subdistrict"
                     />
                   </div>
@@ -221,7 +214,6 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your district..."
                       wire:model.lazy="data.district"
                     />
                   </div>
@@ -236,7 +228,6 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your province..."
                       wire:model.lazy="data.province"
                     />
                   </div>
@@ -250,7 +241,6 @@
                   <input
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="Enter your school ..."
                     wire:model.lazy="data.school"
                   />
                 </div>
@@ -286,7 +276,6 @@
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your curriculum ..."
                       wire:model.lazy="data.educational_program"
                     />
                   </div>
@@ -319,7 +308,6 @@
                   <select
                     name="shirtSize"
                     id="shirtSize"
-                    placeholder="เลือกไซส์เสื้อ"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                     wire:model.lazy="data.shirt_size"
                   >
@@ -446,7 +434,6 @@
                   <input
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="Enter your disease ..."
                     wire:model.lazy="data.congenital_disease"
                   />
                 </div>
@@ -459,7 +446,6 @@
                   <input
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="เช่น ยาแก้ไอ ยาแก้อักเสบ ยาฆ่าเชื้อ..."
                     wire:model.lazy="data.allergic_drug"
                   />
                 </div>
@@ -472,7 +458,6 @@
                   <input
                     type="text"
                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="เช่น กุ้ง อาหารทะเล ถั่วปากอ้า ..."
                     wire:model.lazy="data.allergen"
                   />
                 </div>
@@ -504,12 +489,11 @@
                     <label
                       for="firstname"
                       class="font-bold mb-1 text-gray-700 block"
-                      >ชื่อจริง</label
+                      >ชื่อจริง (ผู้ติดต่อฉุกเฉิน)</label
                     >
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your firstname..."
                       wire:model.lazy="data.emergency_name"
                     />
                   </div>
@@ -517,12 +501,11 @@
                     <label
                       for="lastname"
                       class="font-bold mb-1 text-gray-700 block"
-                      >นามสกุล</label
+                      >นามสกุล (ผู้ติดต่อฉุกเฉิน)</label
                     >
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your lastname..."
                       wire:model.lazy="data.emergency_surname"
                     />
                   </div>
@@ -532,12 +515,11 @@
                     <label
                       for="phone"
                       class="font-bold mb-1 text-gray-700 block"
-                      >เบอร์โทรศัพท์มือถือ</label
+                      >เบอร์โทรศัพท์มือถือ (ผู้ติดต่อฉุกเฉิน)</label
                     >
                     <input
                       type="tel"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your phone number..."
                       wire:model.lazy="data.emergency_phone"
                     />
                   </div>
@@ -545,12 +527,11 @@
                     <label
                       for="relevant"
                       class="font-bold mb-1 text-gray-700 block"
-                      >ความเกี่ยวข้อง</label
+                      >ความเกี่ยวข้อง (ผู้ติดต่อฉุกเฉิน)</label
                     >
                     <input
                       type="text"
                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="Enter your relevant..."
                       wire:model.lazy="data.emergency_relationship"
                     />
                   </div>
