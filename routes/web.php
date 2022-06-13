@@ -40,6 +40,6 @@ Route::controller(AppController::class)->group(function() {
       return response()->stream(function () use ($filename) {
         FileVault::streamDecrypt("educational-certificates/{$filename}");
       }, 200, ["Content-Type" => "image/png"]);
-    });
+    })->name('educational-certificate');
   });
 });
