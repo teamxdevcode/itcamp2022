@@ -182,8 +182,6 @@ class Question extends Component
     }
 
     public function submit() {
-        $this->validate();
-
         Auth::user()->answer()->updateOrCreate(
             ['applicant_id' => Auth::id()],
             [
