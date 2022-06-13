@@ -44,7 +44,7 @@ class Question extends Component
           'image' => 'webtopia_quiz_3.png',
         ],
         [
-          'question' => 'จงเขียน function getSum ที่จะรับ array [“h3llo”, “w0rld”, “th1s”, “is”, “w3bt0pi4”] เข้ามาและ return ผลรวมของเลขโดดทั้งหมดที่แทรกอยู่ภายในคำแต่ละคำ เช่น “m0rn1n9” จะต้องเป็น 0+1+9',
+          'question' => 'จงเขียน function getSum ที่จะรับ array [“h3llo”, “w0rld”, “th1s”, “is”, “w3bt0pi4”] เข้ามาและ return ผลรวมของเลขโดดทั้งหมดที่แทรกอยู่ภายในคำแต่ละคำ เช่น “m0rn1n9” จะต้องเป็น 0+1+9 (ใช้ภาษา JavaScript เท่านั้น)',
           'answer' => null,
         ],
         [
