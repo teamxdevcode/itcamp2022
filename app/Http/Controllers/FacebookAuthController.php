@@ -42,6 +42,10 @@ class FacebookAuthController extends Controller
 
         return redirect()->route('home');
       } catch(Throwable $e) {
+        if (config('app.env') === 'local') {
+            return dd($e->getMessage());
+        }
+
         return redirect()->route('home');
       }
     }
