@@ -33,6 +33,6 @@ return [
     'facebook' => [
         'client_id' => '569062614818513',
         'client_secret' => '87e5aa77d0b0b65ff3d3850c6ea688ac',
-        'redirect' => 'https://itcamp2022.localhost/auth/callback',
+        'redirect' => config('app.url').'/auth/callback',
     ],
 ];
