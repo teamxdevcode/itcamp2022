@@ -87,7 +87,7 @@ class Register extends Component
         $this->validate();
 
         if (!$this->policy_confirmation) {
-            return $this->addError('policy_confirmation', 'กรุณายอมรับข้อตกลงนะจ้ะ');
+            return $this->addError('policy_confirmation', 'กรุณารับทราบและยอมรับข้อตกลงทั้งหมด');
         }
 
         try {
