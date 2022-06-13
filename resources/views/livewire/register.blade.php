@@ -292,7 +292,7 @@
                   </div>
                 </div>
                 <div class="mb-5">
-                  <label for="school_confirmation" class="font-bold mb-1 text-gray-700 block">เอกสารรับรองผลการเรียน (เช่น ปพ.๑ หรือ ปพ.๗)</label>
+                  <label for="school_confirmation" class="font-bold mb-1 text-gray-700 block">ใบรับรองผลการเรียน (ให้ไช้ ปพ.1 หรือ ปพ.7 เท่านั้น)</label>
                   <div class="flex md:flex-row flex-col gap-5">
                     @if(isset(Auth::user()->registration->educational_certificate))
                     <div class="w-full md:w-1/2 flex flex-col items-center justify-center p-5 border border-gray-300 rounded-lg border-dashed">
