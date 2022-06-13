@@ -12,7 +12,11 @@ class FacebookAuthController extends Controller
 {
     public function redirect() {
       /* Redirect to Facebook for authentication. */
-      return Socialite::driver('facebook')->setScopes(['email'])->redirect();
+      try {
+          return Socialite::driver('facebook')->setScopes(['email'])->redirect();
+      } catch (Throwable $e) {
+          return redirect()->route('home');
+      }
     }
 
     public function callback() {
@@ -38,7 +42,7 @@ class FacebookAuthController extends Controller
 
         return redirect()->route('home');
       } catch(Throwable $e) {
-        return response($e->getMessage(),400);
+        return redirect()->route('home');
       }
     }
 
