@@ -929,7 +929,7 @@
                     id="confirmPolicy"
                     wire:model="policy_confirmation"
                   />
-                  <label for="confirmPolicy">ยอมรับข้อตกลงมั้ยจ้ะ</label>
+                  <label for="confirmPolicy">รับทราบและยอมรับข้อตกลงทั้งหมด</label>
                 </div>
               </div>
             </div>
