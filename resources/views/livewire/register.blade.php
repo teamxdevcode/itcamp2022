@@ -362,7 +362,7 @@
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
                         type="checkbox"
                         value="Facebook"
-                        wire:model="known_us_from"
+                        wire:model.defer="known_us_from"
                       />
                       Facebook
                     </label>
@@ -372,7 +372,7 @@
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
                         type="checkbox"
                         value="Instagram"
-                        wire:model="known_us_from"
+                        wire:model.defer="known_us_from"
                       />
                       Instagram
                     </label>
@@ -382,7 +382,7 @@
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
                         type="checkbox"
                         value="TikTok"
-                        wire:model="known_us_from"
+                        wire:model.defer="known_us_from"
                       />
                       TikTok
                     </label>
@@ -392,7 +392,7 @@
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
                         type="checkbox"
                         value="ToBeIT'66"
-                        wire:model="known_us_from"
+                        wire:model.defer="known_us_from"
                       />
                       ToBeIT'66
                     </label>
@@ -402,7 +402,7 @@
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
                         type="checkbox"
                         value="Twitter"
-                        wire:model="known_us_from"
+                        wire:model.defer="known_us_from"
                       />
                       Twitter
                     </label>
@@ -412,7 +412,7 @@
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
                         type="checkbox"
                         value="Friends"
-                        wire:model="known_us_from"
+                        wire:model.defer="known_us_from"
                       />
                       เพื่อน
                     </label>
@@ -422,7 +422,7 @@
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
                         type="checkbox"
                         value="School"
-                        wire:model="known_us_from"
+                        wire:model.defer="known_us_from"
                       />
                       โรงเรียน
                     </label>
@@ -432,7 +432,7 @@
                         class="text-green-500 w-5 h-5 mr-2 focus:ring-green-400 focus:ring-opacity-25 border border-gray-300 rounded"
                         type="checkbox"
                         value="Other"
-                        wire:model="known_us_from"
+                        wire:model.defer="known_us_from"
                       />
                       ช่องทางอื่นๆ
                     </label>
@@ -583,7 +583,8 @@
                           type="radio"
                           value="Webtopia"
                           class="form-radio focus:outline-none focus:shadow-outline cursor-pointer"
-                          wire:model="data.subcamp"
+                          name="subcamp-selection"
+                          wire:model.defer="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">Webtopia</div>
@@ -597,7 +598,8 @@
                           type="radio"
                           value="DataVergent"
                           class="form-radio focus:outline-none focus:shadow-outline cursor-pointer"
-                          wire:model="data.subcamp"
+                          name="subcamp-selection"
+                          wire:model.defer="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">DataVergent</div>
@@ -611,7 +613,8 @@
                           type="radio"
                           value="Game Runner"
                           class="form-radio focus:outline-none focus:shadow-outline cursor-pointer"
-                          wire:model="data.subcamp"
+                          name="subcamp-selection"
+                          wire:model.defer="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">Game Runner</div>
@@ -625,7 +628,8 @@
                           type="radio"
                           value="Nettapunk"
                           class="form-radio focus:outline-none focus:shadow-outline cursor-pointer"
-                          wire:model="data.subcamp"
+                          name="subcamp-selection"
+                          wire:model.defer="data.subcamp"
                         />
                       </div>
                       <div class="select-none text-gray-700">Nettapunk</div>
