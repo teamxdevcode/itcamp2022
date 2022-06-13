@@ -36,7 +36,7 @@ class Register extends Component
         'data.school' => 'required',
         'data.education_level' => 'required|in:M.4,M.5,M.6,HVC.,TC.',
         'data.educational_program' => 'required',
-        'educational_certificate_file' => 'required|image|max:1024',
+        'educational_certificate_file' => 'required|mimes:jpeg,png,pdf|max:1024',
         'data.congenital_disease' => 'required',
         'data.allergic_drug' => 'required',
         'data.allergen' => 'required',

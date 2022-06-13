@@ -292,17 +292,21 @@
                   </div>
                 </div>
                 <div class="mb-5">
-                  <label for="school_confirmation" class="font-bold mb-1 text-gray-700 block">ใบรับรองผลการเรียน (เช่น ปพ.1 ปพ.7)</label>
+                  <label for="school_confirmation" class="font-bold mb-1 text-gray-700 block">เอกสารรับรองผลการเรียน (เช่น ปพ.๑ หรือ ปพ.๗)</label>
                   <div class="flex md:flex-row flex-col gap-5">
                     @if(isset(Auth::user()->registration->educational_certificate))
                     <div class="w-full md:w-1/2 flex flex-col items-center justify-center p-5 border border-gray-300 rounded-lg border-dashed">
+                        @if (strtolower(pathinfo(substr("educational-certificates/".Auth::user()->registration->educational_certificate, 0, -4), PATHINFO_EXTENSION)) === 'pdf')
+                        <a href="{{route('educational-certificate')}}" target="_blank" class="text-blue-500 hover:text-blue-400 underline">คลิกเพื่อดูไฟล์ปัจจุบัน</a>
+                        @else
                         <a href="{{route('educational-certificate')}}" target="_blank"><img src="{{route('educational-certificate')}}"/></a>
+                        @endif
                     </div>
                     @endif
                     <div class="w-full {{isset(Auth::user()->registration->educational_certificate) ? 'md:w-1/2' : ''}} flex items-start justify-center flex-col space-y-3">
-											<h1>{{ isset(Auth::user()->registration->educational_certificate) ? 'อัพโหลดรูปภาพใหม่' : 'อัพโหลดรูปภาพ' }}</h1>
+											<h1>{{ isset(Auth::user()->registration->educational_certificate) ? 'อัพโหลดไฟล์ใหม่' : 'อัพโหลดไฟล์' }}</h1>
                       <input class="bg-white py-4 px-5 rounded-lg transition cursor-pointer shadow-sm w-full" type="file" wire:model.lazy="educational_certificate_file">
-                      <span class="text-gray-500 text-sm text-center">รองรับไฟล์รูปภาพ: JPEG, PNG และขนาดไม่เกิน 1MB</span>
+                      <span class="text-gray-500 text-sm text-center">รองรับไฟล์: JPEG, PNG และ PDF และมีขนาดไม่เกิน 1MB</span>
                     </div>
                   </div>
                 </div>
