@@ -4,7 +4,11 @@
 
           @if ($errors->all())
             <div class="px-4 py-3 leading-normal text-red-100 bg-red-700 rounded-lg" role="alert">
-              <p>{{$errors->first()}}</p>
+              @if ($errors->has('policy_confirmation'))
+              <p>{{$errors->first('policy_confirmation')}}</p>
+              @else
+              <p>ข้อมูลไม่ครบถ้วนหรือไม่ถูกต้อง</p>
+              @endif
             </div>
           @endif
 
@@ -79,220 +83,45 @@
               <div x-show.transition.in="$wire.step === 1">
                 <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลผู้สมัคร</h1>
                 <div class="flex md:space-x-3 flex-col md:flex-row">
-                  <div class="w-full md:w-1/2 mb-5">
-                    <label
-                      for="firstname"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >ชื่อจริง</label
-                    >
-                    <input
-                      type="text"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="ชื่อจริง"
-                      wire:model.lazy="data.name"/>
-                  </div>
-
-                  <div class="w-full md:w-1/2 mb-5">
-                    <label for="lastname"class="font-bold mb-1 text-gray-700 block">นามสกุล</label>
-                    <input
-                      type="text"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="นามสกุล"
-                      wire:model.lazy="data.surname"/>
-                  </div>
+                  <x-inputs.input placeholder="ชื่อจริง" full="false" type="text" name="ชื่อจริง" binding="data.name"></x-inputs.input>
+                  <x-inputs.input placeholder="นามสกุล" full="false" type="text" name="นามสกุล" binding="data.surname"></x-inputs.input>
                 </div>
 
                 <div class="flex md:space-x-3 flex-col md:flex-row">
-                  <div class="w-full md:w-1/2 mb-5">
-                    <label for="email" class="font-bold mb-1 text-gray-700 block">อีเมล</label>
-                    <input
-                      type="email"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="อีเมล"
-                      wire:model.lazy="data.email"
-                    />
-                  </div>
-                  <div class="w-full md:w-1/2 mb-5">
-                    <label
-                      for="phone"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >เบอร์โทรศัพท์มือถือ</label>
-                    <input
-                      type="tel"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="เบอร์โทรศัพท์มือถือ"
-                      wire:model.lazy="data.phone"
-                    />
-                  </div>
+                  <x-inputs.input placeholder="อีเมล" full="false" type="email" name="อีเมล" binding="data.email"></x-inputs.input>
+                  <x-inputs.input placeholder="เบอร์โทรศัพท์มือถือ" full="false" type="tel" name="เบอร์โทรศัพท์มือถือ" binding="data.phone"></x-inputs.input>
                 </div>
 
                 <div class="flex md:space-x-3 flex-col md:flex-row">
-                  <div class="mb-5 w-full md:w-1/2">
-                    <label for="dateofbirth"class="font-bold mb-1 text-gray-700 block">วัน เดือน ปี เกิด</label>
-                    <input
-                      type="date"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="วัน เดือน ปี เกิด"
-                      wire:model.lazy="data.birthday"
-                    />
-                  </div>
-                  <div class="mb-5 w-full md:w-1/2">
-                    <label
-                      for="gender"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >เพศ</label
-                    >
-                    <select
-                      name="gender"
-                      id="gender"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      wire:model.lazy="data.gender"
-                    >
-                      <option value="" selected hidden class="hidden">
-                        เลือกเพศ *
-                      </option>
-                      <option value="Male">ชาย</option>
-                      <option value="Female">หญิง</option>
-                      <option value="LGBTQ+">LGBTQ+</option>
-                    </select>
-                  </div>
+                  <x-inputs.input placeholder="วันเกิด" full="false" type="date" name="วันเกิด" binding="data.birthday"></x-inputs.input>
+                  <x-inputs.select full="false" name="เพศ" binding="data.gender" :options="[['Male','ชาย'],['Female','หญิง'],['LGBTQ+','LGBTQ+']]"></x-inputs.select>
                 </div>
-                <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
-                  <div class="w-full md:w-1/2">
-                    <label
-                      for="religion"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >ศาสนา</label
-                    >
-                    <select
-                      name="religion"
-                      id="religion"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      wire:model.lazy="data.religion"
-                    >
-                      <option value="" selected hidden class="hidden">
-                        เลือกศาสนา *
-                      </option>
-                      <option value="Buddhism">พุทธ</option>
-                      <option value="Christianity">คริสต์</option>
-                      <option value="Islam">อิสลาม</option>
-                      <option value="Other">อื่นๆ</option>
-                    </select>
-                  </div>
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <x-inputs.select full="false" name="ศาสนา" binding="data.religion" :options="[['Buddhism','พุทธ'],['Christianity','คริสต์'],['Islam','อิสลาม'],['Other','อื่น ๆ']]"></x-inputs.select>
                 </div>
                 <hr>
                 <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลที่อยู่ปัจจุบัน</h1>
                 <div class="mb-5">
-                  <label
-                    for="address"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >ที่อยู่ปัจจุบัน</label
-                  >
-                  <textarea
-                    name="address"
-                    id="address"
-                    cols="30"
-                    rows="4"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="ที่อยู่ปัจจุบัน"
-                    wire:model.lazy="data.address"
-                  ></textarea>
-                </div>
-                <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
-                  <div class="w-full md:w-1/2 mt-5 md:mt-0">
-                    <label
-                      for="sub-district"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >ตำบล/แขวง</label
-                    >
-                    <input
-                      type="text"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="ตำบล/แขวง"
-                      wire:model.lazy="data.subdistrict"
-                    />
-                  </div>
-                  <div class="w-full md:w-1/2">
-                    <label
-                      for="district"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >อำเภอ/เขต</label
-                    >
-                    <input
-                      type="text"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="อำเภอ/เขต"
-                      wire:model.lazy="data.district"
-                    />
-                  </div>
+                  <x-inputs.textarea placeholder="ที่อยู่" full="false" name="ที่อยู่" binding="data.address" full="true"></x-inputs.textarea>
                 </div>
                 <div class="flex md:space-x-3 flex-col md:flex-row">
-                  <div class="mb-5 w-full md:w-1/2">
-                    <label
-                      for="province"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >จังหวัด</label
-                    >
-                    <input
-                      type="text"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="จังหวัด"
-                      wire:model.lazy="data.province"
-                    />
-                  </div>
+                  <x-inputs.input placeholder="ตำบล/แขวง" full="false" type="text" name="ตำบล/แขวง" binding="data.subdistrict"></x-inputs.input>
+                  <x-inputs.input placeholder="อำเภอ/เขต" full="false" type="text" name="อำเภอ/เขต" binding="data.district"></x-inputs.input>
+                </div>
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <x-inputs.input placeholder="จังหวัด" full="false" type="text" name="จังหวัด" binding="data.province"></x-inputs.input>
                 </div>
                 <hr>
                 <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลการศึกษา</h1>
-                <div class="mb-5">
-                  <label for="school" class="font-bold mb-1 text-gray-700 block"
-                    >โรงเรียน/สถานศึกษา</label
-                  >
-                  <input
-                    type="text"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="โรงเรียน/สถานศึกษา"
-                    wire:model.lazy="data.school"
-                  />
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <x-inputs.input placeholder="โรงเรียน/สถานศึกษา" full="false" type="text" name="โรงเรียน/สถานศึกษา" binding="data.school" full='false'></x-inputs.input>
                 </div>
-                <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
-                  <div class="mb-5 md:w-1/2 w-full">
-                    <label
-                      for="grade"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >ศึกษาอยู่ในระดับชั้น</label
-                    >
-                    <select
-                      name="grade"
-                      id="grade"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      wire:model.lazy="data.education_level"
-                    >
-                      <option value="" selected hidden class="hidden">
-                        เลือกระดับชั้น
-                      </option>
-                      <option value="M.4">ชั้นมัธยมศึกษาปีที่ 4</option>
-                      <option value="M.5">ชั้นมัธยมศึกษาปีที่ 5</option>
-                      <option value="M.6">ชั้นมัธยมศึกษาปีที่ 6</option>
-                      <option value="HVC.">ปวช.</option>
-                      <option value="TC.">ปวส.</option>
-                    </select>
-                  </div>
-                  <div class="mb-5 w-full md:w-1/2">
-                    <label
-                      for="curriculum"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >แผนการเรียน/สาขาที่เรียน</label
-                    >
-                    <input
-                      type="text"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="แผนการเรียน/สาขาที่เรียน"
-                      wire:model.lazy="data.educational_program"
-                    />
-                  </div>
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <x-inputs.select full="false" name="ระดับการศึกษา" binding="data.education_level" :options="[['M.4','ชั้นมัธยมศึกษาปีที่ 4'],['M.5','ชั้นมัธยมศึกษาปีที่ 5'],['M.6','ชั้นมัธยมศึกษาปีที่ 6'],['HVC.','ประกาศนียบัตรวิชาชีพ (ปวช.)']]"></x-inputs.select>
+                  <x-inputs.input placeholder="แผนการเรียน/สาขาที่เรียน" full="false" type="text" name="แผนการเรียน/สาขาที่เรียน" binding="data.educational_program"></x-inputs.input>
                 </div>
                 <div class="mb-5">
-                  <label for="school_confirmation" class="font-bold mb-1 text-gray-700 block">ใบรับรองผลการเรียน (ให้ไช้ ปพ.1 หรือ ปพ.7 เท่านั้น)</label>
+                  <label for="school_confirmation" class="font-bold mb-1 text-gray-700 block">ใบรับรองผลการเรียน (ให้ไช้ ปพ.1 หรือ ปพ.7 เท่านั้น) @error('educational_certificate_file')<span class="text-white text-xs font-normal rounded bg-red-600 p-[.125rem] px-[.2rem] inline-block">{{$message}}</span> @enderror</label>
                   <div class="flex md:flex-row flex-col gap-5">
                     @if(isset(Auth::user()->registration->educational_certificate))
                     <div class="w-full md:w-1/2 flex flex-col items-center justify-center p-5 border border-gray-300 rounded-lg border-dashed">
@@ -305,7 +134,7 @@
                     @endif
                     <div class="w-full {{isset(Auth::user()->registration->educational_certificate) ? 'md:w-1/2' : ''}} flex items-start justify-center flex-col space-y-3">
 											<h1>{{ isset(Auth::user()->registration->educational_certificate) ? 'อัพโหลดไฟล์ใหม่' : 'อัพโหลดไฟล์' }}</h1>
-                      <input class="bg-white py-4 px-5 rounded-lg transition cursor-pointer shadow-sm w-full" type="file" wire:model.lazy="educational_certificate_file">
+                      <input class="bg-white py-4 px-5 rounded-lg transition cursor-pointer shadow-sm w-full @error('educational_certificate_file')ring ring-red-600/50 ring-1 @enderror" type="file" wire:model="educational_certificate_file">
                       <span class="text-gray-500 text-sm text-center">รองรับไฟล์: JPEG, PNG และ PDF และมีขนาดไม่เกิน 1MB</span>
                     </div>
                   </div>
@@ -315,45 +144,13 @@
               <div x-show.transition.in="$wire.step === 2">
                 <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลทั่วไป</h1>
                 <div class="mb-5">
-                  <label
-                    for="shirtSize"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >ไซส์เสื้อที่ใส่</label
-                  >
-                  <select
-                    name="shirtSize"
-                    id="shirtSize"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    wire:model.lazy="data.shirt_size"
-                  >
-                    <option value="" select hidden class="hidden">
-                      เลือกไซส์เสื้อ
-                    </option>
-                    <option value="S">
-                      S
-                    </option>
-                    <option value="M">
-                      M
-                    </option>
-                    <option value="L">
-                      L
-                    </option>
-                    <option value="XL">
-                      XL
-                    </option>
-                    <option value="XXL">
-                      XXL
-                    </option>
-                    <option value="XXXL">
-                      XXXL
-                    </option>
-                  </select>
+                  <x-inputs.select full="false" name="ไซส์เสื้อที่ใส่" binding="data.shirt_size" :options="[['S','S'],['M','M'],['L','L'],['XL','XL'],['XXL','XXL'],['XXXL','XXXL']]"></x-inputs.select>
                 </div>
                 <div class="mb-5">
                   <label
                     for="firstname"
                     class="font-bold mb-1 text-gray-700 block"
-                    >รู้จัก ITCAMP ครั้งที่ 18 จากที่ไหน</label
+                    >รู้จัก ITCAMP ครั้งที่ 18 จากที่ไหน @error('known_us_from')<span class="text-white text-xs font-normal rounded bg-red-600 p-[.125rem] px-[.2rem] inline-block">{{$message}}</span> @enderror</label
                   >
                   <div class="my-4 grid grid-cols-1">
                     <label class="inline-flex items-center cursor-pointer">
@@ -441,126 +238,30 @@
                 <hr>
                 <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ข้อมูลสุขภาพ</h1>
                 <div class="mb-5">
-                  <label
-                    for="disease"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >โรคประจำตัว ( ถ้าไม่มีให้ตอบว่า ไม่มี )</label
-                  >
-                  <input
-                    type="text"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="โรคประจำตัว"
-                    wire:model.lazy="data.congenital_disease"
-                  />
+                  <x-inputs.input placeholder="โรคประจำตัว ( ถ้าไม่มีให้ตอบว่า ไม่มี )" type="text" name="โรคประจำตัว ( ถ้าไม่มีให้ตอบว่า ไม่มี )" full="true" binding="data.congenital_disease"></x-inputs.input>
                 </div>
                 <div class="mb-5">
-                  <label
-                    for="medAllergy"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >ยาที่แพ้ ( ถ้าไม่มีให้ตอบว่า ไม่มี )</label
-                  >
-                  <input
-                    type="text"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="ยาที่แพ้ เช่น สารประกอบหรือกลุ่มยา"
-                    wire:model.lazy="data.allergic_drug"
-                  />
+                  <x-inputs.input type="text" name="ยาที่แพ้ ( ถ้าไม่มีให้ตอบว่า ไม่มี )" full="true" placeholder="ยาที่แพ้ เช่น สารประกอบหรือกลุ่มยา" binding="data.allergic_drug"></x-inputs.input>
                 </div>
                 <div class="mb-5">
-                  <label
-                    for="medAllergy"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >อาหารที่แพ้ ( ถ้าไม่มีให้ตอบว่า ไม่มี )</label
-                  >
-                  <input
-                    type="text"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    placeholder="อาหารที่แพ้"
-                    wire:model.lazy="data.allergen"
-                  />
+                  <x-inputs.input placeholder="อาหารที่แพ้ ( ถ้าไม่มีให้ตอบว่า ไม่มี )" type="text" name="อาหารที่แพ้ ( ถ้าไม่มีให้ตอบว่า ไม่มี )" full="true" binding="data.allergen"></x-inputs.input>
                 </div>
-                <div class="w-full md:w-1/2 mb-5">
-                  <label
-                    for="bloodgroup"
-                    class="font-bold mb-1 text-gray-700 block"
-                    >กรุ๊ปเลือด</label
-                  >
-                  <select
-                    name="bloodgroup"
-                    id="bloodgroup"
-                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                    wire:model.lazy="data.blood_type"
-                  >
-                    <option value="" selected hidden class="hidden">
-                      เลือกกรุ๊ปเลือด *
-                    </option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="AB">AB</option>
-                    <option value="O">O</option>
-                  </select>
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <x-inputs.select full="false" name="หมู่โลหิต" binding="data.blood_type" :options="[['A','A'],['B','B'],['AB','AB'],['O','O']]"></x-inputs.select>
                 </div>
                 <hr>
                 <h1 class="text-lg font-bold text-gray-700 leading-tight my-4"># ช่องทางการติดต่อฉุกเฉิน</h1>
                 <div class="flex md:space-x-3 flex-col md:flex-row">
-                  <div class="mb-5 w-full md:w-1/2">
-                    <label
-                      for="firstname"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >ชื่อจริง (ผู้ติดต่อฉุกเฉิน)</label
-                    >
-                    <input
-                      type="text"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="ชื่อจริง (ผู้ติดต่อฉุกเฉิน)"
-                      wire:model.lazy="data.emergency_name"
-                    />
-                  </div>
-                  <div class="mb-5 w-full md:w-1/2">
-                    <label
-                      for="lastname"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >นามสกุล (ผู้ติดต่อฉุกเฉิน)</label
-                    >
-                    <input
-                      type="text"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="นามสกุล (ผู้ติดต่อฉุกเฉิน)"
-                      wire:model.lazy="data.emergency_surname"
-                    />
-                  </div>
+                  <x-inputs.input placeholder="ชื่อจริง (ผู้ติดต่อฉุกเฉิน)" full="false" type="text" name="ชื่อจริง (ผู้ติดต่อฉุกเฉิน)" binding="data.emergency_name"></x-inputs.input>
+                  <x-inputs.input placeholder="นามสกุล (ผู้ติดต่อฉุกเฉิน)" full="false" type="text" name="นามสกุล (ผู้ติดต่อฉุกเฉิน)" binding="data.emergency_surname"></x-inputs.input>
                 </div>
-                <div class="mb-5 flex md:space-x-3 flex-col md:flex-row">
-                  <div class="w-full md:w-1/2">
-                    <label
-                      for="phone"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >เบอร์โทรศัพท์มือถือ (ผู้ติดต่อฉุกเฉิน)</label
-                    >
-                    <input
-                      type="tel"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="เบอร์โทรศัพท์มือถือ (ผู้ติดต่อฉุกเฉิน)"
-                      wire:model.lazy="data.emergency_phone"
-                    />
-                  </div>
-                  <div class="w-full md:w-1/2">
-                    <label
-                      for="relevant"
-                      class="font-bold mb-1 text-gray-700 block"
-                      >ความเกี่ยวข้อง (ผู้ติดต่อฉุกเฉิน)</label
-                    >
-                    <input
-                      type="text"
-                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                      placeholder="ความเกี่ยวข้อง (ผู้ติดต่อฉุกเฉิน)"
-                      wire:model.lazy="data.emergency_relationship"
-                    />
-                  </div>
+                <div class="flex md:space-x-3 flex-col md:flex-row">
+                  <x-inputs.input placeholder="เบอร์โทรศัพท์มือถือ (ผู้ติดต่อฉุกเฉิน)" full="false" type="text" name="เบอร์โทรศัพท์มือถือ (ผู้ติดต่อฉุกเฉิน)" binding="data.emergency_phone"></x-inputs.input>
+                  <x-inputs.input placeholder="ความเกี่ยวข้อง (ผู้ติดต่อฉุกเฉิน)" full="false" type="text" name="ความเกี่ยวข้อง (ผู้ติดต่อฉุกเฉิน)" binding="data.emergency_relationship"></x-inputs.input>
                 </div>
                 @if (!in_array(Auth::user()->registration?->subcamp, ['Webtopia','DataVergent','Game Runner','Nettapunk']))
                 <hr>
-                <h1 class="text-lg font-bold text-gray-700 leading-tight mt-4"># เลือกค่ายย่อย</h1>
+                <h1 class="text-lg font-bold text-gray-700 leading-tight mt-4"># เลือกค่ายย่อย @error('data.subcamp')<span class="text-white text-xs font-normal rounded bg-red-600 p-[.125rem] px-[.2rem] inline-block">{{$message}}</span> @enderror</h1>
                 <p class="mb-4 text-red-700 text-sm">สำคัญ! ค่ายย่อยสามารถเลือกได้เพียงครั้งเดียวและไม่สามารถเปลี่ยนแปลงได้ภายหลัง</p>
                 <div class="mb-5 flex items-center justify-center flex-col">
                   <img
@@ -639,293 +340,73 @@
                 @endif
               </div>
               <div x-show.transition.in="$wire.step === 3">
-                <div class="mb-5">
-                  <label for="policy" class="font-bold mb-1 text-gray-700 block"
-                    >ข้อมูลส่วนบุคคล คืออะไร?</label
-                  >
-
-                  <div class="flex">
-                    <p>
-                      ข้อมูลส่วนบุคคล หมายถึง
-                      ข้อมูลเกี่ยวกับบุคคลซึ่งทำให้สามารถระบุตัวตนบุคคลนั้นได้
-                      ไม่ว่าทางตรงหรือทางอ้อม แต่ไม่รวมถึงข้อมูลของผู้ถึงแก่กรรม
-                    </p>
-                  </div>
-                </div>
-
-                <div class="mb-5">
-                  <label for="policy" class="font-bold mb-1 text-gray-700 block"
-                    >ลักษณะข้อมูลส่วนบุคคลที่เราเก็บรวบรวม</label
-                  >
-
-                  <div class="flex flex-col">
-                    <p>เราจะเก็บรวบรวมข้อมูลส่วนบุคคลดังต่อไปนี้</p>
+                <div>
+                  <div class="mb-5">
+                    <label for="policy" class="mb-1 block font-bold text-gray-700">คุณสมบัติของผู้สมัครเข้าร่วมโครงการ </label>
                     <ul class="ml-2">
+                      <li>1. ผู้สมัครต้องเป็นนักเรียนระดับมัธยมศึกษาตอนปลาย หรือ ปวช. เท่านั้น</li>
+                      <li>2. ผู้สมัครสามารถเข้าร่วมการอบรมได้ตลอดระยะเวลา 4 วัน 3 คืน โดยได้รับการยินยอมจากผู้ปกครอง</li>
+                      <li>3. เป็นผู้ที่ได้รับวัคซีน COVID-19 อย่างน้อย 2 เข็มก่อนวันค่ายอย่างน้อย 14 วัน ทั้งนี้ผู้สมัครต้องส่งหลักฐานการได้รับวัคซีนเมื่อถูกร้องขอ</li>
                       <li>
-                        - ข้อมูลที่บ่งชี้ตัวตน อาทิ ชื่อ วันเกิด เพศ กรุ๊ปเลือด
-                        ศาสนา
-                      </li>
-                      <li>
-                        - ข้อมูลช่องทางการติดต่อ อาทิ ที่อยู่ เบอร์โทร อีเมล
-                      </li>
-                      <li>
-                        - ข้อมูลส่วนตัว อาทิ ชื่อบัญชีผู้ใช้ ข้อมูลการแพทย์
-                        ข้อมูลการศึกษา ข้อมูลผู้ปกครอง
-                      </li>
-                      <li>- ข้อมูลบัญชี อาทิ รายละเอียดการชำระเงิน</li>
-                      <li>
-                        - ข้อมูลทางเทคนิค อาทิ Google Analytics, Facebook
-                        Pixels, Hotjar หมายเลขระบุตำแหน่งคอมพิวเตอร์ (IP
-                        Address) ข้อมูลการเข้าระบบ ข้อมูลการใช้งาน และ
-                        การตั้งค่า (log)
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="mb-5">
-                  <label for="policy" class="font-bold mb-1 text-gray-700 block"
-                    >แหล่งที่มาของข้อมูลส่วนบุคคล</label
-                  >
-
-                  <div class="flex flex-col">
-                    <p>เราได้รับข้อมูลส่วนบุคคลของท่านจาก 2 ช่องทาง ดังนี้</p>
-                    <ul class="ml-2">
-                      <li>
-                        - เราได้รับข้อมูลส่วนบุคคลจากท่านโดยตรง
-                        โดยเราจะเก็บรวบรวมข้อมูลส่วนบุคคลของท่านจากการยินยอมเข้าร่วมโครงการ
-                        ดังนี้
+                        4. ไม่อยู่ในกลุ่มเสี่ยงติดเชื้อ COVID-19 ในช่วงก่อนวันจัดกิจกรรมตามเงื่อนไข ดังนี้
                         <ul class="ml-2">
-                          <li>
-                            1. เมื่อท่านลงทะเบียนบัญชีเพื่อเข้าร่วมโครงการ
-                          </li>
-                          <li>
-                            2.
-                            จากการเก็บข้อมูลการใช้เว็บไซต์ของท่านผ่านบราวเซอร์คุกกี้
-                          </li>
-                          <li>
-                            3. จากการติดต่อสอบถามของท่าน
-                            หรือผ่านการโต้ตอบทางอีเมลหรือ ช่องทางการสื่อสารอื่น
-                            ๆ เช่น โทรศัพท์
-                            เพื่อที่ผู้ให้บริการสามารถติดต่อท่านกลับได้
-                          </li>
-                          <li>
-                            4. เมื่อท่านเข้าสู่ระบบบัญชีผู้ใช้บนเว็บไซต์ของเรา
-                            หรือแอพพลิเคชันอื่น ๆ ที่เกี่ยวข้อง อาทิ เฟสบุ๊ค
-                          </li>
+                          <li>- ไม่มีอาการบ่งชี้โรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) เช่น ไข้ ไอ มีน้ำมูก เจ็บคอ คอแห้ง อ่อนเพลีย ปวดเมื่อย ท้องเสีย ตาแดง ผื่นขึ้น หรือเหงื่อออกตอนกลางคืน</li>
+                          <li>- ไม่มีประวัติสัมผัสกับผู้ป่วยที่ยืนยันถึงการเป็นโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) เป็นเวลาอย่างน้อย 14 วัน ก่อนวันจัดกิจกรรม</li>
                         </ul>
                       </li>
-                      <li>
-                        - เราได้รับข้อมูลส่วนบุคคลของท่านมาจากบุคคลที่สาม
-                        Facebook Login
-                        โดยได้รับข้อมูลเมื่อท่านสมัครระบบหรือเข้าใช้งานระบบผ่านช่องทางของบุคคลที่สาม
-                      </li>
+                      <li>5. มีผลตรวจเชื้อเป็นลบเมื่อตรวจเชื้อด้วยชุดตรวจเชื้อ SARS-CoV-2 (เชื้อก่อโรค COVID-19) แบบตรวจหาแอนติเจนด้วยตนเอง (COVID-19 Antigen test self-test kits) ภายใน 72 ชั่วโมง ก่อนวันจัดกิจกรรม ทั้งนี้ผู้สมัครต้องส่งผลตรวจเชื้อเมื่อถูกร้องขอ</li>
                     </ul>
                   </div>
-                </div>
 
-                <div class="mb-5">
-                  <label for="policy" class="font-bold mb-1 text-gray-700 block"
-                    >วัตถุประสงค์ในการประมวลผลข้อมูล
-                  </label>
+                  <div class="mb-5">
+                    <label for="policy" class="mb-1 block font-bold text-gray-700">การสมัครเข้าร่วมโครงการ </label>
 
-                  <div class="flex">
-                    <ul class="ml-2">
-                      <li>
-                        -
-                        เราจัดเก็บข้อมูลส่วนบุคคลของท่านเพื่อประโยชน์ในการจัดฐานข้อมูลในการวิเคราะห์
-                        และเสนอสิทธิประโยชน์ตามความสนใจของท่าน (เผื่อสปอน)
-                      </li>
-                      <li>
-                        -
-                        เราจัดเก็บข้อมูลส่วนบุคคลเพื่อยืนยันตัวตนว่าท่านเป็นผู้เดียวในการเข้าถึงบัญชีของท่าน
-                      </li>
-                      <li>
-                        -
-                        เราจัดเก็บข้อมูลส่วนบุคคลของท่านเพื่อวิจัยการตลาดและบริหารความสัมพันธ์ระหว่างผู้ให้บริการและผู้ใช้บริการ
-                        (เผื่อสปอน)
-                      </li>
-                      <li>
-                        -
-                        เราจัดเก็บข้อมูลส่วนบุคคลของท่านเพื่อปฏิบัติตามข้อกฎหมาย
-                        และระเบียบบังคับใช้ของรัฐ
-                      </li>
-                      <li>
-                        -
-                        เราจัดเก็บข้อมูลส่วนบุคคลของท่านเพื่อปฏิบัติตามกฎระเบียบที่ใช้บังคับกับผู้บริการ
-                        รวมถึงการยินยอมให้ผู้ให้บริการสามารถโอนข้อมูลส่วนบุคคลให้แก่กลุ่มธุรกิจและพันธมิตรของผู้ให้บริการ
-                        ผู้ประมวลผลข้อมูล หรือหน่วยงานใด ๆ
-                        ที่มีสัญญากับผู้ให้บริการ (เผื่อสปอน)
-                      </li>
-                    </ul>
+                    <div class="flex flex-col">
+                      <ul class="ml-2">
+                        <li>1. สมัครได้ตั้งแต่วันที่ 13 มิถุนายน 2565 ถึงวันที่ 25 มิถุนายน 2565</li>
+                        <li>
+                          2. ค่ายที่รับสมัครมีทั้งหมด 4 ค่าย ได้แก่
+                          <ul class="ml-2">
+                            <li>- Webtopia</li>
+                            <li>- Datavergent</li>
+                            <li>- Game Runner</li>
+                            <li>- Nettapunk</li>
+                          </ul>
+                        </li>
+                        <li>3. ผู้สมัครสามารถสมัครได้เพียง 1 ค่ายเท่านั้น โดยการเลือกค่ายจะอยู่ในขั้นตอนที่ 2 ของระบบรับสมัคร หากมีการยืนยันการเลือกค่ายและผ่านขั้นตอนที่ 2 แล้ว ผู้สมัครจะไม่สามารถเปลี่ยนค่ายได้อีก</li>
+                        <li>4. การสมัครจะเสร็จสมบูรณ์ก็ต่อเมื่อสิ้นสุดเวลารับสมัครแล้วเท่านั้น ระหว่างช่วงเวลารับสมัคร ผู้สมัครสามารถเข้าไปแก้ไขข้อมูลและคำตอบของท่านได้</li>
+                        <li>5. ข้อมูลของผู้สมัครทุกคนจะถูกคุ้มครองตามนโยบายคุ้มครองข้อมูลส่วนบุคคล</li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
 
-                <div class="mb-5">
-                  <label for="policy" class="font-bold mb-1 text-gray-700 block"
-                    >วัตถุประสงค์ในการประมวลผลข้อมูล
-                  </label>
+                  <div class="mb-5">
+                    <label for="policy" class="mb-1 block font-bold text-gray-700">การคัดเลือกเข้าร่วมโครงการ</label>
 
-                  <div class="flex">
-                    <ul class="ml-2">
-                      <li>
-                        - เมื่อได้รับข้อมูลส่วนบุคคลจากท่านแล้ว
-                        เราจะดำเนินการดังนี้เก็บรวบรวมโดยมีการบันทึกในระบบคอมพิวเตอร์
-                        ที่ใช้บริการ ได้แก่ Hostinger, Google sheet
-                      </li>
-                      <li>
-                        -
-                        เราจะใช้ข้อมูลส่วนบุคคลของท่านที่ได้เก็บรวบรวมมาในการดำเนินของสมาคมตามวัตถุประสงค์ที่ระบุไว้ในหัวข้อ
-                        “วัตถุประสงค์ในการประมวลผลข้อมูล”
-                      </li>
-                    </ul>
+                    <div class="flex flex-col">
+                      <ul class="ml-2">
+                        <li>
+                          <ul class="ml-2">
+                            <li>1. ผู้สมัครจะผ่านการคัดเลือกโดยการพิจารณาจากการตอบคำถาม และคุณสมบัติตรงตามที่โครงการกำหนด</li>
+                            <li>2. คณะกรรมการจะคัดเลือกผู้มีสิทธิ์เข้าร่วมโครงการทั้งหมด 4 ค่ายย่อย ค่ายละ 15 คน รวมผู้เข้าร่วมโครงการทั้งสิ้น 60 คน โดยประกาศรายชื่อผู้ผ่านการคัดเลือกที่เว็บไซต์ <span class="text-red-700">itcamp18.in.th</span> ในวันที่ 29 มิถุนายน 2565</li>
+                            <li>3. การตัดสินของคณะกรรมการถือเป็นที่สิ้นสุด</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
 
-                <div class="mb-5">
-                  <label for="policy" class="font-bold mb-1 text-gray-700 block"
-                    >วัตถุประสงค์ในการประมวลผลข้อมูล
-                  </label>
+                  <div class="mb-5">
+                    <label for="policy" class="mb-1 block font-bold text-gray-700">รายละเอียดการเข้าร่วมโครงการ
+                   </label>
 
-                  <div class="flex">
-                    <ul class="ml-2">
-                      <li>
-                        - เมื่อได้รับข้อมูลส่วนบุคคลจากท่านแล้ว
-                        เราจะดำเนินการดังนี้เก็บรวบรวมโดยมีการบันทึกในระบบคอมพิวเตอร์
-                        ที่ใช้บริการ ได้แก่ Hostinger, Google sheet
-                      </li>
-                      <li>
-                        -
-                        เราจะใช้ข้อมูลส่วนบุคคลของท่านที่ได้เก็บรวบรวมมาในการดำเนินของสมาคมตามวัตถุประสงค์ที่ระบุไว้ในหัวข้อ
-                        “วัตถุประสงค์ในการประมวลผลข้อมูล”
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="mb-5">
-                  <label for="policy" class="font-bold mb-1 text-gray-700 block"
-                    >การแบ่งปันข้อมูล
-                  </label>
-
-                  <div class="flex">
-                    <p>
-                      เราใช้ผู้ให้บริการภายนอกเพื่อดำเนินการกับข้อมูลส่วนบุคคลของท่านในนามของเราเท่านั้น
-                      การดำเนินการนี้เพื่อจุดประสงค์ที่ระบุไว้ในแถลงการณ์ความเป็นส่วนตัวนี้
-                      ยกตัวอย่างเช่น การเก็บสถิติการใช้งาน การวิเคราะห์
-                      หรือส่งข้อมูลการตลาด
-                      ผู้ให้บริการเหล่านี้มีภาระผูกพันตามข้อตกลงการรักษาความลับและไม่ได้รับอนุญาตให้ใช้ข้อมูลส่วนบุคคลของท่านเพื่อจุดประสงค์ของผู้ดำเนินการเองหรือเพื่อจุดประสงค์อื่น
-                    </p>
-                  </div>
-                </div>
-                <div class="mb-5">
-                  <label for="policy" class="font-bold mb-1 text-gray-700 block"
-                    >การเก็บรักษาและระยะเวลาในการเก็บรักษาข้อมูลส่วนบุคคล
-                  </label>
-                  <p>
-                    การเก็บรักษาข้อมูลส่วนบุคคลผู้ควบคุมทำการเก็บรักษาข้อมูลส่วนบุคคลของท่าน
-                    ดังนี้
-                  </p>
-                  <div class="flex flex-col">
-                    <ul>
-                      <li>
-                        ข้อมูลส่วนบุคคลที่ทางสมาคมจัดเก็บจะอยู่ในลักษณะของ Hard
-                        Copy และ Soft Copy
-                      </li>
-                      <li>
-                        ข้อมูลส่วนบุคคลจะถูกจัดเก็บไว้ในเครื่องมืออุปกรณ์ของคณะดำเนินงานภายใต้การดูแลของคณะเทคโนโลยีสารสนเทศ
-                        สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง ได้แก่
-                        คอมพิวเตอร์ โทรศัพท์มือถือ
-                        รวมถึงมีการเก็บข้อมูลในบนระบบคอมพิวเตอร์ ซึ่งได้แก่
-                        Hostinger, Google sheet
-                      </li>
-                      <li>
-                        ระยะเวลาจัดเก็บ เป็นไปตามหัวข้อ
-                        "ระยะเวลาในการประมวลผลข้อมูลส่วนบุคคล"
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="mb-5">
-                  <label for="policy" class="font-bold mb-1 text-gray-700 block"
-                    >สิทธิของเจ้าของข้อมูล
-                  </label>
-
-                  <div class="flex flex-col">
-                    <p>ท่านมีสิทธิในการดำเนินการ ดังต่อไปนี้</p>
-                    <ul class="ml-2">
-                      <li>
-                        - สิทธิในการได้รับแจ้ง (right to be informed) :
-                        ท่านมีสิทธิที่จะได้รับแจ้งเมื่อข้อมูลส่วนบุคคลของท่านถูกจัดเก็บ
-                        รวมถึงรายละเอียดต่าง ๆ ที่เกี่ยวข้อง อาทิ
-                        วิธีการจัดเก็บและระยะเวลาการจัดเก็บ
-                      </li>
-                      <li>
-                        - สิทธิในการเพิกถอนความยินยอม (right to withdraw
-                        consent) :
-                        ท่านมีสิทธิในการเพิกถอนความยินยอมในการประมวลผลข้อมูลส่วนบุคคลที่ท่านได้ให้ความยินยอมกับเราได้
-                        ตลอดระยะเวลาที่ข้อมูลส่วนบุคคลของท่านอยู่กับเรา
-                      </li>
-                      <li>
-                        - สิทธิในการเข้าถึงข้อมูลส่วนบุคคล (right of access) :
-                        ท่านมีสิทธิในการเข้าถึงข้อมูลส่วนบุคคลของท่านและขอให้เราทำสำเนาข้อมูลส่วนบุคคลดังกล่าวให้แก่ท่าน
-                        รวมถึงขอให้เราเปิดเผยการได้มาซึ่งข้อมูลส่วนบุคคลที่ท่านไม่ได้ให้ความยินยอมต่อเรา
-                      </li>
-                      <li>
-                        - สิทธิในการแก้ไขข้อมูลผู้สมัครให้ถูกต้อง (right to
-                        rectification) :
-                        ท่านมีสิทธิในการขอให้เราแก้ไขข้อมูลที่ไม่ถูกต้องหรือเพิ่มเติมข้อมูลที่ไม่สมบูรณ์
-                      </li>
-                      <li>
-                        - สิทธิในการลบข้อมูลส่วนบุคคล (right to erasure) :
-                        ท่านมีสิทธิในการขอให้เราทำการลบข้อมูลของท่านด้วยเหตุบางประการได้
-                      </li>
-                      <li>
-                        - สิทธิในการระงับการใช้ข้อมูลส่วนบุคคล (right to
-                        restriction of processing) :
-                        ท่านมีสิทธิในการระงับการใช้ข้อมูลส่วนบุคคลของท่านด้วยเหตุบางประการได้
-                      </li>
-                      <li>
-                        - สิทธิในการให้โอนย้ายข้อมูลส่วนบุคคล (right to data
-                        portability) :
-                        ท่านมีสิทธิในการโอนย้ายข้อมูลส่วนบุคคลของท่านไปให้แก่ผู้ควบคุมข้อมูลรายอื่นหรือตัวท่านเองด้วยเหตุบางประการได้
-                      </li>
-                      <li>
-                        - สิทธิในการคัดค้านการประมวลผลข้อมูลส่วนบุคคล (right to
-                        object) :
-                        ท่านมีสิทธิในการคัดค้านการประมวลผลข้อมูลส่วนบุคคลของท่านด้วยเหตุบางประการได้
-                      </li>
-                    </ul>
-                    <p class="mt-2">
-                      ท่านสามารถส่งคำขอมาที่อีเมล support@itcamp18.in.th
-                      เพื่อดำเนินการยื่นคำร้องขอดำเนินการตามสิทธิข้างต้นได้ หรือ
-                      ท่านสามารถศึกษารายละเอียดเงื่อนไข ข้อยกเว้นการใช้สิทธิต่าง
-                      ๆ ได้ที่ แนวปฏิบัติเกี่ยวกับการคุ้มครองข้อมูลส่วนบุคคล
-                      (TDPG2.0) และ เว็บไซต์กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม
-                      http://www.mdes.go.th ทั้งนี้
-                      ท่านไม่จำเป็นต้องเสียค่าใช้จ่ายใด ๆ
-                      ในการดำเนินตามสิทธิข้างต้น โดยเราจะพิจารณา
-                      และแจ้งผลการพิจารณาคำร้องของท่านภายใน 30
-                      วันนับแต่วันที่เราได้รับคำร้องขอดังกล่าว
-                    </p>
-                  </div>
-                </div>
-
-                <div class="mb-5">
-                  <label for="policy" class="font-bold mb-1 text-gray-700 block"
-                    >การยื่นคำร้องเพื่อการจัดการข้อมูลส่วนบุคคล
-                  </label>
-
-                  <div class="flex flex-col">
-                    <p>
-                      หากท่านมีความประสงค์ในการยื่นคำร้องเรียนเพื่อจัดการข้อมูลส่วนบุคคลของท่าน
-                      ซึ่งรวมไปถึงการขอเข้าถึงข้อมูลส่วนบุคคล
-                      การแก้ไขข้อมูลส่วนบุคคล
-                      การขอเพิกถอนการยินยอมให้ข้อมูลส่วนบุคคล
-                      และการส่งความคิดเห็นต่อการบริการ
-                      ท่านสามารถติดต่อได้ทางเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคลตามรายละเอียด
-                      ได้ที่ support@itcamp18.in.th
-                    </p>
+                    <div class="flex">
+                      <ul class="ml-2">
+                        <li>1. ผู้มีสิทธิ์เข้าร่วมโครงการต้องโอนเงินชำระค่าสมัคร เพื่อเป็นการยืนยันสิทธิ์จำนวน 500 บาท</li>
+                        <li>2. ผู้มีสิทธิ์เข้าร่วมโครงการต้องส่งเอกสารหลักฐานการฉีดวัคซีน (หมอพร้อม) อย่างน้อย 2 เข็ม เพื่อเข้าร่วมโครงการ</li>
+                        <li>3. ผู้จัดงานขอสงวนสิทธิ์ในการเปลี่ยนแปลง แก้ไขรายละเอียดกิจกรรมในครั้งนี้ หรือข้อกำหนดและเงื่อนไขต่าง ๆ ที่เกี่ยวข้องตามดุลพินิจของผู้จัดงาน โดยไม่ต้องแจ้งให้ทราบล่วงหน้า</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 <div class="flex items-center justify-center m-4">
