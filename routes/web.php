@@ -33,8 +33,8 @@ Route::controller(AppController::class)->group(function() {
 
 Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function() {
   Route::group(['middleware' => 'auth:admin'], function() {
-    Route::get('/', 'dashboard');
-    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/', 'dashboard')->name('dashboard');
+    Route::get('/registrations', 'registrations')->name('registrations');
     Route::get('/signout', 'signout')->name('signout');
   });
   Route::get('/signin', 'signin')->middleware('guest:admin')->name('signin');

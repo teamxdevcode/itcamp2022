@@ -15,6 +15,7 @@
   </title>
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
   <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-100 relative text-gray-700" x-data="{menu:false}">
   <nav x-init="menu=window.innerWidth>=1024?true:false" @resize.window="menu=window.innerWidth>=1024?true:false" x-show="menu" x-transition.duration.300ms x-on:click.outside="if(window.innerWidth<1024) {menu=false}" class="absolute h-screen w-72 text-center p-4 lg:p-6 lg:px-8 z-10 lg:translate-x-0">
@@ -29,9 +30,15 @@
           </a>
         </li>
         <li>
-          <button disabled href="#" class="w-full flex items-center p-3 px-4 gap-3 rounded-xl text-sm hover:bg-gray-200 transition duration-300 cursor-not-allowed">
+          <a href="{{route('admin.registrations')}}" class="w-full flex items-center p-3 px-4 gap-3 rounded-xl text-sm hover:bg-gray-200 transition duration-300 cursor-not-allowed">
             <span class="material-symbols-outlined shadow-lg shadow-gray-200 w-8 h-8 flex items-center justify-center bg-white rounded-lg text-[1rem]">inbox</span>
-            Registration
+            Registrations
+          </a>
+        </li>
+        <li>
+          <button disabled href="#" class="w-full flex items-center p-3 px-4 gap-3 rounded-xl text-sm hover:bg-gray-200 transition duration-300 cursor-not-allowed">
+            <span class="material-symbols-outlined shadow-lg shadow-gray-200 w-8 h-8 flex items-center justify-center bg-white rounded-lg text-[1rem]">person</span>
+            Account Management
           </button>
         </li>
         <li>
@@ -46,12 +53,12 @@
   <main class="lg:ml-72 p-4 px-6 transition-all duration-300">
     <div class="flex items-center mb-6">
       <h1 class="font-bold">
-        <span class="text-sm font-normal block">
-          <span class="text-gray-400">Pages</span>
+        <span class="text-sm font-normal block cursor-default">
+          <span class="text-gray-400 last:text-gray-700">Pages</span>
           @foreach ($path as $page)
-            / {{ucwords($page)}}
+          <span class="text-gray-400 last:text-gray-700">/ {{ucwords($page)}}</span>
           @endforeach
-          {{ count($path) === 1 ? '/ Dashboard':'' }}
+          {!! count($path) === 1 ? '<span class="text-gray-400 last:text-gray-700">/ Dashboard</span>':'' !!}
         </span>
         {{count($path) === 1 ? 'Dashboard':ucwords(end($path))}}
       </h1>
