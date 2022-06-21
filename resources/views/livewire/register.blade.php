@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="flex md:space-x-3 flex-col md:flex-row">
-                  <x-inputs.input placeholder="วันเกิด" full="false" type="date" name="วันเกิด" binding="data.birthday"></x-inputs.input>
+                  <x-inputs.input placeholder="วันเกิด" full="false" type="date" name="วันเกิด (ค.ศ.)" binding="data.birthday"></x-inputs.input>
                   <x-inputs.select full="false" name="เพศ" binding="data.gender" :options="[['Male','ชาย'],['Female','หญิง'],['LGBTQ+','LGBTQ+']]"></x-inputs.select>
                 </div>
                 <div class="flex md:space-x-3 flex-col md:flex-row">
@@ -121,7 +121,7 @@
                   <x-inputs.input placeholder="แผนการเรียน/สาขาที่เรียน" full="false" type="text" name="แผนการเรียน/สาขาที่เรียน" binding="data.educational_program"></x-inputs.input>
                 </div>
                 <div class="mb-5">
-                  <label for="school_confirmation" class="font-bold mb-1 text-gray-700 block">ใบรับรองผลการเรียน (ให้ไช้ ปพ.1 หรือ ปพ.7 เท่านั้น) @error('educational_certificate_file')<span class="text-white text-xs font-normal rounded bg-red-600 p-[.125rem] px-[.2rem] inline-block">{{$message}}</span> @enderror</label>
+                  <label for="school_confirmation" class="font-bold mb-1 text-gray-700 block">ใบรับรองผลการเรียน (ให้ไช้ ปพ.1 หรือ ปพ.7 เท่านั้น) (ไม่มีผลต่อการคัดเลือก) @error('educational_certificate_file')<span class="text-white text-xs font-normal rounded bg-red-600 p-[.125rem] px-[.2rem] inline-block">{{$message}}</span> @enderror</label>
                   <div class="flex md:flex-row flex-col gap-5">
                     @if(isset(Auth::user()->registration->educational_certificate))
                     <div class="w-full md:w-1/2 flex flex-col items-center justify-center p-5 border border-gray-300 rounded-lg border-dashed">
