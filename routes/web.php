@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\FacebookAuthController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(FacebookAuthController::class)->prefix('auth')->name('auth.')->group(function() {
   Route::get('/redirect', 'redirect')->middleware('guest')->name('login');
   Route::get('/callback', 'callback')->middleware('guest')->name('callback');
-  Route::get('/logout', 'logout')->middleware('auth')->name('logout');
+  Route::get('/logout', 'logout')->middleware('auth:web,admin')->name('logout');
 });
 
 Route::controller(AppController::class)->group(function() {
@@ -28,4 +29,13 @@ Route::controller(AppController::class)->group(function() {
     Route::get('/question', 'question')->name('question');
     Route::get('/register/education-certificate', 'educationalCertificateFile')->name('educational-certificate');
   });
+});
+
+Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function() {
+  Route::group(['middleware' => 'auth:admin'], function() {
+    Route::get('/', 'dashboard');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/signout', 'signout')->name('signout');
+  });
+  Route::get('/signin', 'signin')->middleware('guest:admin')->name('signin');
 });
