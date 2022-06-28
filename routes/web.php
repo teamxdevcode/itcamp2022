@@ -25,8 +25,8 @@ Route::controller(FacebookAuthController::class)->prefix('auth')->name('auth.')-
 Route::controller(AppController::class)->group(function() {
   Route::get('/', 'home')->name('home');
   Route::middleware('auth')->group(function() {
-    Route::get('/register', 'register')->name('register');
-    Route::get('/question', 'question')->name('question');
+    // Route::get('/register', 'register')->name('register');
+    // Route::get('/question', 'question')->name('question');
     Route::get('/register/education-certificate', 'educationalCertificateFile')->name('educational-certificate');
   });
 });
@@ -34,8 +34,13 @@ Route::controller(AppController::class)->group(function() {
 Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function() {
   Route::group(['middleware' => 'auth:admin'], function() {
     Route::get('/', 'dashboard')->name('dashboard');
-    Route::get('/registrations', 'registrations')->name('registrations');
+    Route::group(['middleware'=>'auth.except:viwer,recreation'], function() {
+      Route::get('/registrations', 'registrations')->name('registrations');
+      Route::get('/registrations/details/{applicant_id}', 'applicantDetails')->name('registrations.details');
+      Route::get('/export/{subcamp}', 'export')->name('export');
+    });
     Route::get('/signout', 'signout')->name('signout');
   });
   Route::get('/signin', 'signin')->middleware('guest:admin')->name('signin');
 });
+

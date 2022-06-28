@@ -10,9 +10,9 @@ class AppController extends Controller
 {
     public function home() {
       if (Auth::check()) {
-          return view('home');
+          return view('v2.home');
       }
-      return view('index');
+      return view('v2.index');
     }
 
     public function register() {

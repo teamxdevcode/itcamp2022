@@ -11,4 +11,8 @@ class Registration extends Model
 
     protected $primaryKey = 'applicant_id';
     protected $guarded = [];
+
+    public function answer() {
+        return $this->hasOne(Answer::class, 'applicant_id');
+    }
 }

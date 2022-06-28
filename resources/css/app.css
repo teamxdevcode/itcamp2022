@@ -2,11 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {}
+@layer components {
+  .table-list {
+    @apply w-full;
+  }
+  .table-list tr {
+    @apply border-b border-gray-200 last:border-b-0;
+  }
+  .table-list tr th {
+    @apply p-3 text-start w-2/12;
+  }
+  .table-list tr td {
+    @apply p-3 w-4/12;
+  }
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@200;300;400;500;600;700&family=Noto+Sans:wght@200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,1,0');
 
 * {
   font-family: "Noto Sans", "Noto Sans Thai", sans-serif;
+}
+
+[x-cloak] {
+  display: none;
 }
