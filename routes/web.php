@@ -27,6 +27,7 @@ Route::controller(AppController::class)->group(function() {
   Route::middleware('auth')->group(function() {
     // Route::get('/register', 'register')->name('register');
     // Route::get('/question', 'question')->name('question');
+    Route::get('/confirmation', 'confirmation')->name('confirmation');
     Route::get('/register/education-certificate', 'educationalCertificateFile')->name('educational-certificate');
   });
 });
@@ -38,6 +39,7 @@ Route::controller(AdminController::class)->prefix('admin')->name('admin.')->grou
       Route::get('/registrations', 'registrations')->name('registrations');
       Route::get('/registrations/details/{applicant_id}', 'applicantDetails')->name('registrations.details');
       Route::get('/export/{subcamp}', 'export')->name('export');
+      Route::get('/document/{doc_type}/{applicant_id}', 'document')->name('view.document');
     });
     Route::get('/signout', 'signout')->name('signout');
   });

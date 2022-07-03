@@ -28,7 +28,7 @@ class RegistrationList extends LivewireDatatable
             } elseif ($result == 2) {
               return "<span class=\"block flex justify-center items-center gap-1 text-gray-400 \"><span class=\"material-symbols-outlined\">pending</span>Reservd</span>";
             }
-          })->label('Result')->unsortable(),
+          })->label('Result')->unsortable()->filterable(['1','0','2']),
           Column::name('registrations.applicant_id')->sortBy('registrations.applicant_id')->defaultSort('asc')->searchable(),
           Column::name('name')->unsortable()->searchable(),
           Column::name('surname')->unsortable()->searchable(),

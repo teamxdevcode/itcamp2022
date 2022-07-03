@@ -191,6 +191,12 @@ return [
         'emergency_phone' => 'เบอร์โทรศัพท์มือถือ (ผู้ติดต่อฉุกเฉิน)',
         'emergency_relationship' => 'ความเกี่ยวข้อง (ผู้ติดต่อฉุกเฉิน)',
         'subcamp' => 'ค่ายย่อย',
+        'transfer_statement' => 'หลักฐานการโอนเงิน',
+        'transfer_at' => 'เวลาทำรายการโอนเงิน',
+        'identity_card' => 'บัตรประชาชน',
+        'vaccine_certificate' => 'เอกสารหมอพร้อม',
+        'food_restrictions' => 'ข้อจำกัดด้านอาหาร',
+        'nickname' => 'ชื่อเล่น'
     ],
 
 ];

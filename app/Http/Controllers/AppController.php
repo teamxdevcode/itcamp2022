@@ -10,7 +10,10 @@ class AppController extends Controller
 {
     public function home() {
       if (Auth::check()) {
-          return view('v2.home');
+        if (strtotime(date('Y-m-d H:m:s')) >= strtotime("2022-06-28 12:00:00")) {
+          return view('v2.result');
+        }
+        return view('v2.home');
       }
       return view('v2.index');
     }
@@ -45,5 +48,15 @@ class AppController extends Controller
       return response()->stream(function () use ($filename) {
         FileVault::streamDecrypt("educational-certificates/{$filename}");
       }, 200, ["Content-Type" => $contentType[$ext]]);
+    }
+
+    public function confirmation() {
+        if (strtotime(date('Y-m-d H:m:s')) > strtotime('2022-07-01 23:59:59') && !in_array(Auth::user()->id, [168, 1687, 383, 1618, 1314])) {
+            return redirect()->route('home');
+        }
+        if (Auth::user()->registration != null && (Auth::user()->registration->result == 1 || in_array(Auth::user()->id, [168, 1687, 383, 1618, 1314])) && is_null(Auth::user()->registration->confirm)) {
+          return view('v2.confirmation');
+        }
+        return abort(403);
     }
 }

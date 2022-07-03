@@ -15,4 +15,8 @@ class Registration extends Model
     public function answer() {
         return $this->hasOne(Answer::class, 'applicant_id');
     }
+
+    public function confirm() {
+        return $this->hasOne(Confirm::class, 'applicant_id');
+    }
 }

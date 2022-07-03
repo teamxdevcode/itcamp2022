@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ConfirmationList;
 use App\Exports\WebtopiaExport;
 use App\Models\Answer;
 use App\Models\Applicant;
+use App\Models\Confirm;
 use App\Models\Registration;
+use Brainstud\FileVault\Facades\FileVault;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -215,7 +218,12 @@ class AdminController extends Controller
     }
 
     public function export($subcamp) {
-      return Excel::download(new WebtopiaExport($subcamp), "ITCAMP18_{$subcamp}.xlsx");
+      if (in_array($subcamp, ['Webtopia','DataVergent','Game Runner','Nettapunk'])) {
+        return Excel::download(new WebtopiaExport($subcamp), "ITCAMP18_{$subcamp}.xlsx");
+      } elseif ($subcamp == 'confirmations') {
+        date_default_timezone_set("Asia/Bangkok");
+        return Excel::download(new ConfirmationList(), "itcamp18_confirmation_list_".date('YmdHis').".xlsx");
+      }
     }
 
     public function signin() {
@@ -225,5 +233,34 @@ class AdminController extends Controller
     public function signout() {
       Auth::guard('admin')->logout();
       return redirect()->route('admin.signout');
+    }
+
+    public function document($doc_type, $applicant_id) {
+
+      $accept_doce_type = [
+        'identity-card',
+        'transfer-statement',
+        'vaccine-certificate',
+      ];
+
+      if (Confirm::find($applicant_id) === null || !in_array($doc_type, $accept_doce_type) || Confirm::find($applicant_id)->confirm == 0) {
+        return abort(404);
+      }
+
+      $get_filename = Confirm::find($applicant_id)->{str_replace('-', '_', $doc_type)};
+
+      $contentType = [
+        'png' => 'image/png',
+        'jpeg' => 'image/jpeg',
+        'jpg' => 'image/jpeg',
+        'jpe' => 'image/jpeg',
+      ];
+
+      $ext = strtolower(pathinfo(substr("{$doc_type}/{$get_filename}", 0, -4), PATHINFO_EXTENSION));
+
+      /* If a user has the file, so decrypt and return it. */
+      return response()->stream(function () use ($doc_type, $get_filename) {
+        FileVault::streamDecrypt("{$doc_type}/{$get_filename}");
+      }, 200, ["Content-Type" => $contentType[$ext]]);
     }
 }
