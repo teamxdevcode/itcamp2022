@@ -1,0 +1,61 @@
+version: '3'
+services:
+    app:
+        build:
+            context: ./
+            dockerfile: ./docker/php/Dockerfile
+        working_dir: /var/www/laravel
+        volumes:
+            # - ./app:/var/www/laravel/app
+            # - ./config:/var/www/laravel/config
+            # - ./database:/var/www/laravel/database
+            # - ./lang:/var/www/laravel/lang
+            # - ./public:/var/www/laravel/public
+            # - ./resources:/var/www/laravel/resources
+            # - ./routes:/var/www/laravel/routes
+            - ./:/var/www/laravel
+            - /var/www/laravel/vendor
+    nginx:
+        build: ./docker/nginx
+        working_dir: /var/www/laravel
+        volumes_from:
+            - app
+        ports:
+            - 443:443
+    # composer:
+    #     build: ./docker/php
+    #     working_dir: /var/www/laravel
+    #     volumes_from:
+    #         - app
+    #     command: "composer install"
+    database:
+        image: mysql:8.0
+        restart: always
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - ./docker/mysql/data:/var/lib/mysql
+        ports:
+            - 3306:3306
+    # database:
+    #     image: postgres
+    #     restart: always
+    #     environment:
+    #         POSTGRES_USER: ${DB_USERNAME}
+    #         POSTGRES_PASSWORD: ${DB_PASSWORD}
+    #         POSTGRES_DB: ${DB_DATABASE}
+    #     volumes:
+    #         - ./docker/postgresql/data:/var/lib/postgresql/data
+    #     ports:
+    #         - '5432:5432'
+
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+            - 8080:80
+        environment:
+            PMA_HOST: database
+            PMA_ARBITRARY: 1
+            UPLOAD_LIMIT: 300M

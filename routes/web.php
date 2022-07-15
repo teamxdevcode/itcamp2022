@@ -36,10 +36,17 @@ Route::controller(AdminController::class)->prefix('admin')->name('admin.')->grou
   Route::group(['middleware' => 'auth:admin'], function() {
     Route::get('/', 'dashboard')->name('dashboard');
     Route::group(['middleware'=>'auth.except:viwer,recreation'], function() {
+      /* Registration table and details */
       Route::get('/registrations', 'registrations')->name('registrations');
       Route::get('/registrations/details/{applicant_id}', 'applicantDetails')->name('registrations.details');
+
+      /* Export and load files */
       Route::get('/export/{subcamp}', 'export')->name('export');
       Route::get('/document/{doc_type}/{applicant_id}', 'document')->name('view.document');
+
+      /* Confirmation table and details */
+      Route::get('/confirmation', 'confirmation')->name('confirmation');
+      Route::get('/confirmation/{applicant_id}', 'confirmationDetail')->name('confirmation.detail');
     });
     Route::get('/signout', 'signout')->name('signout');
   });

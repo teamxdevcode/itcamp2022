@@ -59,10 +59,10 @@
     datasets: [{
       label: 'Applicants',
       data: [
-        {{$chart['applicants']['Webtopia']}},
-        {{$chart['applicants']['DataVergent']}},
-        {{$chart['applicants']['Game Runner']}},
-        {{$chart['applicants']['Nettapunk']}},
+        {!!$chart['applicants']['Webtopia'] ?? '\'Webtopia\''!!},
+        {!!$chart['applicants']['DataVergent'] ?? '\'DataVergent\''!!},
+        {!!$chart['applicants']['Game Runner'] ?? '\'Game Runner\''!!},
+        {!!$chart['applicants']['Nettapunk'] ?? '\'Nettapunk\''!!},
       ],
       backgroundColor: [
         '#2563eb',
@@ -73,10 +73,10 @@
     {
       label: 'Submitted answers',
       data: [
-        {{$chart['answers']['Webtopia']}},
-        {{$chart['answers']['DataVergent']}},
-        {{$chart['answers']['Game Runner']}},
-        {{$chart['answers']['Nettapunk']}},
+        {!!$chart['answers']['Webtopia'] ?? '\'Webtopia\''!!},
+        {!!$chart['answers']['DataVergent'] ?? '\'DataVergent\''!!},
+        {!!$chart['answers']['Game Runner'] ?? '\'Game Runner\''!!},
+        {!!$chart['answers']['Nettapunk'] ?? '\'Nettapunk\''!!},
       ],
       backgroundColor: [
         '#c026d3',
@@ -120,10 +120,10 @@
       datasets: [{
         label: 'Education Level',
         data: [
-          {{$chart['education_level']['M.4']}},
-          {{$chart['education_level']['M.5']}},
-          {{$chart['education_level']['M.6']}},
-          {{$chart['education_level']['HVC.']}},
+          {{$chart['education_level']['M.4'] ?? 0}},
+          {{$chart['education_level']['M.5'] ?? 0}},
+          {{$chart['education_level']['M.6'] ?? 0}},
+          {{$chart['education_level']['HVC.'] ?? 0}},
         ],
         backgroundColor: [
           '#2563eb',
@@ -153,9 +153,9 @@ const GenderChart = new Chart(
     datasets: [{
       label: 'Gender',
       data: [
-        {{$chart['gender']['Male']}},
-        {{$chart['gender']['Female']}},
-        {{$chart['gender']['LGBTQ+']}},
+        {{$chart['gender']['Male'] ?? 0}},
+        {{$chart['gender']['Female'] ?? 0}},
+        {{$chart['gender']['LGBTQ+'] ?? 0}},
       ],
       backgroundColor: [
         '#2563eb',

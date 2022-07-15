@@ -1,0 +1,6 @@
+<div class="flex items-center justify-center gap-1">
+  <a href="{{route('admin.view.document', ['applicant_id'=>$applicant_id, 'doc_type'=>'transfer-statement'])}}" target="_blank" class="bg-zinc-600 w-7 h-7 flex items-center justify-center rounded-lg text-white hover:bg-zinc-500 transition-all"><span class="material-symbols-outlined text-lg">Payments</span></a>
+  <a href="{{route('admin.view.document', ['applicant_id'=>$applicant_id, 'doc_type'=>'identity-card'])}}" target="_blank" class="bg-zinc-600 w-7 h-7 flex items-center justify-center rounded-lg text-white hover:bg-zinc-500 transition-all"><span class="material-symbols-outlined text-lg">Badge</span></a>
+  <a href="{{route('admin.view.document', ['applicant_id'=>$applicant_id, 'doc_type'=>'vaccine-certificate'])}}" target="_blank" class="bg-zinc-600 w-7 h-7 flex items-center justify-center rounded-lg text-white hover:bg-zinc-500 transition-all"><span class="material-symbols-outlined text-lg">Vaccines</span></a>
+  <a href="{{route('admin.registrations.details', ['applicant_id'=>$applicant_id])}}" target="_blank" class="bg-blue-600 w-7 h-7 flex items-center justify-center rounded-lg text-white hover:bg-blue-500 transition-all"><span class="material-symbols-outlined text-lg">search</span></a>
+</div>

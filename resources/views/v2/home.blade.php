@@ -10,6 +10,6 @@
   </div>
   <p class="text-xl md:text-2xl font-bold mb-3 md:mb-2">เรากำลังคัดเลือกผู้ที่จะเป็นความหวังใหม่ของเหล่ามนุษยชาติ</p>
   <p class="mb-8">การเดินทางสู่โลกใบใหม่กำลังจะเริ่มต้นขึ้นเร็ว ๆ นี้</p>
-  <a href="{{route('auth.logout')}}" class="inline-flex justify-center items-center text-sm group">ออกจากระบบ <span class="material-symbols-outlined translate-y-[0.09rem] text-[1.25rem] group-hover:ml-1 transition-all duration-500">chevron_right</span></a>
+  <a href="{{route('auth.logout')}}" class="inline-flex justify-center items-center text-sm group active:opacity-50 focus:opacity-75 duration-300">ออกจากระบบ <span class="material-symbols-outlined translate-y-[0.09rem] text-[1.25rem] group-hover:ml-1 transition-all duration-500">chevron_right</span></a>
 </div>
 @endsection

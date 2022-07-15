@@ -263,4 +263,10 @@ class AdminController extends Controller
         FileVault::streamDecrypt("{$doc_type}/{$get_filename}");
       }, 200, ["Content-Type" => $contentType[$ext]]);
     }
+
+    public function confirmation() {
+      return view('admin.confirmation');
+    }
+
+    public function confirmationDetail($applicant_id) {}
 }

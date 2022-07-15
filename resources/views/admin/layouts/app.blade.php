@@ -37,6 +37,12 @@
             Registrations
           </a>
         </li>
+        <li>
+          <a href="{{route('admin.confirmation')}}" class="w-full flex items-center p-3 px-4 gap-3 rounded-xl text-sm {{ Route::currentRouteName() == 'admin.confirmation' ? 'shadow-lg shadow-gray-200 font-semibold bg-white' : 'hover:bg-gray-200 transition duration-300' }}">
+            <span class="material-symbols-outlined w-8 h-8 flex items-center justify-center text-[1rem] rounded-lg {{ Route::currentRouteName() == 'admin.confirmation' ? 'bg-gradient-to-br from-blue-600 to-purple-700 text-white' : 'bg-white shadow-lg shadow-gray-200' }}">Checklist</span>
+            Confirmations
+          </a>
+        </li>
         @endif
       </ul>
     </div>
